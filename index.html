@@ -5,36 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHubject</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/home_style.css">
 </head>
 <body>
-    <div class="header"> <a href="index.html" target="_self"> <img class="logo" src="img/SoloLogoPicciriddu.png"> </a></div>
-
-    <form class="search-form" action="search.php" method="get" name="">
-
-        <div class="search-bar">
-
-          <select class="search_select" id="chooser">
-            <option value="Articoli">Articoli</option>
-            <option value="Esami">Esami</option>
-            <option value="Mezzi di trasporto">Mezzi di trasporto</option>
-          </select>
-
-          <input type="text" id="search-bar" value="" placeholder="Cosa stai cercando?">
-          <button type="button" id="search-btn">cerca</button>
+  <div class="container">
+    <header class="header">
+        <div class="logo">
+          <img src="img/logo_homepage.png" alt="logo">
         </div>
-
-        <a href="login.html" target="_self">Accedi</a>
-        <!-- I 2 BR che seguono sono temporanei e servono per mostrare la divisione tra accedi e body-->
-        <br/><br/>
-        <div class="sidebar">sidebar</div>
-        <div class="main-content">main</div>
-        <!-- I 2 BR che seguono sono temporanei e servono per mostrare la divisione tra body e footer-->
-         <br/><br/>
-
-      <footer class="footer">
-        <a href="submit_org.html">Iscrivi la tua organizzazione</a><br/> 
-        <a href="submit_topic.html">Proponi un nuovo topic</a> <br/>
-        <a href="chi_siamo.html">Chi siamo</a>
-      </footer>
+        <div class="search">
+            <input type="text" placeholder="cerca tra i topics e le organizzazioni">
+        </div>
+        <a href="#" class="login">ACCEDI</a>
+      </header>
+    <div class="main">
+        <div class="sidebar">
+            <div class="menu">
+                <ul>
+                    <li>Articoli</li>
+                    <li>Esami</li>
+                    <li>Mezzi di trasporto</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content"></div>
+    </div>
+    <footer class="footer">
+        <span>Chi siamo</span>
+    </footer>
+</div>
 </body>
 </html>
