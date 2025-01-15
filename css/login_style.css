@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8a2be2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background-color: white;
+    width: 50%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: red;
+    width: 40%;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+}
+
+.login-box label {
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: pink;
+}
+
+.login-box .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.login-box button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-box .cancel {
+    background-color: green;
+    color: white;
+}
+
+.login-box .login {
+    background-color: green;
+    color: white;
+}
+
+.register {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.register a {
+    color: blue;
+    text-decoration: none;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
