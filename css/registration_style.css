@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #7e57c2; /* Colore di sfondo viola */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background-color: #f44336; /* Colore rosso */
+    padding: 20px 30px; /* Aggiunto padding orizzontale uniforme */
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+input {
+    display: block;
+    width: calc(100% - 20px); /* Compensare per il padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 20px;
+    background-color: #ff80ab; /* Colore rosa */
+    font-size: 16px;
+    color: #ffffff;
+}
+
+input::placeholder {
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.cancel-button {
+    background-color: #4caf50; /* Verde */
+}
+
+.register-button {
+    background-color: #4caf50; /* Verde */
+}
+
+button:hover {
+    opacity: 0.9;
+}
