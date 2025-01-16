@@ -1,3 +1,3 @@
-function returnToindex() {
+function returnToHome() {
     window.location = "index.html";
 }

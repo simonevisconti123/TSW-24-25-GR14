@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina Utenti</title>
+  <link rel="stylesheet" href="css/presentation.css">
+  <script src="js/presentation_swap.js"></script>
+  <script src="js/utilities.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="user-list">
+      <button onclick="showUserPage('AnthonyVita.html')">Anthony Vita</button>
+      <button onclick="showUserPage('SimoneVisconti.html')">Simone Visconti</button>
+      <button onclick="showUserPage('VincenzoGoffredo.html')">Vincenzo Goffredo</button>
+      <button onclick="showUserPage('LiviaCiasullo.html')">Livia Ciasullo</button>
+    </div>
+    <button class="home-button" onclick=returnToHome()>Torna alla home</button>
+  </div>
+  <div class="content">
+    <iframe id="userFrame" src=""></iframe>
+  </div>
+</body>
+</html>
