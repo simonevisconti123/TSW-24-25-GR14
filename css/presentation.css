@@ -10,7 +10,7 @@
     height: 100vh;
   }
 
-  .sidebar {
+  .leftBlock {
     width: 20%;
     background-color: #6a0dad;
     color: white;
@@ -21,7 +21,7 @@
     padding: 10px 0;
   }
 
-  .user-list {
+  .namesBox {
     width: 80%;
     max-width: 200px;
     background-color: red;
@@ -29,7 +29,7 @@
     border-radius: 5px;
   }
 
-  .user-list button {
+  .namesBox button {
     display: block;
     width: 100%;
     background-color: transparent;
@@ -42,7 +42,7 @@
     text-align: left;
   }
 
-  .user-list button:hover {
+  .namesBox button:hover {
     background-color: #ff4d4d;
   }
 
@@ -64,7 +64,7 @@
     background-color: #32cd32;
   }
 
-  .content {
+  .pagina_presentazione {
     flex-grow: 1;
     padding: 0;
     background-color: white;
