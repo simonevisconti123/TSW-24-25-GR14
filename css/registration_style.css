@@ -9,13 +9,13 @@ body {
     height: 100vh;
 }
 
-.container {
+.centerBlock {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form-container {
+.signupBox {
     background-color: #f44336; /* Colore rosso */
     padding: 20px 30px; /* Aggiunto padding orizzontale uniforme */
     border-radius: 8px;
@@ -36,7 +36,7 @@ input {
     margin: 10px 0;
     border: none;
     border-radius: 20px;
-    background-color: #ff80ab; /* Colore rosa */
+    background-color: #e5bbc9; /* Colore rosa */
     font-size: 16px;
     color: #ffffff;
 }
@@ -46,7 +46,7 @@ input::placeholder {
     opacity: 0.8;
 }
 
-.buttons {
+.buttonsBox {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -61,11 +61,11 @@ button {
     color: #ffffff;
 }
 
-.cancel-button {
+.signupCancelButton {
     background-color: #4caf50; /* Verde */
 }
 
-.register-button {
+.signupConfirmationButton {
     background-color: #4caf50; /* Verde */
 }
 
