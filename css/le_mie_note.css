@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Sidebar */
+.leftBlock {
+    width: 20%;
+    background-color: #6a00c6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.mySHubjectBox {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.mySHubjectBox h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.home-button {
+    position: absolute;
+    bottom: 20px;
+    background-color: green;
+    color: white;
+    border: 2px solid #6a00c6;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.home-button:hover {
+    background-color: darkgreen;
+}
+
+.rightBlock {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.inputSearchBar {
+    width: 50%;
+    background-color: pink;
+    border-radius: 25px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+}
+
+.aggiungiButton {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background-color: green;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.aggiungiButton:hover {
+    background-color: #004d00;
+}
