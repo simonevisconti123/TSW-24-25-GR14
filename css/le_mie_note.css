@@ -10,10 +10,9 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* Sidebar */
 .leftBlock {
     width: 20%;
-    background-color: #6a00c6;
+    background-color: #292934;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -23,10 +22,10 @@ body {
 
 .mySHubjectBox {
     width: 100%;
-    background-color: red;
+    background-color: #D60606;
     color: white;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
 }
 
 .mySHubjectBox h1 {
@@ -37,9 +36,9 @@ body {
 .home-button {
     position: absolute;
     bottom: 20px;
-    background-color: green;
-    color: white;
-    border: 2px solid #6a00c6;
+    background-color: #FFF200;
+    color: black;
+    border: 2px solid #292934;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
@@ -47,7 +46,7 @@ body {
 }
 
 .home-button:hover {
-    background-color: darkgreen;
+    background-color: darkgoldenrod;
 }
 
 .rightBlock {
@@ -60,12 +59,12 @@ body {
 
 .inputSearchBar {
     width: 50%;
-    background-color: pink;
+    background-color: white;
     border-radius: 25px;
     padding: 10px;
     text-align: center;
     font-size: 16px;
-    color: #fff;
+    color: black;
     font-family: Arial, sans-serif;
     margin-top: 20px;
 }
@@ -74,18 +73,18 @@ body {
     position: absolute;
     top: 5%;
     right: 5%;
-    background-color: green;
+    background-color: #FFF200;
     width: 100px;
     height: 40px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
     font-size: 18px;
     cursor: pointer;
 }
 
 .aggiungiButton:hover {
-    background-color: #004d00;
+    background-color: darkgoldenrod;
 }
