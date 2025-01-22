@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="title" content="Curriculum di Simone Visconti">
+    <meta name="description" content="Il curriculum di Simone Visconti, con dettagli su competenze, citazioni preferite, e contatti.">
+    <meta name="keywords" content="curriculum, competenze, citazioni, contatti">
+    <meta name="author" content="Simone Visconti">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>Curriculum di Simone Visconti</title>
+    <link rel="stylesheet" href="css/personal_page_Visconti.css">
+</head>
+<body>
+
+    <header>
+        <h1>About Me</h1>
+    </header>
+
+    <!-- Sezione Chi sono -->
+    <section id="chi-sono">
+        <h2>Chi sono</h2>
+        <img src="img/foto_profilo_Visconti.jpg" alt="foto profilo Visconti" class="profile-photo">
+        <p>
+            <span class="campo-anagrafica">Nome:</span> Simone<br>
+            <span class="campo-anagrafica">Cognome:</span> Visconti<br>
+            <span class="campo-anagrafica">Data di nascita:</span> 03/12/2003<br>
+            <span class="campo-anagrafica">Città di residenza:</span> Atripalda<br>
+            <span class="campo-anagrafica">Email:</span> <a href="mailto:s.visconti3@studenti.unisa.it">s.visconti3@studenti.unisa.it</a>
+        </p>
+        <p>Mi chiamo Simone Visconti, studente al terzo anno del CdL in ingegneria informatica. Mi interesso di sicurezza informatica dal 2020 e sono un Cyber Security Analyst</p>
+    </section>
+
+    <!-- Collegamenti alle sezioni -->
+    <nav>
+        <ul class="navigation">
+            <li><a href="#competenze-informatiche">Competenze informatiche</a></li>
+            <li><a href="#citazioni-favorite">Citazioni preferite</a></li>
+            <li><a href="#video">Il video più bello</a></li>
+            <li><a href="#social">I miei social</a></li>
+            <li><a href="#contattami">Contattami</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <!-- Sezione Competenze Informatiche -->
+    <section id="competenze-informatiche">
+        <h2>Competenze Informatiche</h2>
+        <table class="skills-table">
+            <thead>
+                <tr>
+                    <th>Dettagli</th>
+                    <th># Progetti</th>
+                    <th>Anni di esperienza</th>
+                    <th>Data ultimo progetto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Java</td>
+                    <td>10</td>
+                    <td>2</td>
+                    <td>15/12/2024</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>5</td>
+                    <td>1</td>
+                    <td>21/01/2023</td>
+                </tr>
+                <tr>
+                    <td>C++</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>25/05/2020</td>
+                </tr>
+                <tr>
+                    <td>Python</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>13/11/2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr>
+
+    <!-- Sezione Citazioni Favorite -->
+    <section id="citazioni-favorite">
+        <h2>Citazioni preferite</h2>
+        <div class="quote">
+            <a href="https://it.wikipedia.org/wiki/Il_Signore_degli_Anelli" target="_blank">
+                <img src="lotr.jpg" alt="Il Signore degli Anelli" class="quote-image">
+            </a>
+            <blockquote>"Non tutti quelli che vagano sono perduti."</blockquote>
+        </div>
+        <div class="quote">
+            <a href="https://it.wikipedia.org/wiki/Star_Wars" target="_blank">
+                <img src="starwars.jpg" alt="Star Wars" class="quote-image">
+            </a>
+            <blockquote>"La Forza sarà con te, sempre."</blockquote>
+        </div>
+    </section>
+
+    <hr>
+
+    <!-- Sezione Il video più bello -->
+    <section id="video">
+        <h2>Il video più bello</h2>
+        <iframe class="video-frame" width="560" height="315" src="https://www.youtube.com/embed/xvFZjo5PgG0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <hr>
+
+    <!-- Sezione I miei social -->
+    <section id="social">
+        <h2>I miei social</h2>
+        <ul class="social-links">
+            <li><a href="https://www.linkedin.com/in/simone-visconti/" target="_blank">LinkedIn</a></li>
+            <li><a href="https://github.com/simonevisconti123" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <!-- Sezione Contattami -->
+    <section id="contattami">
+        <h2>Contattami</h2>
+        <form action="php/form_contattami.php" method="post" class="contact-form">
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="messaggio">Messaggio:</label><br>
+            <textarea id="messaggio" name="messaggio" rows="4" required></textarea><br><br>
+            <input type="hidden" name="source_page" value="simonevisconti">
+            <button type="submit">Invia</button>
+        </form>
+    </section>
+
+</body>
+</html>
