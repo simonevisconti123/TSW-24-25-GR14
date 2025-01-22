@@ -16,7 +16,8 @@ body {
 }
 
 .signupBox {
-    background-color: #FF1010; /* Colore rosso */
+    background-color: #15151A; /* Colore rosso */
+    color: white;
     padding: 20px 30px; /* Aggiunto padding orizzontale uniforme */
     border-radius: 8px;
     text-align: center;
@@ -36,7 +37,7 @@ input {
     margin: 10px 0;
     border: none;
     border-radius: 20px;
-    background-color: #e5bbc9; /* Colore rosa */
+    background-color: #FFFFFF; /* Colore rosa */
     font-size: 16px;
     color: #ffffff;
 }
@@ -54,20 +55,20 @@ input::placeholder {
 
 button {
     border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
+    border-radius: 10px;
+    padding: 10px 15px;
     font-size: 16px;
     cursor: pointer;
 }
 
 .signupCancelButton {
-    background-color: #FFF100; /* Verde */
+    background-color: #FFF100; 
 }
 
 .signupConfirmationButton {
-    background-color: #FFF100; /* Verde */
+    background-color: #FFF100; 
 }
 
 button:hover {
-    opacity: 0.9;
+    background-color: #9F9700;
 }

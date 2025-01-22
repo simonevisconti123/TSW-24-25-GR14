@@ -14,7 +14,7 @@
   }
   
   .centerBlock {
-      background-color: white;
+      background-color: #292934;
       width: 50%;
       height: 100%;
       display: flex;
@@ -23,7 +23,7 @@
   }
   
   .loginBox {
-      background-color: #292934;
+      background-color: #15151A;
       width: 300px;
       padding: 20px;
       color: white;
@@ -59,9 +59,9 @@
   
   .loginBox button {
       width: 48%;
-      padding: 10px;
+      border-radius: 10px;
+      padding: 10px 15px;
       border: none;
-      border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
   }
@@ -75,6 +75,15 @@
       background-color: #FFF200;
       color: black;
   }
+
+
+  .loginBox .loginCancelButton:hover {
+    background-color: #9F9700;
+}
+
+.loginBox .loginConfirmationButton:hover {
+    background-color: #9F9700;
+}
   
   .getToRegistrationBox {
       margin-top: 20px;

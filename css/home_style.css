@@ -15,7 +15,7 @@ body {
 }
 
 .upBar {
-    background-color: #22222C;
+    background-color: #15151A;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +94,7 @@ body {
 }
 
 .footer {
-    background-color: #22222C;
+    background-color: #15151A;
     height: 30px;
     display: flex;
     align-items: center;
