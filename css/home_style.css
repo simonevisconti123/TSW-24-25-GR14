@@ -15,7 +15,7 @@ body {
 }
 
 .upBar {
-    background-color: #0078d7;
+    background-color: #22222C;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,14 +44,14 @@ body {
     border: none;
     border-radius: 20px;
     outline: none;
-    background-color: #ff69b4;
-    color: white;
+    background-color: white;
+    color: black;
     text-align: center;
 }
 
 .upBar .loginButton {
-    color: #fff;
-    background-color: #4caf50;
+    color: black;
+    background-color: #FFF200;
     padding: 5px 15px;
     border-radius: 10px;
     text-decoration: none;
@@ -64,17 +64,18 @@ body {
 
 .leftBlock {
     width: 20%;
-    background-color: #8a2be2;
+    background-color: #292934;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .leftBlock .topicsBox {
-    background-color: red;
+    background-color: #D60606;
     color: white;
     width: 80%;
     padding: 10px;
+    border-radius: 25px;
 }
 
 .leftBlock .topicsBox ul {
@@ -93,7 +94,7 @@ body {
 }
 
 .footer {
-    background-color: #0078d7;
+    background-color: #22222C;
     height: 30px;
     display: flex;
     align-items: center;
