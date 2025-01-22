@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   body {
       font-family: Arial, sans-serif;
       background-color: #292934;
@@ -12,25 +12,26 @@
       align-items: center;
       height: 100vh;
   }
-  
+
   .centerBlock {
-      background-color: white;
+      background-color: #292934;
       width: 50%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
   }
-  
+
   .loginBox {
-      background-color: #292934;
-      width: 300px;
+      background-color: #15151A;
+      width: calc(100% - 20px);
       padding: 20px;
       color: white;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-radius: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .loginBox h1 {
@@ -59,9 +60,9 @@
   
   .loginBox button {
       width: 48%;
-      padding: 10px;
+      border-radius: 10px;
+      padding: 10px 15px;
       border: none;
-      border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
   }
@@ -75,6 +76,15 @@
       background-color: #FFF200;
       color: black;
   }
+
+
+  .loginBox .loginCancelButton:hover {
+    background-color: #9F9700;
+}
+
+.loginBox .loginConfirmationButton:hover {
+    background-color: #9F9700;
+}
   
   .getToRegistrationBox {
       margin-top: 20px;
