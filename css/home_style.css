@@ -57,6 +57,10 @@ body {
     text-decoration: none;
 }
 
+.upBar .loginButton:hover{
+    background-color: #9F9700;
+}
+
 .main {
     display: flex;
     flex: 1;
@@ -102,6 +106,12 @@ body {
     color: white;
 }
 
-.footer span {
-    border-bottom: 1px solid white;
+.footer a{
+    color: grey;
+    text-decoration: none;
+}
+
+.footer a:hover{
+    text-decoration: underline;
+    color: white;
 }
