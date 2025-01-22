@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #7e57c2; /* Colore di sfondo viola */
+    background-color: #292934; /* Colore di sfondo viola */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ body {
 }
 
 .signupBox {
-    background-color: #f44336; /* Colore rosso */
+    background-color: #FF1010; /* Colore rosso */
     padding: 20px 30px; /* Aggiunto padding orizzontale uniforme */
     border-radius: 8px;
     text-align: center;
@@ -58,15 +58,14 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    color: #ffffff;
 }
 
 .signupCancelButton {
-    background-color: #4caf50; /* Verde */
+    background-color: #FFF100; /* Verde */
 }
 
 .signupConfirmationButton {
-    background-color: #4caf50; /* Verde */
+    background-color: #FFF100; /* Verde */
 }
 
 button:hover {

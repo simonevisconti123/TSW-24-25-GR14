@@ -14,7 +14,7 @@ body {
 }
 
 .leftBlock {
-    background-color: #7e57c2; 
+    background-color: #292934; 
     width: 30%; 
     padding: 20px;
     box-sizing: border-box;
@@ -30,7 +30,7 @@ body {
 
 .ilMioAccountBox,
 .laMiaAttivitàBox {
-    background-color: #f44336; 
+    background-color: #ED1010; 
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 8px;
@@ -57,8 +57,8 @@ li {
 }
 
 .cancelButton {
-    background-color: #4caf50; 
-    color: #ffffff;
+    background-color: #FFF200; 
+    color: #000000;
     border: none;
     border-radius: 20px;
     padding: 10px 20px;
