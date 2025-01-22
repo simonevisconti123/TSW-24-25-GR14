@@ -12,7 +12,7 @@
 
   .leftBlock {
     width: 20%;
-    background-color: #6a0dad;
+    background-color: #292934;
     color: white;
     display: flex;
     flex-direction: column;
@@ -24,9 +24,9 @@
   .namesBox {
     width: 80%;
     max-width: 200px;
-    background-color: red;
+    background-color: #D60606;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
   }
 
   .namesBox button {
@@ -49,8 +49,8 @@
   .home-button {
     width: 80%;
     max-width: 200px;
-    background-color: green;
-    color: white;
+    background-color: #FFF200;
+    color: black;
     font-size: 16px;
     padding: 10px;
     text-align: center;
