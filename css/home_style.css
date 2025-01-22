@@ -67,15 +67,27 @@ body {
     background-color: #292934;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.leftBlock .topicsBlock{
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+#topicsTitle{
+    color:#6F55E1;
+    font-weight: bold;
 }
 
 .leftBlock .topicsBox {
-    background-color: #D60606;
+    background-color: #6F55E1;
     color: white;
-    width: 80%;
+    width: 100%;
     padding: 10px;
-    border-radius: 25px;
+    border-radius: 10px;
 }
 
 .leftBlock .topicsBox ul {
@@ -87,6 +99,8 @@ body {
     padding: 5px 0;
     border-bottom: 1px solid white;
 }
+
+
 
 .centerBlock {
     flex: 1;
