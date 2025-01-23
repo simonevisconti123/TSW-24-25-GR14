@@ -186,3 +186,7 @@
             border-top: 1px solid #ddd;
             margin: 30px 0;
         }
+
+        #label_functional{
+            text-align: center;
+        }

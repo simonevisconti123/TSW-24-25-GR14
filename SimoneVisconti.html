@@ -121,19 +121,42 @@
 
     <section id="contattami">
         <h2>Contattami</h2>
-        <form action="php/php_contattami.php" method="post" class="contact-form">
+        <form action="php/php_contattami.php" method="post" onsubmit="return check_input(this)" class="contact-form">
             <label for="nome">Nome:</label><br>
-            <input type="text" id="nome" name="nome" required><br><br>
+            <input type="text" id="nome" name="nome" placeholder="Solo lettere e numeri"><br><br>
 
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+            <input type="text" id="email" name="email" placeholder="nomeutente@dominio.TLD"><br><br>
 
             <label for="messaggio">Messaggio:</label><br>
-            <textarea id="messaggio" name="messaggio" rows="4" required></textarea><br><br>
+            <textarea id="messaggio" name="messaggio" rows="4"></textarea><br><br>
             <input type="hidden" name="source_page" value="simonevisconti">
             <button type="submit">Invia</button>
+            <p id="label_functional"></p>
         </form>
     </section>
-
 </body>
+
+<script>
+function check_input(modulo){
+    var regex_username = "[a-zA-Z0-9]";
+    var regex_email = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
+    if(modulo.nome.value == "" || !(modulo.nome.value.match(regex_username))){
+        if(modulo.email.value == "" || !(modulo.email.value.match(regex_email))){
+            document.getElementById("label_functional").innerHTML = "Mail e username sono nel formato scorretto!";
+            return false;
+        }else{
+            document.getElementById("label_functional").innerHTML = "Lo username è nel formato scorretto!";
+            return false;
+        }
+    }else if(modulo.email.value == "" || !(modulo.email.value.match(regex_email))){
+        document.getElementById("label_functional").innerHTML = "La mail è nel formato scorretto!";
+        return false;
+    }else{
+        return true;
+    }
+}
+
+</script>
+
 </html>
