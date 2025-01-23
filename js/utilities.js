@@ -7,7 +7,7 @@ function returnToLogin() {
 }
 
 function check_input(modulo){
-    var regex_username = "[a-zA-Z0-9]";
+    var regex_username = "^[a-zA-Z0-9]+$";
     var regex_email = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
     if(modulo.nome.value == "" || !(modulo.nome.value.match(regex_username))){
         if(modulo.email.value == "" || !(modulo.email.value.match(regex_email))){
