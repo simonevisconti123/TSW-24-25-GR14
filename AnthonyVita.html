@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="title" content="Curriculum di Anthony Vita">
+    <meta name="description" content="Il curriculum di Anthony Vita, con dettagli su competenze, citazioni preferite, e contatti.">
+    <meta name="keywords" content="curriculum, competenze, citazioni, contatti">
+    <meta name="author" content="Anthony Vita">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>Curriculum di Anthony Vita</title>
+    <link rel="stylesheet" href="css/personal_page.css">
+    <script src="js/utilities.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>About Me</h1>
+    </header>
+
+    <section id="chi-sono">
+        <h2>Chi sono</h2>
+        <img src="img/profiloAnthony.jpg" alt="foto profilo Vita" class="profile-photo">
+        <p>
+            <span class="campo-anagrafica">Nome:</span> Anthony<br>
+            <span class="campo-anagrafica">Cognome:</span> Vita<br>
+            <span class="campo-anagrafica">Data di nascita:</span> 07/10/2003<br>
+            <span class="campo-anagrafica">Città di residenza:</span>Montefalcione<br>
+            <span class="campo-anagrafica">Email:</span> <a href="mailto:a.vita9@studenti.unisa.it">a.vita9@studenti.unisa.it</a>
+        </p>
+        <p>Sono Anthony Vita, frequento la facoltà di Ingegneria informatica presso l'unità degli studi di Salerno, sono una persona
+           socievole, meticolosa e decisa, e in futuro mi piacerebbe lavorare nel settore dei sistemi embedded
+        </p>
+    </section>
+
+    <nav>
+        <ul class="navigation">
+            <li><a href="#competenze-informatiche">Competenze informatiche</a></li>
+            <li><a href="#citazioni-favorite">Citazioni preferite</a></li>
+            <li><a href="#video">Il video più bello</a></li>
+            <li><a href="#social">I miei social</a></li>
+            <li><a href="#contattami">Contattami</a></li>
+        </ul>
+    </nav>
+
+    <hr>
+
+    <section id="competenze-informatiche">
+        <h2>Competenze Informatiche</h2>
+        <table class="skills-table">
+            <thead>
+                <tr>
+                    <th>Dettagli</th>
+                    <th># Progetti</th>
+                    <th>Anni di esperienza</th>
+                    <th>Data ultimo progetto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Java</td>
+                    <td>30</td>
+                    <td>0.5</td>
+                    <td>9/01/2025</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>100</td>
+                    <td>7</td>
+                    <td>16/06/2024</td>
+                </tr>
+                <tr>
+                    <td>Arduino</td>
+                    <td>10</td>
+                    <td>0.5</td>
+                    <td>23/07/2020</td>
+                </tr>
+                <tr>
+                    <td>Python</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>29/10/2023</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <hr>
+
+    <section id="citazioni-favorite">
+        <h2>Citazioni preferite</h2>
+        <div class="quote">
+            <a href="https://it.wikipedia.org/wiki/Il_Signore_degli_Anelli" target="_blank">
+                <img src="img/zohan.png" alt="Il Signore degli Anelli" class="quote-image">
+            </a>
+            <blockquote>"Non si mangia dove si caga, non si caga dove si mangia... mai mischiare!"</blockquote>
+        </div>
+        <div class="quote">
+            <a href="https://it.wikipedia.org/wiki/Star_Wars" target="_blank">
+            </a>
+        </div>
+    </section>
+
+    <hr>
+
+    <section id="video">
+        <h2>Il video più bello</h2>
+        <iframe width="1236" height="695" src="https://www.youtube.com/embed/IyMnoYoB_Z0" title="la cellulite sclerotica e i colori ..ehh coglioni" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </section>
+    
+    <hr>
+
+    <section id="social">
+        <h2>I miei social</h2>
+        <ul class="social-links">
+            <li><a href="DA COMPLETARE" target="_blank">LinkedIn DA COMPLETARE</a></li>
+            <li><a href="https://github.com/VinnGoff" target="_blank">GitHub</a></li>
+        </ul>
+    </section>
+
+    <hr>
+
+    <section id="contattami">
+        <h2>Contattami</h2>
+        <form action="php/php_contattami.php" method="post" onsubmit="return check_input(this)" class="contact-form">
+            <label for="nome">Nome:</label><br>
+            <input type="text" id="nome" name="nome" placeholder="Solo lettere e numeri"><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" placeholder="nomeutente@dominio.TLD"><br><br>
+
+            <label for="messaggio">Messaggio:</label><br>
+            <textarea id="messaggio" name="messaggio" rows="4"></textarea><br><br>
+            <input type="hidden" name="source_page" value="simonevisconti">
+            <button type="submit">Invia</button>
+            <p id="label_functional"></p>
+        </form>
+    </section>
+
+</body>
+</html>

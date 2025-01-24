@@ -96,6 +96,7 @@ body {
             }
 
             .leftBlock .topicsBox {
+                margin-top: 3px;
                 background-color: #6F55E1;
                 color: white;
                 width: 100%;
@@ -115,7 +116,7 @@ body {
 
             /*settingsBlock*/
             .leftBlock .settingsBlock{
-                margin-top: 30px;
+                margin-top: 20px;
                 padding-left: 20px;
                 padding-right: 20px;
                 width: 100%;
@@ -127,6 +128,7 @@ body {
             }
 
             .leftBlock .settingsBox {
+                margin-top: 3px;
                 background-color: #ED1010;
                 color: white;
                 width: 100%;
