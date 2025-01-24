@@ -122,7 +122,7 @@
 
     <section id="contattami">
         <h2>Contattami</h2>
-        <form action="php/php_contattami.php" method="post" onsubmit="return check_input(this)" class="contact-form">
+        <form action="php/php_contattami.php" method="post" onsubmit="return check_input(this)" class="contact-form" id="form_contattami">
             <label for="nome">Nome:</label><br>
             <input type="text" id="nome" name="nome" placeholder="Solo lettere e numeri"><br><br>
 
@@ -132,10 +132,33 @@
             <label for="messaggio">Messaggio:</label><br>
             <textarea id="messaggio" name="messaggio" rows="4"></textarea><br><br>
             <input type="hidden" name="source_page" value="simonevisconti">
-            <button type="submit">Invia</button>
+            <button type="submit" onclick="SendData()">Invia</button>
             <p id="label_functional"></p>
         </form>
     </section>
 </body>
+
+<script>
+    function SendData(){
+        const inputCollection=document.getElementById("form_contattami").querySelectorAll('input');
+        const FormD=new FormData();
+        FormD.set('username',"");
+        FormD.set('email',"");
+        FormD.set('password',"");
+
+        FormD.set('username',inputCollection[0].value);
+        FormD.set('email',inputCollection[1].value);
+        FormD.set('password',inputCollection[2].value);
+
+        fetch('registrazione.php',{method:'POST', body:FormD})
+        .then(result => result.json())
+        .then(result =>displayResult(result))
+    }
+
+    function displayResult(response) {
+        document.getElementById("label_functional").innerHTML = `${response.message}`;
+    }
+
+</script>
 
 </html>

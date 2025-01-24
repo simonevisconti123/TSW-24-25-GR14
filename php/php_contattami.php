@@ -16,9 +16,14 @@
     }else if($_POST["source_page"] == "liviaciasullo"){
         $destinazione = "l.ciasullo1@studenti.unisa.it";
     }else{
-        //gestione messaggio errore
+        $message=array('message' =>'La pagina è errata.');
+        $JsonMessage=json_encode($message);
+        echo $JsonMessage;
     } 
 
-    mail($destinazione,$oggetto,$messaggio);
+    //mail($destinazione,$oggetto,$messaggio);
+    $message=array('message' =>'La mail è stata inviata.');
+    $JsonMessage=json_encode($message);
+    echo $JsonMessage;
 
 ?>
