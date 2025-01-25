@@ -146,6 +146,11 @@ body {
                 border-bottom: 1px solid white;
             }
 
+            .leftBlock .settingsBox ul li a{
+                text-decoration: none;
+                color: white;
+            }
+
         /*centerBlock*/
         .centerBlock {
                 flex: 1;
