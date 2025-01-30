@@ -51,11 +51,13 @@ body {
 
     .upBar .loginButton {
         font-family: "Inter";
+        font-style: italic;
         font-weight: 900;
+        font-size: small;
         color: black;
         background-color: #FFF200;
-        padding: 5px 15px;
-        border-radius: 10px;
+        padding: 5px 40px;
+        border-radius: 20px;
         text-decoration: none;
     }
 
@@ -78,11 +80,11 @@ body {
             justify-content: flex-start;
             align-items: flex-start;
             font-family: "Inter";
-            font-weight: 20px;
+            font-weight: 300;
         }
 
             /*topicsBlock*/
-            .leftBlock .topicsBlock{
+            .topicsBlock{
                 margin-top: 30px;
                 padding-left: 20px;
                 padding-right: 20px;
@@ -95,7 +97,7 @@ body {
                 font-family: "Lexend Mega";
             }
 
-            .leftBlock .topicsBox {
+            .topicsBox {
                 margin-top: 3px;
                 background-color: #6F55E1;
                 color: white;
@@ -104,18 +106,18 @@ body {
                 border-radius: 10px;
             }
 
-            .leftBlock .topicsBox ul {
+            .topicsBox ul {
                 list-style: none;
             }
 
-            .leftBlock .topicsBox ul li {
+            .topicsBox ul li {
                 margin: 10px 0;
                 padding: 5px 0;
                 border-bottom: 1px solid white;
             }
 
             /*settingsBlock*/
-            .leftBlock .settingsBlock{
+            .settingsBlock{
                 margin-top: 20px;
                 padding-left: 20px;
                 padding-right: 20px;
@@ -127,7 +129,7 @@ body {
                 font-family: "Lexend Mega";
             }
 
-            .leftBlock .settingsBox {
+            .settingsBox {
                 margin-top: 3px;
                 background-color: #ED1010;
                 color: white;
@@ -136,17 +138,17 @@ body {
                 border-radius: 10px;
             }
 
-            .leftBlock .settingsBox ul {
+            .settingsBox ul {
                 list-style: none;
             }
 
-            .leftBlock .settingsBox ul li {
+            .settingsBox ul li {
                 margin: 10px 0;
                 padding: 5px 0;
                 border-bottom: 1px solid white;
             }
 
-            .leftBlock .settingsBox ul li a{
+            .settingsBox ul li a{
                 text-decoration: none;
                 color: white;
             }
@@ -154,7 +156,7 @@ body {
         /*centerBlock*/
         .centerBlock {
                 flex: 1;
-                background-color: white;
+                background-color: rgb(255, 255, 255);
         }
 
 /*footer*/        
