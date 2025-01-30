@@ -15,7 +15,7 @@ body {
 
 .leftBlock {
     background-color: #292934; 
-    width: 20%; 
+    width: 17%; 
     padding: 20px;
     box-sizing: border-box;
     display: flex;
@@ -32,8 +32,10 @@ body {
 .laMiaAttivitàBox {
     background-color: #ED1010; 
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
+    padding-top: 1px;
+    padding-bottom: 1px;
 }
 
 h2 {

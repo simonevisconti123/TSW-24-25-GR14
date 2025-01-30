@@ -26,11 +26,14 @@ body {
     color: white;
     padding: 10px;
     border-radius: 25px;
+    text-align: center;
+    padding-bottom: 3px;
 }
 
 .mySHubjectBox h1 {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 10px;
+    align-self: center;
 }
 
 .home-button {
@@ -63,7 +66,7 @@ body {
     border-radius: 25px;
     padding: 10px;
     text-align: center;
-    font-size: 16px;
+    font-size: 17px;
     color: black;
     font-family: Arial, sans-serif;
     margin-top: 20px;
@@ -71,7 +74,7 @@ body {
 
 .aggiungiButton {
     position: absolute;
-    top: 5%;
+    top: 2%;
     right: 5%;
     background-color: #FFF200;
     width: 100px;
