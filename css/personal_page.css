@@ -4,7 +4,7 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom, #f3f4f6, #e6e7eb);
-            color: #333;
+            color: #15151A;
         }
 
         header {
@@ -71,7 +71,7 @@
         }
 
         .navigation a:hover {
-            color: #333;
+            color:#6F55E1;
         }
 
         .skills-table {
@@ -142,7 +142,7 @@
         }
 
         .social-links a:hover {
-            color: #333;
+            color: #6F55E1;
         }
 
         .contact-form {
