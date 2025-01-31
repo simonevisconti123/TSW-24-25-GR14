@@ -10,84 +10,88 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.leftBlock {
-    width: 20%;
-    background-color: #292934;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
+    .leftBlock {
+        width: 20%;
+        background-color: #292934;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
 
-.mySHubjectBox {
-    width: 100%;
-    background-color: #D60606;
-    color: white;
-    padding: 10px;
-    border-radius: 25px;
-    text-align: center;
-    padding-bottom: 3px;
-}
+        /*mySHubjectBox*/
+        .mySHubjectBox {
+            width: 100%;
+            background-color: #D60606;
+            color: white;
+            padding: 10px;
+            border-radius: 25px;
+            text-align: center;
+            padding-bottom: 3px;
+        }
 
-.mySHubjectBox h1 {
-    font-size: 25px;
-    margin-bottom: 10px;
-    align-self: center;
-}
+        .mySHubjectBox h1 {
+            font-size: 25px;
+            margin-bottom: 10px;
+            align-self: center;
+        }
 
-.home-button {
-    position: absolute;
-    bottom: 20px;
-    background-color: #FFF200;
-    color: black;
-    border: 2px solid #292934;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-}
+        /*home button*/
+        .home-button {
+            position: absolute;
+            bottom: 20px;
+            background-color: #FFF200;
+            color: black;
+            border: 2px solid #292934;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-.home-button:hover {
-    background-color: darkgoldenrod;
-}
+        .home-button:hover {
+            background-color: darkgoldenrod;
+        }
 
-.rightBlock {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
+    .rightBlock {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
 
-.inputSearchBar {
-    width: 50%;
-    background-color: white;
-    border-radius: 25px;
-    padding: 10px;
-    text-align: center;
-    font-size: 17px;
-    color: black;
-    font-family: Arial, sans-serif;
-    margin-top: 20px;
-}
+        /*inputSearchBar*/
+        .inputSearchBar {
+            width: 50%;
+            background-color: white;
+            border-radius: 25px;
+            padding: 10px;
+            text-align: center;
+            font-size: 17px;
+            color: black;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
 
-.aggiungiButton {
-    position: absolute;
-    top: 2%;
-    right: 5%;
-    background-color: #FFF200;
-    width: 100px;
-    height: 40px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    font-size: 18px;
-    cursor: pointer;
-}
+        /*aggiungiButton*/
+        .aggiungiButton {
+            position: absolute;
+            top: 2%;
+            right: 5%;
+            background-color: #FFF200;
+            width: 100px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+        }
 
-.aggiungiButton:hover {
-    background-color: darkgoldenrod;
-}
+        .aggiungiButton:hover {
+            background-color: darkgoldenrod;
+        }
