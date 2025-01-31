@@ -105,7 +105,7 @@
 
     <section id="video">
         <h2>Il video più bello</h2>
-        <iframe class="video-frame" width="560" height="315" src="https://www.youtube.com/embed/xvFZjo5PgG0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+         <iframe class="video-frame" width="560" height="315" src="https://www.youtube.com/embed/xvFZjo5PgG0" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
     </section>
 
     <hr>
@@ -122,7 +122,7 @@
 
     <section id="contattami">
         <h2>Contattami</h2>
-        <form action="php/php_contattami.php" method="post" onsubmit="return check_input(this)" class="contact-form" id="form_contattami">
+        <form onsubmit="return check_input(this)" class="contact-form" id="form_contattami">
             <label for="nome">Nome:</label><br>
             <input type="text" id="nome" name="nome" placeholder="Solo lettere e numeri"><br><br>
 
@@ -131,33 +131,53 @@
 
             <label for="messaggio">Messaggio:</label><br>
             <textarea id="messaggio" name="messaggio" rows="4"></textarea><br><br>
-            <input type="hidden" name="source_page" value="simonevisconti">
-            <button type="submit" onclick="SendData()">Invia</button>
+            <input type="hidden" id="source_page" name="source_page" value="simonevisconti">
+            <button id="btn_invia">Invia</button>
             <p id="label_functional"></p>
         </form>
     </section>
 </body>
-
 <script>
-    function SendData(){
-        const inputCollection=document.getElementById("form_contattami").querySelectorAll('input');
-        const FormD=new FormData();
-        FormD.set('username',"");
-        FormD.set('email',"");
-        FormD.set('password',"");
+        document.getElementById("btn_invia").addEventListener("click", function() {
+            // Creazione di un oggetto XMLHttpRequest
+            event.preventDefault();
+            var form = document.getElementById("form_contattami");
+            if (!check_input(form)) { 
+                return; // Se la validazione fallisce, interrompe l'esecuzione
+            }
 
-        FormD.set('username',inputCollection[0].value);
-        FormD.set('email',inputCollection[1].value);
-        FormD.set('password',inputCollection[2].value);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "php/php_contattami.php", true); // URL del file PHP
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        fetch('registrazione.php',{method:'POST', body:FormD})
-        .then(result => result.json())
-        .then(result =>displayResult(result))
-    }
+            // Impostiamo la proprietà responseType per ricevere la risposta come JSON
+            xhr.responseType = 'json';
 
-    function displayResult(response) {
-        document.getElementById("label_functional").innerHTML = `${response.message}`;
-    }
+            // Definisci cosa fare quando la richiesta è completata
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // La risposta è automaticamente un oggetto JSON grazie a responseType
+                    var response = xhr.response;
+                    document.getElementById("label_functional").innerHTML = response.message;
+                } else {
+                    document.getElementById("label_functional").innerHTML = "Errore nella richiesta.";
+                }
+            };
+
+            // Gestire eventuali errori
+            xhr.onerror = function() {
+                document.getElementById("label_functional").innerHTML = "Errore di rete.";
+            };
+            
+            // Invio dei dati con POST
+            
+            var val1 = document.getElementById("nome").value;
+            var val2 = document.getElementById("email").value;
+            var val3 = document.getElementById("messaggio").value;
+            var hiddenvalue = document.getElementById("source_page").value;
+            var data = "nome=".concat(val1,"&email=",val2,"&messaggio=",val3,"&source_page=",hiddenvalue);
+            xhr.send(data);
+        });
 
 </script>
 
