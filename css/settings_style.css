@@ -13,71 +13,71 @@ body {
     height: 100%;
 }
 
-.leftBlock {
-    background-color: #292934; 
-    width: 20%; 
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-}
+    .leftBlock {
+        background-color: #292934; 
+        width: 20%; 
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+    }
 
-.top-section {
-    display: flex;
-    flex-direction: column;
-}
+        .top-section {
+            display: flex;
+            flex-direction: column;
+        }
 
-.ilMioAccountBox,
-.laMiaAttivitàBox {
-    background-color: #ED1010; 
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
+            .ilMioAccountBox,
+            .laMiaAttivitàBox {
+                background-color: #ED1010; 
+                margin-bottom: 20px;
+                padding: 15px;
+                border-radius: 8px;
+                padding-top: 1px;
+                padding-bottom: 1px;
+            }
 
-h2 {
-    color: #ffffff;
-    margin-bottom: 10px;
-    font-size: 18px;
-    border-bottom: 1px solid #ffffff;
-    padding-bottom: 5px;
-}
+                h2 {
+                    color: #ffffff;
+                    margin-bottom: 10px;
+                    font-size: 18px;
+                    border-bottom: 1px solid #ffffff;
+                    padding-bottom: 5px;
+                }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                }
 
-li {
-    color: #ffffff;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
+                li {
+                    color: #ffffff;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
 
-.cancelButton {
-    background-color: #FFF200; 
-    color: #000000;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    align-self:center;
-}
+        .cancelButton {
+            background-color: #FFF200; 
+            color: #000000;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            align-self:center;
+        }
 
-.cancelButton:hover {
-    opacity: 0.9;
-}
+        .cancelButton:hover {
+            opacity: 0.9;
+        }
 
-.contenutiBlock {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px;
-    box-sizing: border-box;
-}
+    .contenutiBlock {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
+        box-sizing: border-box;
+    }
