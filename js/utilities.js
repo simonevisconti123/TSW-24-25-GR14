@@ -6,21 +6,22 @@ function returnToLogin() {
     window.location = "login.html";
 }
 
-function check_input(modulo){
-    var regex_username = "^[a-zA-Z0-9]+$";
-    var regex_email = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}";
-    if(modulo.nome.value == "" || !(modulo.nome.value.match(regex_username))){
-        if(modulo.email.value == "" || !(modulo.email.value.match(regex_email))){
-            document.getElementById("label_functional").innerHTML = "Mail e username sono nel formato scorretto!";
-            return false;
-        }else{
-            document.getElementById("label_functional").innerHTML = "Lo username è nel formato scorretto!";
-            return false;
-        }
-    }else if(modulo.email.value == "" || !(modulo.email.value.match(regex_email))){
-        document.getElementById("label_functional").innerHTML = "La mail è nel formato scorretto!";
+function check_input(modulo) {
+    var regex_username = /^[a-zA-Z0-9]+$/;
+    var regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regex_username.test(modulo.nome.value)) {
+        document.getElementById("label_functional").innerHTML = "Il nome non è nel formato corretto";
         return false;
-    }else{
-        return true;
     }
+
+    if (!regex_email.test(modulo.email.value)) {
+        document.getElementById("label_functional").innerHTML = "L'email non è nel formato corretto.";
+        return false;
+    }
+
+    if(modulo.messaggio.value.trim() === ""){
+        document.getElementById("label_functional").innerHTML = "Il messaggio è vuoto";
+        return false;
+    }
+    return true;
 }
