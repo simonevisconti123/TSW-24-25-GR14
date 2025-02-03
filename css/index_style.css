@@ -164,10 +164,18 @@ body {
         .centerBlock {
                 flex: 1;
                 width:100%;
-                background-image: url('../img/backgrounds/backgroundTopics.png');
-                filter:blur(30px);
-                background-size: cover;
-               
+                /* Imposta un colore di base per lo sfondo */
+                background-color: #ffffff;
+
+                background: linear-gradient(
+                    to bottom right,
+                    #ffcce7 0%,
+                    #cd77ff62 20%,
+                    #cce3ff 40%,
+                    #ccffd3 60%,
+                    #fff3cc 80%,
+                    #ffe5cc 100%
+                );
         }
 
 /*footer*/        
