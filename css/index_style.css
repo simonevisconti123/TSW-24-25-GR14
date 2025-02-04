@@ -6,6 +6,9 @@
 
 body {
     font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -22,6 +25,10 @@ body {
         padding: 0 20px;
         height: 60px;
         z-index: 50;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
     }
 
     .upBar .logo {
@@ -71,6 +78,8 @@ body {
     .main {
         display: flex;
         flex: 1;
+        margin-top: 60px; /* Spazio per la upBar */
+        margin-bottom: 30px; /* Spazio per il footer */
     }
 
         /*leftBlock*/
@@ -78,13 +87,15 @@ body {
             width: 17%;
             background-color: #292934;
             display: flex;
-            position: relative;
+            position: fixed;
+            height: calc(100vh - 90px); /* Altezza totale meno upBar e footer */
             z-index: 40;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
             font-family: "Inter";
             font-weight: 300;
+            top: 60px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2), /* Ombra principale */
                         0px 1px 4px rgba(0, 0, 0, 0.1); /* Ombra leggera */
         }
@@ -163,7 +174,9 @@ body {
         /*centerBlock*/
         .centerBlock {
                 flex: 1;
-                width:100%;
+                margin-left: 17%; /* Per non coprire leftBlock */
+                height: calc(100vh - 90px); /* Sottrae upBar e footer */
+                overflow-y: auto; /* Permette lo scroll */
                 background-color: #ffffff;
 
                 background: linear-gradient(
@@ -179,6 +192,7 @@ body {
                 display: flex;
                 flex-direction: column; /* I div saranno disposti uno sotto l'altro */
                 align-items: center;    /* Centra i div orizzontalmente */
+                padding-bottom: 30px;
         }
 
             /*post*/
@@ -256,12 +270,26 @@ body {
                         padding-left: 10px;
                         padding-right: 10px;
                     }
+
+                        .imageContainer{
+                            align-items: center;
+                            justify-content: center;
+                            display: flex;
+                        }
+
+                            .img{
+                                width: 30px;
+                                height: 40px;
+                            }
 /*footer*/        
 .footer {
     background-color: #15151A;
     height: 30px;
     display: flex;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     z-index: 50;
     align-items: center;
     justify-content: center;
