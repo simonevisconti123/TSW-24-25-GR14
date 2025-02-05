@@ -52,11 +52,27 @@ body {
                     margin: 0;
                 }
 
-                li {
+                li#ilMioAccountBoxList{
                     color: #ffffff;
                     margin-bottom: 10px;
                     font-size: 16px;
                 }
+
+                .sezione {
+                    display: block;
+                    width: 100%;
+                    background-color: transparent;
+                    border: none;
+                    color: rgb(255, 255, 255);
+                    font-size: 16px;
+                    margin: 10px 0;
+                    cursor: pointer;
+                    text-align: left;
+                }
+                
+                    button:hover {
+                        background-color: #ff4d4d;
+                    }
 
         .cancelButton {
             background-color: #FFF200; 
@@ -80,4 +96,40 @@ body {
         align-items: flex-start;
         padding: 20px;
         box-sizing: border-box;
+        background-color: #896363;
     }
+
+        .hidden {
+            display: none;
+        }
+
+        #titolo {
+            color: #000000;
+            border-bottom: 1px solid #000000;
+        }     
+
+        #iMieiDatiBox {
+            color: #000000;
+        }
+
+        #cambiaMailBox{
+
+        }
+
+        #cambiaPasswordBox{
+
+        }
+
+        #cambiaUsernameBox{
+
+        }
+
+        #topicSalvatiBox{
+            
+        }
+        
+            #listaTopic {
+                list-style:disc;
+                padding-left: 1.6vh;
+                color: #000000;
+            }  
