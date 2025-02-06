@@ -6,6 +6,10 @@
     <title>Il Mio Account</title>
     <link rel="stylesheet" href="css/settings_style.css">
     <script src="js/utilities.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Mega:wght@553&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -30,24 +34,24 @@
             <button class="cancelButton" onclick=returnToHome()>Cancel</button>
         </div>
         <div class="contenutiBlock">
-            <div id="iMieiDatiBox" class="hidden">
+            <div id="iMieiDatiBox" /*class="hidden"*/>
                 <h1 id="titolo">I miei dati</h1>
-                <label>Indirizzo e-mail:</label><span> culo@gmail.com</span><br>
-                <label>Password:</label><span> Dark souls remastered</span><br>
-                <label>Username:</label><span> peenus</span>
+                <span><label>Indirizzo e-mail:</label> culo@gmail.com</span><br>
+                <span><label>Password:</label> Dark souls remastered</span><br>
+                <span><label>Username:</label> peenus</span>
             </div>
 
             <div id="cambiaMailBox" class="hidden">
                 <h1 id="titolo">Cambia indirizzo e-mail</h1>
-                <input type="email" placeholder="Vecchia email">
                 <input type="email" placeholder="Nuova email">
+                <input type="email" placeholder="Conferma nuova email">
                 <button>Salva</button>
             </div>
             
             <div id="cambiaPasswordBox" class="hidden">
                 <h1 id="titolo">Cambia password</h1>
-                <input type="password" placeholder="Vecchia password">
                 <input type="password" placeholder="Nuova password">
+                <input type="password" placeholder="Conferma nuova password">
                 <button>Salva</button>
             </div>
         

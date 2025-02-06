@@ -96,7 +96,7 @@ body {
         align-items: flex-start;
         padding: 20px;
         box-sizing: border-box;
-        background-color: #896363;
+        background-color: #ffffff;
     }
 
         .hidden {
@@ -108,16 +108,37 @@ body {
             border-bottom: 1px solid #000000;
         }     
 
-        #iMieiDatiBox {
+        input{
+            border-radius: 40px;
+            height: 3vh;
+            width: 40vh;
+        }
+
+        button{
+            background-color: #FFF200; 
             color: #000000;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #iMieiDatiBox {
+            span{
+                font-size: 20px;
+                /*font-family: "Inter";*/
+            }
+    
+            label{
+                color: blue;
+            }
         }
 
         #cambiaMailBox{
-
+            
         }
 
         #cambiaPasswordBox{
-
+            
         }
 
         #cambiaUsernameBox{
@@ -125,11 +146,9 @@ body {
         }
 
         #topicSalvatiBox{
-            
-        }
-        
             #listaTopic {
                 list-style:disc;
                 padding-left: 1.6vh;
                 color: #000000;
             }  
+        }
