@@ -245,6 +245,7 @@ body {
 
                         .postTag{
                             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                            font-size: 15px;
                             border-radius: 5px;
                             padding-left: 3px;
                             padding-right: 3px;
@@ -253,9 +254,38 @@ body {
                     /*postBodyBox*/
                     .postBodyBox{
                         font-family: "Inter";
+                        font-size: 14.5px;
                         padding-left: 10px;
                         padding-right: 10px;
                     }
+
+                    /*postInteractionBox*/
+                    .postInteractionBox{
+                        display: flex;
+                        margin-top: 10px;;
+                        padding-top: 10px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+
+                        .heartIcon{
+                            padding-right: 9px;
+                        }
+
+                        .heartIcon:hover{
+                            color: rgb(216, 0, 0);
+                        }
+
+                        .commentIcon{
+                            padding-right: 9px;
+                        }
+
+                        .commentIcon:hover + div {
+                            display: block;
+                        }
+
+                        .bookmarkIcon{
+                        }
 /*footer*/        
 .footer {
     background-color: #15151A;
