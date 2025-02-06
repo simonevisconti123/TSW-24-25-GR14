@@ -6,6 +6,10 @@
     <title>Il Mio Account</title>
     <link rel="stylesheet" href="css/settings_style.css">
     <script src="js/utilities.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Mega:wght@553&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -14,24 +18,87 @@
                 <div class="ilMioAccountBox">
                     <h2>Il mio account</h2>
                     <ul>
-                        <li>I miei dati</li>
-                        <li>Cambia mail</li>
-                        <li>Cambia password</li>
-                        <li>Cambia username</li>
+                        <li id="ilMioAccountBoxList"><button class="sezione">I miei dati</button></li>
+                        <li id="ilMioAccountBoxList"><button class="sezione">Cambia mail</button></li>
+                        <li id="ilMioAccountBoxList"><button class="sezione">Cambia password</button></li>
+                        <li id="ilMioAccountBoxList"><button class="sezione">Cambia username</button></li>
                     </ul>
                 </div>
                 <div class="laMiaAttivitàBox">
                     <h2>La mia attività</h2>
                     <ul>
-                        <li>Topic salvati</li>
+                        <li><button class="sezione">Topic salvati</button></li>
                     </ul>
                 </div>
             </div>
             <button class="cancelButton" onclick=returnToHome()>Cancel</button>
         </div>
         <div class="contenutiBlock">
-            <!-- Spazio per altre cose -->
+            <div id="iMieiDatiBox" class="hidden">
+                <h1 id="titolo">I miei dati</h1>
+                <span><label>Indirizzo e-mail:</label> culo@gmail.com</span><br>
+                <span><label>Password:</label> Dark souls remastered</span><br>
+                <span><label>Username:</label> peenus</span>
+            </div>
+
+            <div id="cambiaMailBox" class="hidden">
+                <h1 id="titolo">Cambia indirizzo e-mail</h1>
+                <input type="email" placeholder="Nuova email">
+                <input type="email" placeholder="Conferma nuova email">
+                <button>Salva</button>
+            </div>
+            
+            <div id="cambiaPasswordBox" class="hidden">
+                <h1 id="titolo">Cambia password</h1>
+                <input type="password" placeholder="Nuova password">
+                <input type="password" placeholder="Conferma nuova password">
+                <button>Salva</button>
+            </div>
+        
+            <div id="cambiaUsernameBox" class="hidden">
+                <h1 id="titolo">Cambia username</h1>
+                <input type="text" placeholder="Nuovo username">
+                <button>Salva</button>
+            </div>
+
+            <div id="topicSalvatiBox" class="hidden">
+                <h1 id="titolo">Topic salvati</h1>
+                <ul id="listaTopic">
+                    <li>Come fare soldi velocemente non fake</li>
+                    <li>Macchine</li>
+                    <li>Suicidi programmati</li>
+                    <li>Fortnite battle pass</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function showSection(sectionId) {
+            document.querySelectorAll(".contenutiBlock > div").forEach(div => {
+                div.classList.add("hidden");
+            });
+            document.getElementById(sectionId).classList.remove("hidden");
+        }
+
+        document.querySelectorAll(".ilMioAccountBox button, .laMiaAttivitàBox button").forEach(button => {
+            button.addEventListener("click", function () {
+                let text = this.textContent.trim();
+                if (text === "I miei dati") {
+                    showSection("iMieiDatiBox");
+                } else if (text === "Cambia mail") {
+                    showSection("cambiaMailBox");
+                } else if (text === "Cambia password") {
+                    showSection("cambiaPasswordBox");
+                } else if (text === "Cambia username") {
+                    showSection("cambiaUsernameBox");
+                } else if (text === "Topic salvati") {
+                    showSection("topicSalvatiBox");
+                }
+            });
+        });
+    });
+</script>

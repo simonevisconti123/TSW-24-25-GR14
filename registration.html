@@ -11,22 +11,70 @@
     <div class="centerBlock">
         <div class="signupBox">
             <h1>REGISTRATI</h1>
-            <form action="php/registration.php" method="POST" class="form">
-                <label for="email">Inserisci la tua e-mail:</label>
-                <input type="email" id="inputMail" name="inputMail" placeholder="E-mail">
-                
-                <label for="password">Inserisci la tua Password:</label>
-                <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+            <form onsubmit="return check_input_registration(this)" id="form_register">
                 
                 <label for="username">Inserisci il tuo Username:</label>
                 <input type="text" id="inputUserName" name="inputUserName" placeholder="Username">
                 
+                <label for="email">Inserisci la tua e-mail:</label>
+                <input type="text" id="inputMail" name="inputMail" placeholder="E-mail">
+                
+                <label for="password">Inserisci la tua Password:</label>
+                <input type="password" id="inputPassword" name="inputPassword" placeholder="Password">
+                
                 <div class="buttonsBox">
                     <button type="button" class="signupCancelButton" onclick=returnToLogin()>Annulla</button>
-                    <button type="submit" class="signupConfirmationButton">Registrati</button>
+                    <button class="signupConfirmationButton" id="btn_invia">Registrati</button>
                 </div>
+                <p id="label_output"></p>
             </form>
         </div>
     </div>
 </body>
+
+
+<script>
+    document.getElementById("btn_invia").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+        var form = document.getElementById("form_register");
+        if (!check_input_registration(form)) {
+            return; // Se la validazione fallisce, interrompe l'esecuzione
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/registration.php", true); // URL del file PHP
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Impostiamo la proprietà responseType per ricevere la risposta come JSON
+        xhr.responseType = 'json';
+
+        // Definisci cosa fare quando la richiesta è completata
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // La risposta è automaticamente un oggetto JSON grazie a responseType
+                var response = xhr.response;
+                document.getElementById("label_output").innerHTML = response.message;
+            } else {
+                document.getElementById("label_output").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        // Gestire eventuali errori
+        xhr.onerror = function() {
+            document.getElementById("label_output").innerHTML = "Errore di rete.";
+        };
+        
+        // Invio dei dati con POST
+        
+        var val1 = document.getElementById("inputUserName").value;
+        var val2 = document.getElementById("inputMail").value;
+        var val3 = document.getElementById("inputPassword").value;
+        var data = "inputUserName=".concat(val1,"&inputMail=",val2,"&inputPassword=",val3);
+        xhr.send(data);
+    });
+
+
+</script>
+
 </html>
