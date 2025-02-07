@@ -54,3 +54,29 @@ function check_input_registration(modulo) {
 
     return true;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    function showSection(sectionId) {
+        document.querySelectorAll(".contenutiBlock > div").forEach(div => {
+            div.classList.add("hidden");
+        });
+        document.getElementById(sectionId).classList.remove("hidden");
+    }
+
+    document.querySelectorAll(".ilMioAccountBox button, .laMiaAttivitàBox button").forEach(button => {
+        button.addEventListener("click", function () {
+            let text = this.textContent.trim();
+            if (text === "I miei dati") {
+                showSection("iMieiDatiBox");
+            } else if (text === "Cambia mail") {
+                showSection("cambiaMailBox");
+            } else if (text === "Cambia password") {
+                showSection("cambiaPasswordBox");
+            } else if (text === "Cambia username") {
+                showSection("cambiaUsernameBox");
+            } else if (text === "Topic salvati") {
+                showSection("topicSalvatiBox");
+            }
+        });
+    });
+});
