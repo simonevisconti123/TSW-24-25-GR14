@@ -259,6 +259,7 @@ body {
 
                         .postTag{
                             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                            font-size: 15px;
                             border-radius: 5px;
                             padding-left: 3px;
                             padding-right: 3px;
@@ -267,20 +268,45 @@ body {
                     /*postBodyBox*/
                     .postBodyBox{
                         font-family: "Inter";
+                        font-size: 14px;
                         padding-left: 10px;
                         padding-right: 10px;
                     }
 
-                        .imageContainer{
-                            align-items: center;
-                            justify-content: center;
-                            display: flex;
+                    .imageContainer{
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                    }
+
+                        .img{
+                            width: 30px;
+                            height: 40px;
                         }
 
-                            .img{
-                                width: 30px;
-                                height: 40px;
-                            }
+
+                    /*postInteractionBox*/
+                    .postInteractionBox{
+                        display: flex;
+                        margin-top: 10px;;
+                        padding-top: 10px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+                    }
+                    
+                        .heartIcon{
+                            color:#292934;
+                            padding-right: 9px;
+                        }
+
+                        .commentIcon{
+                            color:#292934;
+                            padding-right: 9px;
+                        }
+
+                        .bookmarkIcon{
+                            color:#292934;
+                        }
 /*footer*/        
 .footer {
     background-color: #15151A;
