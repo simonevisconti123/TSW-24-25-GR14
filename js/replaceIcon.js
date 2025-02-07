@@ -1,7 +1,7 @@
 /*funzione che gestisce lo swap delle icone
 varia a seconda dell'icona che dobbiamo scambiare*/
 
-function iconReplaceOver() {
+function iconReplaceHover() {
     // Seleziona le icone all'interno di un tag span con la classe "heartIcon"
     let heartIconList = document.querySelectorAll(".heartIcon .fa-heart");
     let commentIconList = document.querySelectorAll(".commentIcon .fa-comment");
@@ -57,7 +57,7 @@ viene eseguito nulla, senza che ci sia un trigger a far partire l'esecuzione
 (gli event Listener sulle icone non funzionano perchè sono dentro la funzione, 
 quindi finchè non parte la funzione non partiranno neanche i listener delle icone)
 -il trigger che serve a far partire la funzione è un event Listener sull'oggetto
-"document" che come si intuisce, quando Dom è caricato -> fai partire la funzione
+"document" che come si intuisce, quando Dom è caricato -> fai partire la funzione.
 */
-document.addEventListener("DOMContentLoaded", iconReplaceOver());
+document.addEventListener("DOMContentLoaded", iconReplaceHover());
 
