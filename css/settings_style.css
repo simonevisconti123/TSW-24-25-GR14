@@ -1,10 +1,10 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     display: flex;
     height: 100vh;
     background-color: #ffffff;
+    font-family: "Inter";
 }
 
 .container {
@@ -103,8 +103,7 @@ body {
             display: none;
         }
 
-        #titolo {
-            color: #000000;
+        .contenutiBlock h1 {
             border-bottom: 1px solid #000000;
         }     
 
@@ -112,29 +111,32 @@ body {
             border-radius: 40px;
             height: 3vh;
             width: 40vh;
+            margin-bottom: 15px;
+            display: block;
         }
 
-        button{
+        .contenutiBlock button{
             background-color: #FFF200; 
             color: #000000;
             border-radius: 20px;
             font-size: 16px;
             cursor: pointer;
+            margin-top: 10px;
+            padding: 10px 20px;
         }
 
         #iMieiDatiBox {
             span{
                 font-size: 20px;
-                /*font-family: "Inter";*/
             }
     
             label{
                 color: blue;
+                font:bold;
             }
         }
 
         #cambiaMailBox{
-            
         }
 
         #cambiaPasswordBox{
@@ -150,5 +152,7 @@ body {
                 list-style:disc;
                 padding-left: 1.6vh;
                 color: #000000;
+                font-size: 20px;
             }  
         }
+    
