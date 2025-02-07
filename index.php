@@ -22,6 +22,22 @@
     <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<?php
+    session_start();
+
+    if(isset($_SESSION['username'])){
+        echo "Mannaggia gesu cristo";
+        echo "<script>
+                window.onload = function() {
+                    document.getElementById('settingsblock').style.visibility = 'visible';
+
+                };
+        </script>";
+    }
+    ?>
+
+
     <div class="container">
         <header class="upBar">
             <div class="logo">

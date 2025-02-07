@@ -43,9 +43,11 @@
 
             <div id="cambiaMailBox" class="hidden">
                 <h1 id="titolo">Cambia indirizzo e-mail</h1>
-                <input type="email" placeholder="Nuova email">
-                <input type="email" placeholder="Conferma nuova email">
-                <button>Salva</button>
+                <form onsubmit="return check_mail_change(this)" id="form_change_mail"></form>
+                <input type="text" name="new_mail" placeholder="Nuova email">
+                <input type="text" name="new_mail_conf" placeholder="Conferma nuova email">
+                <button class="" id="mail_change">Registrati</button>
+                <p id="label_message"></p>
             </div>
             
             <div id="cambiaPasswordBox" class="hidden">
@@ -75,30 +77,46 @@
 </body>
 </html>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        function showSection(sectionId) {
-            document.querySelectorAll(".contenutiBlock > div").forEach(div => {
-                div.classList.add("hidden");
-            });
-            document.getElementById(sectionId).classList.remove("hidden");
+    <script>
+    document.getElementById("form_mail_change").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+        var form = document.getElementById("form_register");
+        if (!check_mail_change(form)) {
+            return; // Se la validazione fallisce, interrompe l'esecuzione
         }
 
-        document.querySelectorAll(".ilMioAccountBox button, .laMiaAttivitàBox button").forEach(button => {
-            button.addEventListener("click", function () {
-                let text = this.textContent.trim();
-                if (text === "I miei dati") {
-                    showSection("iMieiDatiBox");
-                } else if (text === "Cambia mail") {
-                    showSection("cambiaMailBox");
-                } else if (text === "Cambia password") {
-                    showSection("cambiaPasswordBox");
-                } else if (text === "Cambia username") {
-                    showSection("cambiaUsernameBox");
-                } else if (text === "Topic salvati") {
-                    showSection("topicSalvatiBox");
-                }
-            });
-        });
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/registration.php", true); // URL del file PHP
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Impostiamo la proprietà responseType per ricevere la risposta come JSON
+        xhr.responseType = 'json';
+
+        // Definisci cosa fare quando la richiesta è completata
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // La risposta è automaticamente un oggetto JSON grazie a responseType
+                var response = xhr.response;
+                document.getElementById("label_output").innerHTML = response.message;
+            } else {
+                document.getElementById("label_output").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        // Gestire eventuali errori
+        xhr.onerror = function() {
+            document.getElementById("label_output").innerHTML = "Errore di rete.";
+        };
+        
+        // Invio dei dati con POST
+        
+        var val1 = document.getElementById("inputUserName").value;
+        var val2 = document.getElementById("inputMail").value;
+        var val3 = document.getElementById("inputPassword").value;
+        var data = "inputUserName=".concat(val1,"&inputMail=",val2,"&inputPassword=",val3);
+        xhr.send(data);
     });
+
+
 </script>
