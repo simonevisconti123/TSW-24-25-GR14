@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,21 +26,6 @@
 </head>
 <body>
 
-<?php
-    session_start();
-
-    if(isset($_SESSION['username'])){
-        echo "Mannaggia gesu cristo";
-        echo "<script>
-                window.onload = function() {
-                    document.getElementById('settingsblock').style.visibility = 'visible';
-
-                };
-        </script>";
-    }
-    ?>
-
-
     <div class="container">
         <header class="upBar">
             <div class="logo">
@@ -46,7 +34,11 @@
             <div class="searchBar">
                 <input type="text" placeholder="cerca tra i topics e le organizzazioni">
             </div>
-            <a href="login.html" class="loginButton">ACCEDI</a>
+            <?php if(isset($_SESSION["username"])): ?>
+                <span class="login_icon"><i class="fa-solid fa-user"></i></span>
+            <?php else: ?>
+                <a href="login.html" class="loginButton">ACCEDI</a>
+            <?php endif; ?>
         </header>
 
         <div class="main">
@@ -61,7 +53,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="settingsBlock">
+                <?php if(isset($_SESSION["username"])): ?>
+                <div class="settingsBlock" id="settingsblock">
                 <span id="settingsTitle">Settings</span>
                 <div class="settingsBox">
                     <ul>
@@ -70,6 +63,7 @@
                     </ul>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
 
 

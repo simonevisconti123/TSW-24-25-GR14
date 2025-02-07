@@ -26,7 +26,7 @@ if ($returned_row) { // Verifica se la query ha restituito un risultato
     $response = array(
         "success" => true,
         "message" => "Login corretto",
-        "redirect" => "../index.php"
+        "redirect" => "/index.php"
     );
     echo json_encode($response);
     exit();

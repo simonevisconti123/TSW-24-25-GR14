@@ -70,6 +70,10 @@ body {
         text-decoration: none;
     }
 
+    .login_icon{
+        color: #FFF200;
+    }
+
     .upBar .loginButton:hover{
         background-color: #9F9700;
     }
