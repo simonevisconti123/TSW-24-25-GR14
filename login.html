@@ -14,21 +14,72 @@
     <div class="centerBlock">
         <div class="loginBox">
             <h1>LOGIN</h1>
+            <form onsubmit="return check_input_login(this)" id="form_login">
             <label for="email">Inserisci la tua e-mail:</label>
-            <input type="email" id="inputMail" placeholder="Email">
+            <input type="text" id="inputMail" name="inputmail" placeholder="Email">
 
             <label for="password">Inserisci la tua Password:</label>
-            <input type="password" id="inputPassword" placeholder="Password">
+            <input type="password" id="inputPassword" name="inputpswd" placeholder="Password">
 
             <div class="buttonsBox">
                 <button class="loginCancelButton" onclick=returnToHome()>Annulla</button>
-                <button class="loginConfirmationButton">Login</button>
+                <button class="loginConfirmationButton" id="btn_invia">Login</button>
             </div>
-
+        </form>
             <div class="getToRegistrationBox">
                 Sei un nuovo utente? <a href="registration.html">registrati!</a>
             </div>
+
+            <p id="label_error"></p>
         </div>
     </div>
 </body>
+
+<script>
+    document.getElementById("btn_invia").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+        var form = document.getElementById("form_login");
+        if (!check_input_login(form)) {
+            return; // Se la validazione fallisce, interrompe l'esecuzione
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/login.php", true); // URL del file PHP
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Impostiamo la proprietà responseType per ricevere la risposta come JSON
+        xhr.responseType = 'json';
+
+        // Definisci cosa fare quando la richiesta è completata
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // La risposta è automaticamente un oggetto JSON grazie a responseType
+                var response = xhr.response;
+                document.getElementById("label_error").innerHTML = response.message;
+                if(response.success){
+                    window.location.href = response.redirect;
+                }
+            } else {
+                document.getElementById("label_error").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        // Gestire eventuali errori
+        xhr.onerror = function() {
+            document.getElementById("label_error").innerHTML = "Errore di rete.";
+        };
+        
+        // Invio dei dati con POST
+        
+        var val1 = document.getElementById("inputMail").value;
+        var val2 = document.getElementById("inputPassword").value;
+        var data = "inputmail=".concat(val1,"&inputpswd=",val2);
+        xhr.send(data);
+    });
+
+
+</script>
+
+
 </html>
