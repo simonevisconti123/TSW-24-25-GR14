@@ -70,19 +70,35 @@ function check_mail_change(modulo) {
     var regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!regex_email.test(modulo.new_mail.value)) {
-        document.getElementById("label_message").innerHTML = "L'email non è nel formato corretto.";
+        document.getElementById("label_message_mail").innerHTML = "L'email non è nel formato corretto.";
         return false;
     }
 
     if(!(modulo.new_mail.value === modulo.new_mail_conf.value)){
-        document.getElementById("label_message").innerHTML = "Le due mail non coincidono.";
+        document.getElementById("label_message_mail").innerHTML = "Le due mail non coincidono.";
         return false;
     }
 
+    document.getElementById("label_message_pswd").innerHTML = "Email cambiata correttamente!";
     return true;
 }
 
+function check_pswd_change(modulo) {
+    var regex_pswd = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
+    if (!regex_pswd.test(modulo.new_pswd.value)) {
+        document.getElementById("label_message_pswd").innerHTML = "La password non è nel formato corretto.";
+        return false;
+    }
+
+    if(!(modulo.new_pswd.value === modulo.new_pswd_conf.value)){
+        document.getElementById("label_message_pswd").innerHTML = "Le due password non coincidono.";
+        return false;
+    }
+
+    document.getElementById("label_message_pswd").innerHTML = "Password cambiata correttamente!";
+    return true;
+}
 
 
 document.addEventListener("DOMContentLoaded", function () {

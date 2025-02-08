@@ -43,18 +43,22 @@
 
             <div id="cambiaMailBox" class="hidden">
                 <h1 id="titolo">Cambia indirizzo e-mail</h1>
-                <form onsubmit="return check_mail_change(this)" id="form_change_mail"></form>
-                <input type="text" name="new_mail" placeholder="Nuova email">
-                <input type="text" name="new_mail_conf" placeholder="Conferma nuova email">
-                <button class="" id="mail_change">Registrati</button>
-                <p id="label_message"></p>
+                <form onsubmit="return check_mail_change(this)" id="form_change_mail">
+                    <input type="text" name="new_mail" placeholder="Nuova email">
+                    <input type="text" name="new_mail_conf" placeholder="Conferma nuova email">
+                    <button id="mail_change">Salva modifiche</button>
+                </form>
+                <p id="label_message_mail"></p>
             </div>
             
             <div id="cambiaPasswordBox" class="hidden">
                 <h1>Cambia password</h1>
-                <input type="password" placeholder="Nuova password">
-                <input type="password" placeholder="Conferma nuova password">
-                <button>Salva</button>
+                <form onsubmit="return check_pswd_change(this)" id="form_change_pswd">
+                    <input type="text" name="new_pswd" placeholder="Nuova password">
+                    <input type="text" name="new_pswd_conf" placeholder="Conferma nuova password">
+                    <button id="pswd_change" >Salva modifiche</button>
+                </form>
+                <p id="label_message_pswd"></p>
             </div>
         
             <div id="cambiaUsernameBox" class="hidden">
