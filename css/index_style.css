@@ -47,7 +47,6 @@ body {
     }
 
     .upBar .searchBar input {
-        font-family: "Inter";
         width: 25%;
         padding: 5px 10px;
         border: none;
@@ -56,6 +55,34 @@ body {
         background-color: white;
         color: black;
         text-align: center;
+        font-style: italic;
+    }
+
+    .upBar .searchBar input::placeholder {
+        font-family: "Inter";
+        color: #aaa;
+        opacity: 1;
+        transition: opacity 0.15s ease-in-out;
+    }
+    
+    .upBar .searchBar input:focus::placeholder {
+        opacity: 0;
+    }
+
+    .searchIcon{
+        margin-left:3px;
+        color:#15151A;
+        width: 30px;
+        height: 30px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        border-radius: 50%;
+    }
+
+    .searchIcon:hover{
+        background-color: #aaa;
     }
 
     .upBar .loginButton {
@@ -70,13 +97,26 @@ body {
         text-decoration: none;
     }
 
-    .login_icon{
-        color: #FFF200;
-    }
-
     .upBar .loginButton:hover{
         background-color: #9F9700;
     }
+
+    .loginIcon{
+        color: #ffffff;
+    }
+
+    #logoutButton{
+        margin-left: 5px;
+        font-family: "Inter";
+        font-style: italic;
+        font-weight: 900;
+        color: rgb(255, 255, 255);
+    }
+
+    #logoutButton:hover{
+        color: darkgray;
+    }
+
 
     /*main*/
     .main {
