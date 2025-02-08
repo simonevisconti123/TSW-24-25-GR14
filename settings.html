@@ -54,8 +54,8 @@
             <div id="cambiaPasswordBox" class="hidden">
                 <h1>Cambia password</h1>
                 <form onsubmit="return check_pswd_change(this)" id="form_change_pswd">
-                    <input type="text" name="new_pswd" placeholder="Nuova password">
-                    <input type="text" name="new_pswd_conf" placeholder="Conferma nuova password">
+                    <input type="password" name="new_pswd" placeholder="Nuova password">
+                    <input type="password" name="new_pswd_conf" placeholder="Conferma nuova password">
                     <button id="pswd_change" >Salva modifiche</button>
                 </form>
                 <p id="label_message_pswd"></p>
@@ -81,8 +81,8 @@
 </body>
 </html>
 
-    <script>
-    document.getElementById("form_mail_change").addEventListener("click", function() {
+<script>
+    document.getElementById("form_chane_mail").addEventListener("click", function() {
         // Creazione di un oggetto XMLHttpRequest
         event.preventDefault();
         var form = document.getElementById("form_register");

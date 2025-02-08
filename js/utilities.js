@@ -79,7 +79,7 @@ function check_mail_change(modulo) {
         return false;
     }
 
-    document.getElementById("label_message_pswd").innerHTML = "Email cambiata correttamente!";
+    document.getElementById("label_message_mail").innerHTML = "Email cambiata correttamente!";
     return true;
 }
 
