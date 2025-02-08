@@ -175,6 +175,10 @@ body {
                 color: white;
             }
 
+            .login_icon {
+                text-align: center;
+            }
+
         /*centerBlock*/
         .centerBlock {
                 flex: 1;

@@ -35,7 +35,7 @@
                 <input type="text" placeholder="cerca tra i topics e le organizzazioni">
             </div>
             <?php if(isset($_SESSION["username"])): ?>
-                <span class="login_icon"><i class="fa-solid fa-user"></i></span>
+                <span class="login_icon"><i class="fa-solid fa-user fa-2x"></i><h4 style="margin-top: 0.25em;"><a href="php/logout.php">Logout</a></h4></span>
             <?php else: ?>
                 <a href="login.html" class="loginButton">ACCEDI</a>
             <?php endif; ?>
