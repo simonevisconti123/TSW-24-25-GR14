@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    if(!isset($_SESSION["username"])){
+        header("Location: ../index.php");
+    }
+?>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +51,7 @@
                 <h1 id="titolo">Cambia indirizzo e-mail</h1>
                 <form onsubmit="return check_mail_change(this)" id="form_change_mail">
                     <input type="text" name="new_mail" placeholder="Nuova email">
-                    <input type="text" name="new_mail_conf" placeholder="Conferma nuova email">
+                    <input type="text" name="new_mail_conf" id="new_mail_conf" placeholder="Conferma nuova email">
                     <button id="mail_change">Salva modifiche</button>
                 </form>
                 <p id="label_message_mail"></p>
@@ -82,16 +88,16 @@
 </html>
 
 <script>
-    document.getElementById("form_chane_mail").addEventListener("click", function() {
+    document.getElementById("mail_change").addEventListener("click", function() {
         // Creazione di un oggetto XMLHttpRequest
         event.preventDefault();
-        var form = document.getElementById("form_register");
+        var form = document.getElementById("form_change_mail");
         if (!check_mail_change(form)) {
             return; // Se la validazione fallisce, interrompe l'esecuzione
         }
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "php/registration.php", true); // URL del file PHP
+        xhr.open("POST", "php/change_mail.php", true); // URL del file PHP
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         // Impostiamo la proprietà responseType per ricevere la risposta come JSON
@@ -102,23 +108,21 @@
             if (xhr.status == 200) {
                 // La risposta è automaticamente un oggetto JSON grazie a responseType
                 var response = xhr.response;
-                document.getElementById("label_output").innerHTML = response.message;
+                document.getElementById("label_message_mail").innerHTML = response.message;
             } else {
-                document.getElementById("label_output").innerHTML = "Errore nella richiesta.";
+                document.getElementById("label_message_mail").innerHTML = "Errore nella richiesta.";
             }
         };
 
         // Gestire eventuali errori
         xhr.onerror = function() {
-            document.getElementById("label_output").innerHTML = "Errore di rete.";
+            document.getElementById("label_message_mail").innerHTML = "Errore di rete.";
         };
         
         // Invio dei dati con POST
         
-        var val1 = document.getElementById("inputUserName").value;
-        var val2 = document.getElementById("inputMail").value;
-        var val3 = document.getElementById("inputPassword").value;
-        var data = "inputUserName=".concat(val1,"&inputMail=",val2,"&inputPassword=",val3);
+        var val1 = document.getElementById("new_mail_conf").value;
+        var data = "new_mail_conf=".concat(val1);
         xhr.send(data);
     });
 
