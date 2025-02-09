@@ -14,16 +14,23 @@ or die('Impossibile connetersi al database: ' . pg_last_error());
 $new_username = $_POST["new_username_conf"];
 $user = $_SESSION["username"];
 
-if($new_username === $user){
-    $response = array("message" => "Non è possibile inserire lo stesso username");
-    echo json_encode($response);
-    exit;
-}else{
-    $result = pg_prepare($db,"update_username"," UPDATE utenti SET nome_utente=$1 WHERE nome_utente=$2;");
-    $execution = pg_execute($db, "update_username", array($new_username,$user));
 
-    if ($execution && pg_affected_rows($execution) > 0) { // Verifica se la query ha restituito un risultato
-        $response = array("message" => "Username aggiornato con successo");
+$result_1 = pg_prepare($db,"Check_if_username_already_exist"," SELECT nome_utente FROM utenti WHERE nome_utente = $1");
+$execution_1 = pg_execute($db, "Check_if_username_already_exist", array($new_username));
+
+$returned_row = pg_fetch_assoc($execution_1);
+if ($returned_row) { // Verifica se la query ha restituito un risultato
+    $response = array("message" => "Username già in uso, scegline un altro");
+    echo json_encode($response);
+    exit;    
+}else{
+    $result_2 = pg_prepare($db,"update_username"," UPDATE utenti SET nome_utente=$1 WHERE nome_utente=$2;");
+    $execution_2 = pg_execute($db, "update_username", array($new_username,$user));
+
+    if ($execution_2 && pg_affected_rows($execution_2) > 0) { // Verifica se la query ha restituito un risultato
+        $response = array("message" => "Username aggiornato con successo",
+                           "success" => true
+                         );
         echo json_encode($response);
         $_SESSION["username"] = $new_username;
         exit;
