@@ -98,7 +98,7 @@ body {
         }
 
         .griglia {
-            margin-top: 6vh;
+            margin-top: 3vh;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             background-color: rgb(223, 181, 224);
