@@ -42,9 +42,29 @@
         <div class="contenutiBlock">
             <div id="iMieiDatiBox" class="hidden">
                 <h1>I miei dati</h1>
-                <span><label>Indirizzo e-mail:</label> culo@gmail.com</span><br>
-                <span><label>Password:</label> Dark souls remastered</span><br>
-                <span><label>Username:</label> peenus</span>
+                <?php
+                    $host = 'localhost';
+                    $port = '5432';
+                    $db = 'gruppo14';
+                    $username = 'www';
+                    $password = 'tw2024';
+                    $connection_string = "host=$host dbname=$db user=$username password=$password";
+                    
+                    $db = pg_connect($connection_string)
+                    or die('Impossibile connetersi al database: ' . pg_last_error());
+
+                    $user = $_SESSION["username"];
+                    $result_1 = pg_prepare($db,"Retrieve_data"," SELECT * FROM utenti WHERE nome_utente = $1");
+                    $execution_1 = pg_execute($db, "Retrieve_data", array($user));
+
+                    $returned_row = pg_fetch_assoc($execution_1);
+                    if ($returned_row) { // Verifica se la query ha restituito un risultato
+                        echo "<span><label>Username:</label>".$returned_row["nome_utente"]."</span><br>";
+                        echo "<span><label>Indirizzo e-mail:</label>".$returned_row["email"]."</span>";
+                    }else{
+                        echo "<span>Errore irreparabile</span>";
+                    }
+                ?>
             </div>
 
             <div id="cambiaMailBox" class="hidden">
@@ -74,8 +94,8 @@
                 <input type="text" name="new_username_conf" id="new_username_conf" placeholder="Conferma il nuovo username">
                 <button id="username_change">Salva</button>
                 </form>
-            </div>
                 <p id="label_message_username"></p>
+            </div>
 
             <div id="topicSalvatiBox">
                 <h1 id="titolo">Topic salvati</h1>
@@ -113,6 +133,11 @@
                 // La risposta è automaticamente un oggetto JSON grazie a responseType
                 var response = xhr.response;
                 document.getElementById("label_message_mail").innerHTML = response.message;
+                if(response.success){
+                    setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+                }
             } else {
                 document.getElementById("label_message_mail").innerHTML = "Errore nella richiesta.";
             }
@@ -192,6 +217,11 @@
                 // La risposta è automaticamente un oggetto JSON grazie a responseType
                 var response = xhr.response;
                 document.getElementById("label_message_username").innerHTML = response.message;
+                if(response.success){
+                    setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+                }
             } else {
                 document.getElementById("label_message_username").innerHTML = "Errore nella richiesta.";
             }
