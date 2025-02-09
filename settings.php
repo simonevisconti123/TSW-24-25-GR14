@@ -40,7 +40,7 @@
             <button class="cancelButton" onclick=returnToHome()>Cancel</button>
         </div>
         <div class="contenutiBlock">
-            <div id="iMieiDatiBox" class="hidden">
+            <div id="iMieiDatiBox">
                 <h1>I miei dati</h1>
                 <?php
                     $host = 'localhost';
@@ -97,7 +97,7 @@
                 <p id="label_message_username"></p>
             </div>
 
-            <div id="topicSalvatiBox">
+            <div id="topicSalvatiBox" class="hidden">
                 <h1 id="titolo">Topic salvati</h1>
                 <ul id="listaTopic">
                     <li>Come fare soldi velocemente non fake</li>
