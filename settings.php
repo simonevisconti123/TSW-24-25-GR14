@@ -69,9 +69,13 @@
         
             <div id="cambiaUsernameBox" class="hidden">
                 <h1>Cambia username</h1>
-                <input type="text" placeholder="Nuovo username">
-                <button>Salva</button>
+                <form onsubmit="return check_username_change(this)" id="form_username_change">
+                <input type="text" name="new_username" placeholder="Nuovo username">
+                <input type="text" name="new_username_conf" id="new_username_conf" placeholder="Conferma il nuovo username">
+                <button id="username_change">Salva</button>
+                </form>
             </div>
+                <p id="label_message_username"></p>
 
             <div id="topicSalvatiBox">
                 <h1 id="titolo">Topic salvati</h1>
@@ -167,5 +171,42 @@
         xhr.send(data);
     });
 
+    document.getElementById("username_change").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+        var form = document.getElementById("form_username_change");
+        if (!check_username_change(form)) {
+            return; // Se la validazione fallisce, interrompe l'esecuzione
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/change_username.php", true); // URL del file PHP
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Impostiamo la proprietà responseType per ricevere la risposta come JSON
+        xhr.responseType = 'json';
+
+        // Definisci cosa fare quando la richiesta è completata
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // La risposta è automaticamente un oggetto JSON grazie a responseType
+                var response = xhr.response;
+                document.getElementById("label_message_username").innerHTML = response.message;
+            } else {
+                document.getElementById("label_message_username").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        // Gestire eventuali errori
+        xhr.onerror = function() {
+            document.getElementById("label_message_username").innerHTML = "Errore di rete.";
+        };
+        
+        // Invio dei dati con POST
+        
+        var val1 = document.getElementById("new_username_conf").value;
+        var data = "new_username_conf=".concat(val1);
+        xhr.send(data);
+    });
 
 </script>
