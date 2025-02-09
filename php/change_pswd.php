@@ -17,10 +17,20 @@ $user = $_SESSION["username"];
 $secret_salt = "you_will_never_guess_me";
 $new_hashed_pswd = hash('sha256', $secret_salt.$new_pswd);
 
-$result = pg_prepare($db,"change_mail"," UPDATE utenti SET password_utente=$1 WHERE nome_utente=$2;");
-$execution = pg_execute($db, "change_mail", array($new_hashed_pswd,$user));
+$result_1 = pg_prepare($db,"check_if_pswd_equals"," SELECT password_utente FROM utenti WHERE nome_utente=$1;");
+$execution_1 = pg_execute($db, "check_if_pswd_equals", array($user));
 
-if ($execution && pg_affected_rows($execution) > 0) { // Verifica se la query ha restituito un risultato
+$returned_row = pg_fetch_assoc($execution_1);
+
+if($execution_1 && $returned_row["password_utente"] == $new_hashed_pswd){
+    $response = array("message" => "Non puoi riutilizzare la stessa password");
+    echo json_encode($response);
+    exit;
+}else{   
+    $result_2 = pg_prepare($db,"update_pswd"," UPDATE utenti SET password_utente=$1 WHERE nome_utente=$2;");
+    $execution_2 = pg_execute($db, "update_pswd", array($new_hashed_pswd,$user));
+
+if ($execution_2 && pg_affected_rows($execution_2) > 0) { // Verifica se la query ha restituito un risultato
     $response = array("message" => "Password modificata con successo");
     echo json_encode($response);
     exit;
@@ -28,6 +38,7 @@ if ($execution && pg_affected_rows($execution) > 0) { // Verifica se la query ha
     $response = array("message" => "ERRORE FATALE");
     echo json_encode($response);
     exit;
+}
 }
 
 
