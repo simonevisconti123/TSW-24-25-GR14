@@ -2,13 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter";
+    font-family: Arial, sans-serif;
 }
 
 body {
     display: flex;
     height: 100vh;
-    font-family: Arial, sans-serif;
 }
 
     .leftBlock {
@@ -19,6 +18,7 @@ body {
         flex-direction: column;
         align-items: center;
         position: relative;
+        height: 100%;
     }
 
         /*mySHubjectBox*/
@@ -61,6 +61,7 @@ body {
         flex-direction: column;
         align-items: center;
         position: relative;
+        overflow-y: auto; /* Permette lo scroll */
     }
 
         /*inputSearchBar*/
@@ -72,7 +73,6 @@ body {
             text-align: center;
             font-size: 17px;
             color: black;
-            font-family: Arial, sans-serif;
             margin-top: 20px;
         }
 
@@ -96,3 +96,35 @@ body {
         .aggiungiButton:hover {
             background-color: darkgoldenrod;
         }
+
+        .griglia {
+            margin-top: 6vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            background-color: rgb(223, 181, 224);
+            padding: 1vh;
+            gap: 3vh;
+            width: 90%; /* Assicura che la griglia occupi tutta la larghezza disponibile */
+        }
+        
+            .grid-item {
+                min-height: 150px; /* Altezza minima */
+                background-color: #ddd;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                border-radius: 10px;
+                font-size: 14px;
+                color: #333;
+            }
+
+                img{
+                    width: 13vh;
+                }
+
+                .fileName{
+                    color: blue;
+                    font: bolder;
+                }
+        
