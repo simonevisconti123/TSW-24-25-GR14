@@ -61,7 +61,7 @@
                 <h1>Cambia password</h1>
                 <form onsubmit="return check_pswd_change(this)" id="form_change_pswd">
                     <input type="password" name="new_pswd" placeholder="Nuova password">
-                    <input type="password" name="new_pswd_conf" placeholder="Conferma nuova password">
+                    <input type="password" name="new_pswd_conf" id="new_pswd_conf" placeholder="Conferma nuova password">
                     <button id="pswd_change" >Salva modifiche</button>
                 </form>
                 <p id="label_message_pswd"></p>
@@ -123,6 +123,47 @@
         
         var val1 = document.getElementById("new_mail_conf").value;
         var data = "new_mail_conf=".concat(val1);
+        xhr.send(data);
+    });
+
+
+
+
+    document.getElementById("pswd_change").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+        var form = document.getElementById("form_change_pswd");
+        if (!check_pswd_change(form)) {
+            return; // Se la validazione fallisce, interrompe l'esecuzione
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/change_pswd.php", true); // URL del file PHP
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Impostiamo la proprietà responseType per ricevere la risposta come JSON
+        xhr.responseType = 'json';
+
+        // Definisci cosa fare quando la richiesta è completata
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // La risposta è automaticamente un oggetto JSON grazie a responseType
+                var response = xhr.response;
+                document.getElementById("label_message_pswd").innerHTML = response.message;
+            } else {
+                document.getElementById("label_message_pswd").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        // Gestire eventuali errori
+        xhr.onerror = function() {
+            document.getElementById("label_message_pswd").innerHTML = "Errore di rete.";
+        };
+        
+        // Invio dei dati con POST
+        
+        var val1 = document.getElementById("new_pswd_conf").value;
+        var data = "new_pswd_conf=".concat(val1);
         xhr.send(data);
     });
 

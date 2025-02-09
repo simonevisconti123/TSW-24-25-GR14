@@ -32,10 +32,11 @@
                 <img src="img/logo_homepage.png" alt="logo">
             </div>
             <div class="searchBar">
-                <input type="text" placeholder="cerca tra i topics e le organizzazioni">
+                <input type="text" placeholder="cerca tra post e tags">
+                <span class="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></span>
             </div>
             <?php if(isset($_SESSION["username"])): ?>
-                <span class="login_icon"><i class="fa-solid fa-user fa-2x"></i><h4 style="margin-top: 0.25em;"><a href="php/logout.php">Logout</a></h4></span>
+                <span class="loginIcon"><i class="fa-solid fa-user"></i><a id="logoutButton" href="php/logout.php">Logout</a></span>
             <?php else: ?>
                 <a href="login.html" class="loginButton">ACCEDI</a>
             <?php endif; ?>

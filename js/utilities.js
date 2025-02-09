@@ -79,7 +79,6 @@ function check_mail_change(modulo) {
         return false;
     }
 
-    document.getElementById("label_message_mail").innerHTML = "Email cambiata correttamente!";
     return true;
 }
 
@@ -96,7 +95,6 @@ function check_pswd_change(modulo) {
         return false;
     }
 
-    document.getElementById("label_message_pswd").innerHTML = "Password cambiata correttamente!";
     return true;
 }
 
