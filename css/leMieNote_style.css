@@ -100,7 +100,7 @@ body {
         .griglia {
             margin-top: 3vh;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
             background-color: rgb(223, 181, 224);
             padding: 1vh;
             gap: 3vh;
@@ -125,6 +125,22 @@ body {
 
                 .fileName{
                     color: blue;
-                    font: bolder;
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-align: center;
+                    white-space: nowrap; /* Impedisce il testo di andare a capo */
+                    overflow: hidden; /* Nasconde il testo che straborda */
+                    text-overflow: ellipsis; /* Aggiunge i "..." quando il testo è troppo lungo */
+                    display: block;
+                    width: 90%; /* Impedisce che il testo si allarghi troppo */
+                }
+
+                .fileName{
+                    font-size: 16px;
+                    font-weight: bold;
+                    text-align: center;
+                    word-wrap: break-word; /* Permette al testo di andare a capo */
+                    overflow-wrap: break-word; /* Alternativa per una migliore compatibilità */
+                    width: 90%; /* Impedisce che il testo si allarghi troppo */
                 }
         
