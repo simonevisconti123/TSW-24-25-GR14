@@ -64,44 +64,76 @@ body {
         overflow-y: auto; /* Permette lo scroll */
     }
 
-        /*inputSearchBar*/
-        .inputSearchBar {
-            width: 50%;
-            background-color: white;
-            border-radius: 25px;
-            padding: 10px;
-            text-align: center;
-            font-size: 17px;
-            color: black;
-            margin-top: 20px;
-        }
-
-        /*aggiungiButton*/
-        .aggiungiButton {
-            position: absolute;
-            top: 2%;
-            right: 5%;
-            background-color: #FFF200;
-            width: 100px;
-            height: 40px;
-            border-radius: 5px;
-            display: flex;
+        .upbar{
+            flex-direction: row;
+            align-items:center;
             justify-content: center;
-            align-items: center;
-            color: black;
-            font-size: 18px;
-            cursor: pointer;
+            display: flex;
+            margin-top: 3vh;
+            width: 100%;
+            position: relative;
         }
 
-        .aggiungiButton:hover {
-            background-color: darkgoldenrod;
-        }
+            /*inputSearchBar*/
+            .inputSearchBar {
+                width: 50%;
+                background-color: #292934;
+                border-radius: 25px;
+                padding: 10px;
+                text-align: center;
+                font-size: 17px;
+                color: black;
+            }
+
+            .inputSearchBar::placeholder {
+                font-family: "Inter";
+                color: #aaa;
+                opacity: 1;
+                transition: opacity 0.15s ease-in-out;
+                font-style: italic;
+            }
+
+            .searchIcon{
+                margin-left: 2vh;
+                background-color: #292934;
+                margin-left:3px;
+                color: #aaa;
+                width: 4%;
+                height: 100%;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+            }
+
+            /*aggiungiButton*/
+            .aggiungiButton {
+                top: 2%;
+                right: 5%;
+                background-color: #FFF200;
+                width: 100px;
+                height: 40px;
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: black;
+                font-size: 18px;
+                cursor: pointer;
+                position: absolute;
+                right: 0; /* Sposta il pulsante tutto a destra */
+                margin-right: 2vh;
+            }
+
+            .aggiungiButton:hover {
+                background-color: darkgoldenrod;
+            }
 
         .griglia {
             margin-top: 3vh;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 2fr));
-            background-color: rgb(223, 181, 224);
+            background-color: transparent;
             padding: 1vh;
             gap: 3vh;
             width: 90%; /* Assicura che la griglia occupi tutta la larghezza disponibile */
