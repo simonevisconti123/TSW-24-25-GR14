@@ -60,7 +60,7 @@
                 <div class="settingsBox">
                     <ul>
                         <li><a href="settings.php">Il mio account</a></li>
-                        <li><a href="leMieNote.html">I miei appunti</a></li>
+                        <li><a href="leMieNote.php">I miei appunti</a></li>
                     </ul>
                 </div>
             </div>
