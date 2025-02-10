@@ -136,8 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 showSection("cambiaPasswordBox");
             } else if (text === "Cambia username") {
                 showSection("cambiaUsernameBox");
-            } else if (text === "Topic salvati") {
-                showSection("topicSalvatiBox");
+            } else if (text === "Post salvati") {
+                showSection("postSalvatiBox");
             }
         });
     });
