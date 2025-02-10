@@ -192,7 +192,7 @@
                 dropZone.style.display = "none";
                 setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 750);
             })
             .catch(error => {
                 console.error("Errore nell'upload:", error);
