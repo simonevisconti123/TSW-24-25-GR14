@@ -17,6 +17,10 @@ function postInteraction() {
             let currentPost = icon.closest(".post");
             let currentPostID = currentPost.id;
 
+            /*calcoliamo ora l'id della relativa sezione commenti*/
+            let currentCommentsID = currentPostID.replace("post", "comment");
+            let currentComments = document.getElementById(currentCommentsID);
+
             /*quando viene cliccata controllo che l'icona dei commenti sia regular o solid, per
             fare in modo che al click cambi da uno stile all'altro e che la sezione commenti appaia o scompaia*/
             if(icon.classList.contains("fa-regular")){
@@ -70,6 +74,10 @@ function postInteraction() {
             /*troviamo l'id del post a cui appartiene l'icona*/
             let currentPost = icon.closest(".post");
             let currentPostID = currentPost.id;
+
+            /*calcoliamo ora l'id della relativa sezione commenti*/
+            let currentCommentsID = currentPostID.replace("post", "comment");
+            let currentComments = document.getElementById(currentCommentsID);
 
             /*quando viene cliccata controllo che l'icona dei commenti sia regular o solid, per
             fare in modo che al click cambi da uno stile all'altro e che la sezione commenti appaia o scompaia*/
