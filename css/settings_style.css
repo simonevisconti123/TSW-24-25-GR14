@@ -147,8 +147,8 @@ body {
 
         }
 
-        #topicSalvatiBox{
-            #listaTopic {
+        #postSalvatiBox{
+            #listaPost {
                 list-style:disc;
                 padding-left: 1.6vh;
                 color: #000000;

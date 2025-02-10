@@ -34,7 +34,7 @@
                 <div class="laMiaAttivitàBox">
                     <h2>La mia attività</h2>
                     <ul>
-                        <li><button class="sezione">Topic salvati</button></li>
+                        <li><button class="sezione">Post salvati</button></li>
                     </ul>
                 </div>
             </div>
@@ -98,9 +98,9 @@
                 <p id="label_message_username"></p>
             </div>
 
-            <div id="topicSalvatiBox" class="hidden">
-                <h1 id="titolo">Topic salvati</h1>
-                <ul id="listaTopic">
+            <div id="postSalvatiBox" class="hidden">
+                <h1 id="titolo">Post salvati</h1>
+                <ul id="listaPost">
                     <li>Come fare soldi velocemente non fake</li>
                     <li>Macchine</li>
                     <li>Suicidi programmati</li>
