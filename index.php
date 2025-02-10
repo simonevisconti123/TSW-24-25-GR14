@@ -19,7 +19,7 @@
     <script src="js/randomColorPicker.js" defer></script>
 
     <!-- script usato per effettuare lo swap delle icone di interazione dei post-->
-    <script src="js/replaceIcon.js" defer></script>
+    <script src="js/postInteraction.js" defer></script>
 
     <!-- Connessione a Font Awesome per utilizzare le icone -->
     <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
@@ -70,9 +70,9 @@
 
         <div class="centerBlock">
         
-            <div class="post">
+            <div class="post" id="post-1">
                 <div class="postInfoBlock">
-                    <span><img class="postUserImage" src="img/profiloAnthony.jpg"></span>
+                    <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
                     <span class="postUsername">Anthony</span>
                 </div>
                 <div class="postDataBlock">
@@ -109,7 +109,144 @@
                     </div>
                 </div>
             </div>
+            <div class="postComments" id="comment-1">
+                <!--INSERIMENTO COMMENTO-->
+                <div class="commentSubmitBlock">
+                        <input class="commentInsertionBar" type="text" placeholder="commenta">
+                        <button class="commentButton"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                
+                <!--COMMENTO-->
+                <div class="commentBlock">
+                    <!--Dati utente che commenta-->
+                    <div class="commentInfoBox">
+                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
+                        <span class="commentUsername">Anthony</span>
+                    </div>
+                    
+                    <!--Contenuto del commento-->
+                    <div class="commentDataBox">
+                        <p>Secondo me devi prendere sita delle 18:45</p>
+                    </div>
+                </div>
 
+                <!--COMMENTO-->
+                <div class="commentBlock">
+                    <!--Dati utente che commenta-->
+                    <div class="commentInfoBox">
+                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
+                        <span class="commentUsername">Anthony</span>
+                    </div>
+                    
+                    <!--Contenuto del commento-->
+                    <div class="commentDataBox">
+                        <p>Secondo me devi prendere sita delle 18:45</p>
+                    </div>
+                </div>
+
+                <!--COMMENTO-->
+                <div class="commentBlock">
+                    <!--Dati utente che commenta-->
+                    <div class="commentInfoBox">
+                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
+                        <span class="commentUsername">Anthony</span>
+                    </div>
+                    
+                    <!--Contenuto del commento-->
+                    <div class="commentDataBox">
+                        <p>Secondo me devi prendere sita delle 18:45</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post" id="post-2">
+                <div class="postInfoBlock">
+                    <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
+                    <span class="postUsername">Anthony</span>
+                </div>
+                <div class="postDataBlock">
+                    <div class="postHeaderBox">
+                        <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
+                        <div class="topicDiAppartenenza">Mezzi di trasporto</div>
+                    </div>
+
+                    <div class="postTagsBox">
+                        <span class="postTag">Unisa</span>
+                        <span class="postTag">Avellino-Fisciano</span>
+                        <span class="postTag">Aiuto</span>
+                    </div>
+
+                    <div class="postBodyBox">
+                        <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
+                        <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
+                        <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
+                            ✅ Qual è l’orario migliore per evitare traffico e ritardi?
+                            ✅ Dove posso acquistare i biglietti più facilmente?
+                            ✅ Esistono alternative più veloci o convenienti?</p>
+                        
+                    
+                        <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
+                        </p>
+                        
+                        Grazie mille per l’aiuto! 🙌😊
+                    </div>
+
+                    <div class="postInteractionBox">
+                        <span class="heartIcon"><i class="fa-regular fa-heart"></i></span>
+                        <span class="commentIcon"><i class="fa-regular fa-comment"></i></span>
+                        <span class="bookmarkIcon"><i class="fa-regular fa-bookmark"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="postComments" id="comment-2">
+                <!--INSERIMENTO COMMENTO-->
+                <div class="commentSubmitBlock">
+                        <input class="commentInsertionBar" type="text" placeholder="commenta">
+                        <button class="commentButton"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                
+                <!--COMMENTO-->
+                <div class="commentBlock">
+                    <!--Dati utente che commenta-->
+                    <div class="commentInfoBox">
+                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
+                        <span class="commentUsername">Anthony</span>
+                    </div>
+                    
+                    <!--Contenuto del commento-->
+                    <div class="commentDataBox">
+                        <p>Secondo me devi prendere sita delle 18:45</p>
+                    </div>
+                </div>
+
+                <!--COMMENTO-->
+                <div class="commentBlock">
+                    <!--Dati utente che commenta-->
+                    <div class="commentInfoBox">
+                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
+                        <span class="commentUsername">Anthony</span>
+                    </div>
+                    
+                    <!--Contenuto del commento-->
+                    <div class="commentDataBox">
+                        <p>Secondo me devi prendere sita delle 18:45</p>
+                    </div>
+                </div>
+
+                <!--COMMENTO-->
+                <div class="commentBlock">
+                    <!--Dati utente che commenta-->
+                    <div class="commentInfoBox">
+                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
+                        <span class="commentUsername">Anthony</span>
+                    </div>
+                    
+                    <!--Contenuto del commento-->
+                    <div class="commentDataBox">
+                        <p>Secondo me devi prendere sita delle 18:45</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
