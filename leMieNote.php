@@ -25,57 +25,6 @@
 
     <style>
 
-
-        /* Sfondo sfocato */
-        #overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 10;
-        }
-
-        /* Finestra di drop */
-        #dropZone {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 30%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            border: 2px dashed white;
-            text-align: center;
-            line-height: 30vh;
-            font-size: 20px;
-            z-index: 11;
-            border-radius: 10px;
-        }
-
-        /* Bottone chiusura */
-        #closeButton {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: red;
-            color: white;
-            border: none;
-            font-size: 18px;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        #closeButton:hover {
-            background: darkred;
-        }
-
     </style>
 
 
