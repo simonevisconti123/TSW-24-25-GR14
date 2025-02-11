@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/settings_style.css">
     <script src="js/utilities.js"></script>
 
+    <!-- Connessione a Font Awesome per utilizzare le icone -->
+    <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Mega:wght@553&display=swap" rel="stylesheet">
@@ -29,6 +32,7 @@
                         <li id="ilMioAccountBoxList"><button class="sezione">Cambia mail</button></li>
                         <li id="ilMioAccountBoxList"><button class="sezione">Cambia password</button></li>
                         <li id="ilMioAccountBoxList"><button class="sezione">Cambia username</button></li>
+                        <li id="ilMioAccountBoxList"><button class="sezione">Cambia foto profilo</button></li>
                     </ul>
                 </div>
                 <div class="laMiaAttivitàBox">
@@ -93,9 +97,20 @@
                 <form onsubmit="return check_username_change(this)" id="form_username_change">
                 <input type="text" name="new_username" placeholder="Nuovo username">
                 <input type="text" name="new_username_conf" id="new_username_conf" placeholder="Conferma il nuovo username">
-                <button id="username_change">Salva</button>
+                <button id="username_change">Salva modifiche</button>
                 </form>
                 <p id="label_message_username"></p>
+            </div>
+
+            <div id="cambiaFotoProfiloBox">
+                <h1>Cambia foto profilo</h1>
+                <form <onsubmit="return check_propic_change(this)" id="form_propic_change">
+                <img src="img/bnanFornite.gif">
+                <i class="fa-solid fa-arrow-right"></i>
+                <img src="img/Pingas.gif">
+                </form>
+                <button id="username_change">Salva modifiche</button>
+                <p id="label_message_propic"></p>
             </div>
 
             <div id="postSalvatiBox">

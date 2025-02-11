@@ -159,15 +159,189 @@ body {
 
         #cambiaMailBox{
             display: none;
+            flex-direction: column;
+            background-color: #292934;
+            border-radius: 20px;
+            width: 50%;
+            height: 65%;
+
+            #form_change_mail{
+                margin-top: 3vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                input{
+                    width: 80%;  /* Regola la larghezza */
+                    height: 40px;
+                    margin: 10px auto;  /* Centra gli input */
+                    text-align: center;
+                }
+    
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    background-color: #FFF200;
+                    color: black;
+                    border-radius: 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin: 20px auto;
+                    text-align: center;
+                    border: none;
+                }
+
+                button:hover {
+                    background-color: #ff4d4d;
+                }
+            }
+            
+            p{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ffffff;
+            }
         }
 
         #cambiaPasswordBox{
             display: none;
+            flex-direction: column;
+            background-color: #292934;
+            border-radius: 20px;
+            width: 50%;
+            height: 65%;
+
+            #form_change_pswd{
+                margin-top: 3vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                input{
+                    width: 80%;  /* Regola la larghezza */
+                    height: 40px;
+                    margin: 10px auto;  /* Centra gli input */
+                    text-align: center;
+                }
+    
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    background-color: #FFF200;
+                    color: black;
+                    border-radius: 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin: 20px auto;
+                    text-align: center;
+                    border: none;
+                }
+
+                button:hover {
+                    background-color: #ff4d4d;
+                }
+            }
             
+            p{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ffffff;
+            }
         }
 
         #cambiaUsernameBox{
-            display:none
+            display: none;
+            flex-direction: column;
+            background-color: #292934;
+            border-radius: 20px;
+            width: 50%;
+            height: 65%;
+
+            #form_username_change{
+                margin-top: 3vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+
+                input{
+                    width: 80%;  /* Regola la larghezza */
+                    height: 40px;
+                    margin: 10px auto;  /* Centra gli input */
+                    text-align: center;
+                }
+    
+                button{
+                    width: 50%;
+                    padding: 10px;
+                    background-color: #FFF200;
+                    color: black;
+                    border-radius: 20px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin: 20px auto;
+                    text-align: center;
+                    border: none;
+                }
+
+                button:hover {
+                    background-color: #ff4d4d;
+                }
+            }
+
+            p{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #ffffff;
+            }
+        }
+
+        #cambiaFotoProfiloBox{
+            display: none;
+            flex-direction: column;
+            background-color: #292934;
+            border-radius: 20px;
+            width: 70%;
+            height: 50%;
+            align-items: center;
+            justify-content: center;
+
+            #form_propic_change{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+
+                img{
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                }
+
+                .fa-solid{
+                    font-size: 8vh;
+                    margin-left: 8vh;
+                    margin-right: 8vh;
+                    color: #ED1010;
+                }
+            }
+
+            button{
+                display: flex;
+                flex-direction: column;
+                border: none;
+                width: 50%;
+                padding: 10px;
+            }
+
+            button:hover {
+                background-color: #ff4d4d;
+            }
         }
 
         #postSalvatiBox{
