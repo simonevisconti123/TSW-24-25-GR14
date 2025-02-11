@@ -306,37 +306,40 @@ body {
             flex-direction: column;
             background-color: #292934;
             border-radius: 20px;
-            width: 70%;
-            height: 50%;
-            align-items: center;
-            justify-content: center;
+            width: 50%;
+            height: 65%;
 
             #form_propic_change{
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
                 justify-content: space-between;
+                margin-top: 5vh;
 
-                img{
-                    width: 150px;
-                    height: 150px;
-                    border-radius: 50%;
-                }
-
-                .fa-solid{
-                    font-size: 8vh;
-                    margin-left: 8vh;
-                    margin-right: 8vh;
-                    color: #ED1010;
+                input{
+                    width: 80%;
+                    height: 40px;
+                    margin: 10px auto;
+                    text-align: center;
+                    font-size: 3.5vh;
+                    background-color: beige;
+                    padding: 8px 0; /* Spazio interno per allineare verticalmente */
+                    line-height: 40px; /* Altezza uguale all'input */
+                    border: none;
                 }
             }
 
             button{
-                display: flex;
-                flex-direction: column;
-                border: none;
                 width: 50%;
                 padding: 10px;
+                background-color: #FFF200;
+                color: black;
+                border-radius: 20px;
+                font-size: 16px;
+                cursor: pointer;
+                margin: 20px auto;
+                text-align: center;
+                border: none;
             }
 
             button:hover {

@@ -105,9 +105,7 @@
             <div id="cambiaFotoProfiloBox">
                 <h1>Cambia foto profilo</h1>
                 <form id="form_propic_change">
-                <img src="img/bnanFornite.gif">
-                <i class="fa-solid fa-arrow-right"></i>
-                <img src="img/Pingas.gif">
+                <input type="file">
                 <button id="username_change">Salva modifiche</button>
                 </form>
                 <p id="label_message_propic"></p>
