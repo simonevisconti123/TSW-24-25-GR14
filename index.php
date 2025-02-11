@@ -207,6 +207,7 @@
                         <span class="postTag">Unisa</span>
                         <span class="postTag">Avellino-Fisciano</span>
                         <span class="postTag">Aiuto</span>
+                        <span class="postTag">MyAss</span>
                     </div>
 
                     <div class="postBodyBox">

@@ -104,12 +104,12 @@ function check_username_change(modulo) {
     var regex_username = /^[a-zA-Z0-9]+$/;
 
     if (!regex_username.test(modulo.new_username.value)) {
-        document.getElementById("label_message_pswd").innerHTML = "Il nuovo username non è nel formato corretto";
+        document.getElementById("label_message_username").innerHTML = "Il nuovo username non è nel formato corretto";
         return false;
     }
 
     if(!(modulo.new_username.value === modulo.new_username_conf.value)){
-        document.getElementById("label_message_pswd").innerHTML = "I due username non coincidono.";
+        document.getElementById("label_message_username").innerHTML = "I due username non coincidono.";
         return false;
     }
 
@@ -120,9 +120,9 @@ function check_username_change(modulo) {
 document.addEventListener("DOMContentLoaded", function () {
     function showSection(sectionId) {
         document.querySelectorAll(".contenutiBlock > div").forEach(div => {
-            div.classList.add("hidden");
+            div.style.display="none";
         });
-        document.getElementById(sectionId).classList.remove("hidden");
+        document.getElementById(sectionId).style.display="flex";
     }
 
     document.querySelectorAll(".ilMioAccountBox button, .laMiaAttivitàBox button").forEach(button => {
@@ -136,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 showSection("cambiaPasswordBox");
             } else if (text === "Cambia username") {
                 showSection("cambiaUsernameBox");
+            } else if (text === "Cambia foto profilo"){
+                showSection("cambiaFotoProfiloBox");
             } else if (text === "Post salvati") {
                 showSection("postSalvatiBox");
             }

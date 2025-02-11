@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/settings_style.css">
     <script src="js/utilities.js"></script>
 
+    <!-- Connessione a Font Awesome per utilizzare le icone -->
+    <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Mega:wght@553&display=swap" rel="stylesheet">
@@ -29,6 +32,7 @@
                         <li id="ilMioAccountBoxList"><button class="sezione">Cambia mail</button></li>
                         <li id="ilMioAccountBoxList"><button class="sezione">Cambia password</button></li>
                         <li id="ilMioAccountBoxList"><button class="sezione">Cambia username</button></li>
+                        <li id="ilMioAccountBoxList"><button class="sezione">Cambia foto profilo</button></li>
                     </ul>
                 </div>
                 <div class="laMiaAttivitàBox">
@@ -60,15 +64,15 @@
 
                     $returned_row = pg_fetch_assoc($execution_1);
                     if ($returned_row) { // Verifica se la query ha restituito un risultato
-                        echo "<span><label>Username:</label>".$returned_row["nome_utente"]."</span><br>";
-                        echo "<span><label>Indirizzo e-mail:</label>".$returned_row["email"]."</span>";
+                        echo "<label>Username:</label><span>".$returned_row["nome_utente"]."</span><br>";
+                        echo "<label>Indirizzo e-mail:</label><span>".$returned_row["email"]."</span>";
                     }else{
                         echo "<span>Errore irreparabile</span>";
                     }
                 ?>
             </div>
 
-            <div id="cambiaMailBox" class="hidden">
+            <div id="cambiaMailBox">
                 <h1 id="titolo">Cambia indirizzo e-mail</h1>
                 <form onsubmit="return check_mail_change(this)" id="form_change_mail">
                     <input type="text" name="new_mail" placeholder="Nuova email">
@@ -78,7 +82,7 @@
                 <p id="label_message_mail"></p>
             </div>
             
-            <div id="cambiaPasswordBox" class="hidden">
+            <div id="cambiaPasswordBox">
                 <h1>Cambia password</h1>
                 <form onsubmit="return check_pswd_change(this)" id="form_change_pswd">
                     <input type="password" name="new_pswd" placeholder="Nuova password">
@@ -88,25 +92,25 @@
                 <p id="label_message_pswd"></p>
             </div>
         
-            <div id="cambiaUsernameBox" class="hidden">
+            <div id="cambiaUsernameBox">
                 <h1>Cambia username</h1>
                 <form onsubmit="return check_username_change(this)" id="form_username_change">
                 <input type="text" name="new_username" placeholder="Nuovo username">
                 <input type="text" name="new_username_conf" id="new_username_conf" placeholder="Conferma il nuovo username">
-                <button id="username_change">Salva</button>
+                <button id="username_change">Salva modifiche</button>
                 </form>
                 <p id="label_message_username"></p>
             </div>
 
-            <div id="postSalvatiBox" class="hidden">
-                <h1 id="titolo">Post salvati</h1>
-                <ul id="listaPost">
-                    <li>Come fare soldi velocemente non fake</li>
-                    <li>Macchine</li>
-                    <li>Suicidi programmati</li>
-                    <li>Fortnite battle pass</li>
-                </ul>
+            <div id="cambiaFotoProfiloBox">
+                <h1>Cambia foto profilo</h1>
+                <form id="form_propic_change" enctype="multipart/form-data">
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required>
+                <button id="pro_pic_change">Salva modifiche</button>
+                </form>
+                <p id="label_message_propic"></p>
             </div>
+
         </div>
     </div>
 </body>
@@ -155,9 +159,6 @@
         var data = "new_mail_conf=".concat(val1);
         xhr.send(data);
     });
-
-
-
 
     document.getElementById("pswd_change").addEventListener("click", function() {
         // Creazione di un oggetto XMLHttpRequest
@@ -238,6 +239,49 @@
         var val1 = document.getElementById("new_username_conf").value;
         var data = "new_username_conf=".concat(val1);
         xhr.send(data);
+    });
+
+
+    document.getElementById("pro_pic_change").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+
+        var fileInput = document.getElementById("profile_picture");
+
+    if (fileInput.files.length === 0) {
+        messageLabel.innerHTML = "Seleziona un file prima di caricare.";
+        return;
+    }
+
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append("profile_picture", file);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/img_uploader.php", true); // URL del file PHP
+
+        xhr.responseType = 'json';
+
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                var response = xhr.response;
+                document.getElementById("label_message_propic").innerHTML = response.message;
+                if(response.success){
+                    setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+                }
+            } else {
+                document.getElementById("label_message_propic").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        xhr.onerror = function() {
+            document.getElementById("label_message_propic").innerHTML = "Errore di rete.";
+        };
+        
+        
+        xhr.send(formData);
     });
 
 </script>
