@@ -104,9 +104,9 @@
 
             <div id="cambiaFotoProfiloBox">
                 <h1>Cambia foto profilo</h1>
-                <form id="form_propic_change">
-                <input type="file">
-                <button id="username_change">Salva modifiche</button>
+                <form id="form_propic_change" enctype="multipart/form-data">
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required>
+                <button id="pro_pic_change">Salva modifiche</button>
                 </form>
                 <p id="label_message_propic"></p>
             </div>
@@ -159,9 +159,6 @@
         var data = "new_mail_conf=".concat(val1);
         xhr.send(data);
     });
-
-
-
 
     document.getElementById("pswd_change").addEventListener("click", function() {
         // Creazione di un oggetto XMLHttpRequest
@@ -242,6 +239,49 @@
         var val1 = document.getElementById("new_username_conf").value;
         var data = "new_username_conf=".concat(val1);
         xhr.send(data);
+    });
+
+
+    document.getElementById("pro_pic_change").addEventListener("click", function() {
+        // Creazione di un oggetto XMLHttpRequest
+        event.preventDefault();
+
+        var fileInput = document.getElementById("profile_picture");
+
+    if (fileInput.files.length === 0) {
+        messageLabel.innerHTML = "Seleziona un file prima di caricare.";
+        return;
+    }
+
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append("profile_picture", file);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/img_uploader.php", true); // URL del file PHP
+
+        xhr.responseType = 'json';
+
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                var response = xhr.response;
+                document.getElementById("label_message_propic").innerHTML = response.message;
+                if(response.success){
+                    setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
+                }
+            } else {
+                document.getElementById("label_message_propic").innerHTML = "Errore nella richiesta.";
+            }
+        };
+
+        xhr.onerror = function() {
+            document.getElementById("label_message_propic").innerHTML = "Errore di rete.";
+        };
+        
+        
+        xhr.send(formData);
     });
 
 </script>
