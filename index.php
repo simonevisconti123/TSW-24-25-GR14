@@ -21,6 +21,9 @@
     <!-- script usato per effettuare lo swap delle icone di interazione dei post-->
     <script src="js/postInteraction.js" defer></script>
 
+    <!-- script usato per permettere la comparsa e scomparsa del form per la creazione di nuovi post-->
+    <script src="js/newPostForm.js" defer></script>
+
     <!-- Connessione a Font Awesome per utilizzare le icone -->
     <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
 </head>
@@ -68,8 +71,38 @@
         </div>
 
 
-        <div class="centerBlock">
-        
+        <div class="centerBlock" id="centerBlock-articoli">
+            <!--BANNER DEL TOPIC-->
+            <div class="topicBanner">
+                <div class="content">
+                <h1>Articoli <i class="fa-solid fa-newspaper"></i></h1>
+                </div>
+            </div>
+            
+            <!--DIV CHE GESTISCE L'INSERIMENTO DI NUOVI POST NEL TOPIC-->
+            <div class="addPostButtonDiv">
+                <!--pulsante aggiunta post-->
+                <button class="addPostButton"><i class="fa-solid fa-upload"></i> Aggiungi un post</button>
+            </div>
+
+            <!--FORM DI AGGIUNTA DI NUOVI POST-->
+            <form class="newPostForm newPostForm-hidden">
+                <span class="closeButton"><i class="fa-solid fa-x"></i></span>
+                <h2>Nuovo Post</h2>
+
+                <label for="title">Titolo</label>
+                <input type="text" id="title" placeholder="Inserisci il titolo">
+
+                <label for="tags">Tags</label>
+                <input type="text" id="tags" placeholder="Inserisci i tags">
+
+                <label for="content">Oggetto</label>
+                <textarea id="content" placeholder="Scrivi qui..."></textarea>
+
+                <button class="submit-btn">Post</button>
+            </form>
+
+                <!--AGGIUNTA DI NUOVI POST E RELATIVE SEZIONI COMMENTO-->
             <div class="post" id="post-1">
                 <div class="postInfoBlock">
                     <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>

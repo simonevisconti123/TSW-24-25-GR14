@@ -16,6 +16,10 @@ body {
     flex-direction: column;
     height: 100vh;
 }
+
+.container-blurred{
+    filter: blur(3px);
+}
     /*upBar*/
     .upBar {
         background-color: #15151A;
@@ -221,6 +225,10 @@ body {
 
         /*centerBlock*/
         .centerBlock {
+                position: relative; /* serve a permettere al form di aggiunta nuovi post di essere esente dal flex */
+                display: flex;
+                flex-direction: column; /* I div saranno disposti uno sotto l'altro */
+                align-items: center;    /* Centra i div orizzontalmente */
                 flex: 1;
                 margin-left: 17%; /* Per non coprire leftBlock */
                 height: calc(100vh - 90px); /* Sottrae upBar e footer */
@@ -236,12 +244,142 @@ body {
                     #fff3cc 80%,
                     #ffe5cc 100%
                 );
-
-                display: flex;
-                flex-direction: column; /* I div saranno disposti uno sotto l'altro */
-                align-items: center;    /* Centra i div orizzontalmente */
                 padding-bottom: 30px;
         }
+
+            /* topic banner */
+              .topicBanner {
+                width: 100%;
+                height: 15vh;
+                background-color: #6F55E1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leggera ombra per dare profondità */
+                padding: 30px;
+                box-sizing: border-box;
+              }
+
+              .topicBanner .content {
+                text-align: center;
+                color: #fff;
+              }
+              
+              .topicBanner .content h1 {
+                margin: 0;
+                font-size: 2.5em;
+                letter-spacing: 1px;
+              }
+
+            /*addPostButton*/
+            .addPostButtonDiv{
+                width: 100%;
+                max-width: 550px;
+                margin-top: 20px;
+                padding: 10px;
+            }
+
+            .addPostButton{
+                font-family: "Inter";
+                font-weight: 700;
+                justify-content: center;
+                background-color: #FFF200;
+                border: none;
+                padding: 5px;
+                border-radius: 10px;
+            }
+
+            .addPostButton:hover{
+                background-color: #9F9700;
+            }
+
+            /*newPostForm*/
+            .newPostForm {
+                color: white;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 40%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                background-color:#292934;
+                border-radius: 10px;
+                font-family: "Inter", sans-serif;
+                padding: 30px;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                justify-content: space-evenly;
+            }
+
+            .newPostForm-hidden{
+                visibility: hidden;
+            }
+
+                /*closeButton*/
+                .closeButton{
+                    color:#ED1010;
+                    display: inline-flex;
+                    justify-content: flex-end;
+                    align-items: flex-end;
+                }
+
+                .closeButton:hover{
+                    cursor: pointer;
+                    color: #a50f0f;
+                }
+
+                /*input e textarea del form*/
+                .newPostForm input,
+                .newPostForm textarea {
+                    border: none;
+                    border-radius: 8px;
+                    padding: 10px;
+                }
+
+                .newPostForm input,
+                .newPostForm textarea:focus{
+                    border:none;
+                }
+
+                .newPostForm input::placeholder{
+                    font-family: "Inter";
+                    color: #aaa;
+                }
+
+                .newPostForm textarea::placeholder{
+                    font-family: "Inter";
+                    color: #aaa;
+                }
+                
+                .newPostForm input {
+                    height: 40px;
+                }
+                
+                .newPostForm textarea {
+                    min-height: 100px;
+                }
+
+                /*Titoli delle label*/
+                .newPostForm label{
+                    font-style: italic;
+                }
+                
+                /*pulsante post*/
+                .newPostForm .submit-btn {
+                    margin-top: 10px;
+                    background-color:#FFF200;
+                    font-weight: 700;
+                    border: none;
+                    border-radius: 8px;
+                    padding: 10px;
+                    cursor: pointer;
+                }
+        
+                .newPostForm .submit-btn:hover {
+                    background-color: #9F9700;
+                }
 
             /*post*/
             .post{
