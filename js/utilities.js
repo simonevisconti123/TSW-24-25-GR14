@@ -120,9 +120,9 @@ function check_username_change(modulo) {
 document.addEventListener("DOMContentLoaded", function () {
     function showSection(sectionId) {
         document.querySelectorAll(".contenutiBlock > div").forEach(div => {
-            div.classList.add("hidden");
+            div.style.display="none";
         });
-        document.getElementById(sectionId).classList.remove("hidden");
+        document.getElementById(sectionId).style.display="flex";
     }
 
     document.querySelectorAll(".ilMioAccountBox button, .laMiaAttivitàBox button").forEach(button => {

@@ -60,15 +60,15 @@
 
                     $returned_row = pg_fetch_assoc($execution_1);
                     if ($returned_row) { // Verifica se la query ha restituito un risultato
-                        echo "<span><label>Username:</label>".$returned_row["nome_utente"]."</span><br>";
-                        echo "<span><label>Indirizzo e-mail:</label>".$returned_row["email"]."</span>";
+                        echo "<label>Username:</label><span>".$returned_row["nome_utente"]."</span><br>";
+                        echo "<label>Indirizzo e-mail:</label><span>".$returned_row["email"]."</span>";
                     }else{
                         echo "<span>Errore irreparabile</span>";
                     }
                 ?>
             </div>
 
-            <div id="cambiaMailBox" class="hidden">
+            <div id="cambiaMailBox">
                 <h1 id="titolo">Cambia indirizzo e-mail</h1>
                 <form onsubmit="return check_mail_change(this)" id="form_change_mail">
                     <input type="text" name="new_mail" placeholder="Nuova email">
@@ -78,7 +78,7 @@
                 <p id="label_message_mail"></p>
             </div>
             
-            <div id="cambiaPasswordBox" class="hidden">
+            <div id="cambiaPasswordBox">
                 <h1>Cambia password</h1>
                 <form onsubmit="return check_pswd_change(this)" id="form_change_pswd">
                     <input type="password" name="new_pswd" placeholder="Nuova password">
@@ -88,7 +88,7 @@
                 <p id="label_message_pswd"></p>
             </div>
         
-            <div id="cambiaUsernameBox" class="hidden">
+            <div id="cambiaUsernameBox">
                 <h1>Cambia username</h1>
                 <form onsubmit="return check_username_change(this)" id="form_username_change">
                 <input type="text" name="new_username" placeholder="Nuovo username">
@@ -98,7 +98,7 @@
                 <p id="label_message_username"></p>
             </div>
 
-            <div id="postSalvatiBox" class="hidden">
+            <div id="postSalvatiBox">
                 <h1 id="titolo">Post salvati</h1>
                 <ul id="listaPost">
                     <li>Come fare soldi velocemente non fake</li>
