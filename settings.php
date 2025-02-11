@@ -104,24 +104,15 @@
 
             <div id="cambiaFotoProfiloBox">
                 <h1>Cambia foto profilo</h1>
-                <form <onsubmit="return check_propic_change(this)" id="form_propic_change">
+                <form id="form_propic_change">
                 <img src="img/bnanFornite.gif">
                 <i class="fa-solid fa-arrow-right"></i>
                 <img src="img/Pingas.gif">
-                </form>
                 <button id="username_change">Salva modifiche</button>
+                </form>
                 <p id="label_message_propic"></p>
             </div>
 
-            <div id="postSalvatiBox">
-                <h1 id="titolo">Post salvati</h1>
-                <ul id="listaPost">
-                    <li>Come fare soldi velocemente non fake</li>
-                    <li>Macchine</li>
-                    <li>Suicidi programmati</li>
-                    <li>Fortnite battle pass</li>
-                </ul>
-            </div>
         </div>
     </div>
 </body>
