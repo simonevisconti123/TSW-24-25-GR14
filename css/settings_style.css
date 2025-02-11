@@ -318,13 +318,11 @@ body {
 
                 input{
                     width: 80%;
-                    height: 40px;
+                    height: 60%;
                     margin: 10px auto;
                     text-align: center;
-                    font-size: 3.5vh;
+                    font-size: 3vh;
                     background-color: beige;
-                    padding: 8px 0; /* Spazio interno per allineare verticalmente */
-                    line-height: 40px; /* Altezza uguale all'input */
                     border: none;
                 }
             }
