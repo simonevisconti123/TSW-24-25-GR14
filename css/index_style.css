@@ -291,6 +291,7 @@ body {
 
             .addPostButton:hover{
                 background-color: #9F9700;
+                cursor: pointer;
             }
 
             /*newPostForm*/

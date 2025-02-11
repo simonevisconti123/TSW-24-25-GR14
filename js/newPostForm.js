@@ -7,6 +7,7 @@ function newPostFormAppears() {
             let newPostForm = document.querySelector(".newPostForm");
             newPostForm.classList.remove("newPostForm-hidden");
 
+            /*
             // Aggiungo il blur allo sfondo
             let container = document.querySelector(".container");
             
@@ -15,6 +16,7 @@ function newPostFormAppears() {
             } else {
                 console.error("Elemento .container non trovato!");
             }
+            */
         });
     });
 }
@@ -28,6 +30,7 @@ function newPostFormClose() {
             let newPostForm = document.querySelector(".newPostForm");
             newPostForm.classList.add("newPostForm-hidden");
 
+            /*
             // rimuovo il blur dallo sfondo
             let container = document.querySelector(".container");
             
@@ -36,6 +39,7 @@ function newPostFormClose() {
             } else {
                 console.error("Elemento .container non trovato!");
             }
+            */
         });
     });
 }
