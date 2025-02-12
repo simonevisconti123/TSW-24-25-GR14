@@ -24,6 +24,9 @@
     <!-- script usato per permettere la comparsa e scomparsa del form per la creazione di nuovi post-->
     <script src="js/newPostForm.js" defer></script>
 
+    <!-- script usato per gestire il cambiamento del banner quando selezioniamo un nuovo topic-->
+    <script src="js/topicSelection.js" defer></script>
+
     <!-- Connessione a Font Awesome per utilizzare le icone -->
     <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
 </head>
@@ -51,9 +54,26 @@
                     <span id="topicsTitle">Topics</span>
                     <div class="topicsBox">
                         <ul>
-                            <li>Articoli</li>
-                            <li>Esami</li>
-                            <li>Mezzi di trasporto</li>
+                            <li>
+                                <form action="">
+                                    <input type="hidden" value="articoli">
+                                    <button type="submit" class="selectTopicButton" id="selectTopicButton-articoli">Articoli</button>
+                                </form>
+                            </li>
+
+                            <li>
+                                <form action="">
+                                    <input type="hidden" value="esami">
+                                    <button type="submit" class="selectTopicButton" id="selectTopicButton-esami">Esami</button>
+                                </form>
+                            </li>
+
+                            <li>
+                                <form action="">
+                                    <input type="hidden" value="mezziDiTrasporto">
+                                    <button type="submit" class="selectTopicButton" id="selectTopicButton-mezziDiTrasporto">Mezzi di Trasporto</button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>

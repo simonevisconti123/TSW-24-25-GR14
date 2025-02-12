@@ -1,4 +1,4 @@
-/*funzione che gestisce lo swap delle icone
+/*funzione che gestisce lo swap delle icone e che
 varia a seconda dell'icona che dobbiamo scambiare*/
 
 function postInteraction() {

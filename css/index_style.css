@@ -181,6 +181,20 @@ body {
                 border-bottom: 1px solid white;
             }
 
+            .selectTopicButton{
+                color: white;
+                background-color: #6F55E1;
+                border: none;
+                font-family: "Inter", sans-serif;
+                font-weight: 500;
+                font-size: large;
+            }
+            
+            .selectTopicButton:hover{
+                cursor: pointer;
+                color: #eeeeee;
+            }
+
             /*settingsBlock*/
             .settingsBlock{
                 margin-top: 20px;
@@ -215,8 +229,16 @@ body {
             }
 
             .settingsBox ul li a{
+                font-family: "Inter", sans-serif;
+                font-weight: 500;
+                font-size: large;
                 text-decoration: none;
                 color: white;
+            }
+
+            .settingsBox ul li a:hover{
+                cursor: pointer;
+                color: #eeeeee;
             }
 
             .login_icon {
