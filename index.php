@@ -70,7 +70,6 @@
             <?php endif; ?>
         </div>
 
-
         <div class="centerBlock" id="centerBlock-articoli">
             <!--BANNER DEL TOPIC-->
             <div class="topicBanner">
@@ -94,7 +93,25 @@
                 <input type="text" id="title" placeholder="Inserisci il titolo">
 
                 <label for="tags">Tags</label>
-                <input type="text" id="tags" placeholder="Inserisci i tags">
+                <div class="tagsBox">
+                    <label><input type="checkbox" value="Aiuto">Aiuto</label>
+                    <label><input type="checkbox" value="LM-32">LM-32</label>
+                    <label><input type="checkbox" value="L-8">L-8</label>
+                    <label><input type="checkbox" value="Scritto">Scritto</label>
+                    <label><input type="checkbox" value="Orale">Orale</label>
+                    <label><input type="checkbox" value="Appunti">Appunti</label>
+                    <label><input type="checkbox" value="Orari">Orari</label>
+                    <label><input type="checkbox" value="Informatica">Informatica</label>
+                    <label><input type="checkbox" value="Matematica">Matematica</label>
+                    <label><input type="checkbox" value="Fisica">Fisica</label>
+                    <label><input type="checkbox" value="Pullman">Pullman</label>
+                    <label><input type="checkbox" value="Treno">Treno</label>
+                    <label><input type="checkbox" value="Tratte">Tratte</label>
+                </div>
+
+                <input type="hidden" name="tags" id="hidden-tags">
+                <p id="error-message" style="color: red; display: none;">Puoi selezionare massimo 12 tag!</p>
+
 
                 <label for="content">Oggetto</label>
                 <textarea id="content" placeholder="Scrivi qui..."></textarea>
@@ -102,7 +119,7 @@
                 <button class="submit-btn">Post</button>
             </form>
 
-                <!--AGGIUNTA DI NUOVI POST E RELATIVE SEZIONI COMMENTO-->
+            <!--AGGIUNTA DI NUOVI POST E RELATIVE SEZIONI COMMENTO-->
             <div class="post" id="post-1">
                 <div class="postInfoBlock">
                     <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
