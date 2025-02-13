@@ -29,6 +29,9 @@
 
     <!-- Connessione a Font Awesome per utilizzare le icone -->
     <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
+
+    <!-- script pazzo in culo che fa comparire solo i post che contengono la sottostringa cercata nel proprio testo o nei tag -->
+     <script src="js/indexSearchBar.js" defer></script>
 </head>
 <body>
 
@@ -231,35 +234,33 @@
 
             <div class="post" id="post-2">
                 <div class="postInfoBlock">
-                    <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                    <span class="postUsername">Anthony</span>
+                    <span><img class="postUserImage" src="img/AMOGUS.gif" id="1"></span>
+                    <span class="postUsername">Vincenzo</span>
                 </div>
                 <div class="postDataBlock">
                     <div class="postHeaderBox">
-                        <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                        <div class="topicDiAppartenenza">Mezzi di trasporto</div>
+                        <div class="postTitle">AIUTO</div>
+                        <div class="topicDiAppartenenza">Vi prego vi scongiur</div>
                     </div>
 
                     <div class="postTagsBox">
-                        <span class="postTag">Unisa</span>
-                        <span class="postTag">Avellino-Fisciano</span>
                         <span class="postTag">Aiuto</span>
                         <span class="postTag">MyAss</span>
                     </div>
 
                     <div class="postBodyBox">
-                        <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                        <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
+                        <p>🚍 Aiuto 🚍</p>
+                        <p>Sono al mo fiorrttuto limite vi preigohghjmfsgnbshdfgbjhkxfbv</p>
                         <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                            ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                            ✅ Dove posso acquistare i biglietti più facilmente?
-                            ✅ Esistono alternative più veloci o convenienti?</p>
+                            ✅ Suca?
+                            ✅ Suca?
+                            ✅ Suca</p>
                         
                     
-                        <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
+                        <p>Se qualcuno fa lo stesso suca e ha voglia di sucare esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
                         </p>
                         
-                        Grazie mille per l’aiuto! 🙌😊
+                        Suca 🙌😊
                     </div>
 
                     <div class="postInteractionBox">
