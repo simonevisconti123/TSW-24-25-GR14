@@ -193,6 +193,7 @@ body {
             .selectTopicButton:hover{
                 cursor: pointer;
                 color: #eeeeee;
+                background-color: #8e7dd9;
             }
 
             /*settingsBlock*/
@@ -238,7 +239,7 @@ body {
 
             .settingsBox ul li a:hover{
                 cursor: pointer;
-                color: #eeeeee;
+                background-color: #e46f6f;
             }
 
             .login_icon {

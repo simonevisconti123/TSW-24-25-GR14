@@ -27,6 +27,13 @@ if (isset($_FILES["file"])) {
     $destination = $uploadDir . $fileName;
 
     $regex_files = '/^.*\.(docx|pptx|xlsx|pdf|txt)$/i';
+    $regexFilename = '/^.{1,255}$/';
+
+    // Verifica che il nome del file rispetti la regex sulla lunghezza
+    if (!preg_match($regexFilename, $fileName)) {
+        echo "ERRORE! Il nome del file deve essere lungo tra 1 e 255 caratteri.";
+        exit;
+    }
 
     if(preg_match($regex_files,$fileName)){
 
