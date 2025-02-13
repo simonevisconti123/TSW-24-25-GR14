@@ -7,8 +7,8 @@ function returnToLogin() {
 }
 
 function check_input(modulo) {
-    var regex_username = /^[a-zA-Z0-9]+$/;
-    var regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var regex_username = /^[a-zA-Z0-9]{1,255}$/;
+    var regex_email = /^(?=.{1,255}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!regex_username.test(modulo.nome.value)) {
         document.getElementById("label_functional").innerHTML = "Il nome non è nel formato corretto";
         return false;
@@ -28,11 +28,11 @@ function check_input(modulo) {
 
 
 function check_input_registration(modulo) {
-    var regex_username = /^[a-zA-Z0-9]+$/;
-    var regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    var regex_pswd = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    var regex_username = /^[a-zA-Z0-9]{1,255}$/;
+    var regex_email = /^(?=.{1,255}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var regex_pswd = /^(?=.{8,255}$)(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,255}$/;
     if (!regex_username.test(modulo.inputUserName.value)) {
-        document.getElementById("label_output").innerHTML = "Il nome può contenere solo lettere e numeri";
+        document.getElementById("label_output").innerHTML = "Il nome può contenere solo lettere e numeri e non può essere più lungo di 255 caratteri";
         return false;
     }
 
@@ -44,7 +44,7 @@ function check_input_registration(modulo) {
     if  (!regex_pswd.test(modulo.inputPassword.value)) {
         document.getElementById("label_output").innerHTML = ` La password non rispetta i requisiti:
     <ul>
-        <li>Almeno 8 caratteri</li>
+        <li>Minimo 8 caratteri, massimo 255</li>
         <li>Almeno 1 maiuscolo</li>
         <li>1 numero e 1 carattere speciale</li>
     </ul>
@@ -56,7 +56,7 @@ function check_input_registration(modulo) {
 }
 
 function check_input_login(modulo) {
-    var regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var regex_email = /^(?=.{1,255}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     
     if (!regex_email.test(modulo.inputmail.value)) {
         document.getElementById("label_error").innerHTML = "L'email non è nel formato corretto.";
@@ -67,7 +67,8 @@ function check_input_login(modulo) {
 }
 
 function check_mail_change(modulo) {
-    var regex_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var regex_email = /^(?=.{1,255}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
 
     if (!regex_email.test(modulo.new_mail.value)) {
         document.getElementById("label_message_mail").innerHTML = "La nuova mail non è nel formato corretto.";
@@ -83,7 +84,7 @@ function check_mail_change(modulo) {
 }
 
 function check_pswd_change(modulo) {
-    var regex_pswd = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    var regex_pswd = /^(?=.{8,255}$)(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,255}$/;
 
     if (!regex_pswd.test(modulo.new_pswd.value)) {
         document.getElementById("label_message_pswd").innerHTML = "La nuova password non è nel formato corretto.";
@@ -101,7 +102,7 @@ function check_pswd_change(modulo) {
 
 
 function check_username_change(modulo) {
-    var regex_username = /^[a-zA-Z0-9]+$/;
+    var regex_username = /^[a-zA-Z0-9]{1,255}$/;
 
     if (!regex_username.test(modulo.new_username.value)) {
         document.getElementById("label_message_username").innerHTML = "Il nuovo username non è nel formato corretto";
