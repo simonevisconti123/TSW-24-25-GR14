@@ -117,6 +117,16 @@ function check_username_change(modulo) {
 }
 
 
+function check_post_creations(modulo){
+    var regex_post_title = /^[a-zA-Z0-9 àèéìòùÀÈÉÌÒÙ]{1,255}$/;
+
+    if(!regex_post_title.test(modulo.title.value)){
+        document.getElementById("topic_output_label").innerHTML = "Il titolo può contenere solo lettere e numeri, massimo 255 caratteri";
+        return false;
+    }
+    return true;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     function showSection(sectionId) {
         document.querySelectorAll(".contenutiBlock > div").forEach(div => {
