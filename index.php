@@ -173,33 +173,34 @@
             
             while ($returned_row = pg_fetch_assoc($execution)) {
                echo "   <div class='post' id='post-".$returned_row["id"]."'>
-                <div class='postInfoBlock'>
-                    <span><img class='postUserImage' src='img/profiloAnthony.jpg' id='1'></span>
-                    <span class='postUsername'>".$returned_row["autore"]."</span>
-                </div>
-                <div class='postDataBlock'>
-                    <div class='postHeaderBox'>
-                        <div class='postTitle'>".$returned_row["titolo"]."</div>
-                        <div class='topicDiAppartenenza'>".$returned_row["topic_appartenenza"]."<div>
-                    </div>
+                            <div class='postInfoBlock'>
+                                <span><img class='postUserImage' src='img/profiloAnthony.jpg' id='1'></span>
+                                <span class='postUsername'>".$returned_row["autore"]."</span>
+                            </div>
+                            <div class='postDataBlock'>
+                                <div class='postHeaderBox'>
+                                    <div class='postTitle'>".$returned_row["titolo"]."</div>
+                                    <div class='topicDiAppartenenza'>".$returned_row["topic_appartenenza"]."</div>
+                                </div>
 
-                    <div class='postTagsBox'>
-                        <span class='postTag'>Unisa</span>
-                        <span class='postTag'>Avellino-Fisciano</span>
-                        <span class='postTag'>Aiuto</span>
-                    </div>
+                                <div class='postTagsBox'>
+                                    <span class='postTag'>Unisa</span>
+                                    <span class='postTag'>Avellino-Fisciano</span>
+                                    <span class='postTag'>Aiuto</span>
+                                </div>
 
-                    <div class='postBodyBox'>
-                        <p>".$returned_row["corpo"]."
-                    </div>
+                                <div class='postBodyBox'>
+                                    <p>".$returned_row["corpo"]."</p>
+                                </div>
 
-                    <div class='postInteractionBox'>
-                        <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
-                        <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                        <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
-                    </div>
-                </div>
-            ";
+                                <div class='postInteractionBox'>
+                                    <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                                    <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                                    <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
+                                </div>
+                            </div>
+                        </div>
+                ";
             }
             ?>
 
