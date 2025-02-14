@@ -32,6 +32,7 @@
 
     <!-- script pazzo in culo che fa comparire solo i post che contengono la sottostringa cercata nel proprio testo o nei tag -->
      <script src="js/indexSearchBar.js" defer></script>
+     <script src="js/utilities.js" defer></script>
 </head>
 <body>
 
@@ -153,182 +154,55 @@
             <?php endif; ?>
 
             <!--AGGIUNTA DI NUOVI POST E RELATIVE SEZIONI COMMENTO-->
-            <div class="post" id="post-1">
-                <div class="postInfoBlock">
-                    <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                    <span class="postUsername">Anthony</span>
+
+            <?php
+            $host = 'localhost';
+            $port = '5432';
+            $db = 'gruppo14';
+            $username = 'www';
+            $password = 'tw2024';
+            $connection_string = "host=$host dbname=$db user=$username password=$password";
+            
+            $db = pg_connect($connection_string)
+            or die('Impossibile connetersi al database: ' . pg_last_error());
+
+            $topics = $_SESSION["topics"];
+
+            $result = pg_prepare($db,"Check_if_exists"," SELECT * FROM posts WHERE topic_appartenenza=$1");
+            $execution = pg_execute($db, "Check_if_exists", array($topics));
+            
+            while ($returned_row = pg_fetch_assoc($execution)) {
+               echo "   <div class='post' id='post-".$returned_row["id"]."'>
+                <div class='postInfoBlock'>
+                    <span><img class='postUserImage' src='img/profiloAnthony.jpg' id='1'></span>
+                    <span class='postUsername'>".$returned_row["autore"]."</span>
                 </div>
-                <div class="postDataBlock">
-                    <div class="postHeaderBox">
-                        <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                        <div class="topicDiAppartenenza">Mezzi di trasporto</div>
+                <div class='postDataBlock'>
+                    <div class='postHeaderBox'>
+                        <div class='postTitle'>".$returned_row["titolo"]."</div>
+                        <div class='topicDiAppartenenza'>".$returned_row["topic_appartenenza"]."<div>
                     </div>
 
-                    <div class="postTagsBox">
-                        <span class="postTag">Unisa</span>
-                        <span class="postTag">Avellino-Fisciano</span>
-                        <span class="postTag">Aiuto</span>
+                    <div class='postTagsBox'>
+                        <span class='postTag'>Unisa</span>
+                        <span class='postTag'>Avellino-Fisciano</span>
+                        <span class='postTag'>Aiuto</span>
                     </div>
 
-                    <div class="postBodyBox">
-                        <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                        <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                        <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                            ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                            ✅ Dove posso acquistare i biglietti più facilmente?
-                            ✅ Esistono alternative più veloci o convenienti?</p>
-                        
-                    
-                        <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                        </p>
-                        
-                        Grazie mille per l’aiuto! 🙌😊
+                    <div class='postBodyBox'>
+                        <p>".$returned_row["corpo"]."
                     </div>
 
-                    <div class="postInteractionBox">
-                        <span class="heartIcon"><i class="fa-regular fa-heart"></i></span>
-                        <span class="commentIcon"><i class="fa-regular fa-comment"></i></span>
-                        <span class="bookmarkIcon"><i class="fa-regular fa-bookmark"></i></span>
+                    <div class='postInteractionBox'>
+                        <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                        <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                        <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
                     </div>
                 </div>
-            </div>
-            <div class="postComments" id="comment-1">
-                <!--INSERIMENTO COMMENTO-->
-                <div class="commentSubmitBlock">
-                        <input class="commentInsertionBar" type="text" placeholder="commenta">
-                        <button class="commentButton"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-                
-                <!--COMMENTO-->
-                <div class="commentBlock">
-                    <!--Dati utente che commenta-->
-                    <div class="commentInfoBox">
-                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
-                        <span class="commentUsername">Anthony</span>
-                    </div>
-                    
-                    <!--Contenuto del commento-->
-                    <div class="commentDataBox">
-                        <p>Secondo me devi prendere sita delle 18:45</p>
-                    </div>
-                </div>
+            ";
+            }
+            ?>
 
-                <!--COMMENTO-->
-                <div class="commentBlock">
-                    <!--Dati utente che commenta-->
-                    <div class="commentInfoBox">
-                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
-                        <span class="commentUsername">Anthony</span>
-                    </div>
-                    
-                    <!--Contenuto del commento-->
-                    <div class="commentDataBox">
-                        <p>Secondo me devi prendere sita delle 18:45</p>
-                    </div>
-                </div>
-
-                <!--COMMENTO-->
-                <div class="commentBlock">
-                    <!--Dati utente che commenta-->
-                    <div class="commentInfoBox">
-                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
-                        <span class="commentUsername">Anthony</span>
-                    </div>
-                    
-                    <!--Contenuto del commento-->
-                    <div class="commentDataBox">
-                        <p>Secondo me devi prendere sita delle 18:45</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="post" id="post-2">
-                <div class="postInfoBlock">
-                    <span><img class="postUserImage" src="img/AMOGUS.gif" id="1"></span>
-                    <span class="postUsername">Vincenzo</span>
-                </div>
-                <div class="postDataBlock">
-                    <div class="postHeaderBox">
-                        <div class="postTitle">AIUTO</div>
-                        <div class="topicDiAppartenenza">Vi prego vi scongiur</div>
-                    </div>
-
-                    <div class="postTagsBox">
-                        <span class="postTag">Aiuto</span>
-                        <span class="postTag">MyAss</span>
-                    </div>
-
-                    <div class="postBodyBox">
-                        <p>🚍 Aiuto 🚍</p>
-                        <p>Sono al mo fiorrttuto limite vi preigohghjmfsgnbshdfgbjhkxfbv</p>
-                        <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                            ✅ Suca?
-                            ✅ Suca?
-                            ✅ Suca</p>
-                        
-                    
-                        <p>Se qualcuno fa lo stesso suca e ha voglia di sucare esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                        </p>
-                        
-                        Suca 🙌😊
-                    </div>
-
-                    <div class="postInteractionBox">
-                        <span class="heartIcon"><i class="fa-regular fa-heart"></i></span>
-                        <span class="commentIcon"><i class="fa-regular fa-comment"></i></span>
-                        <span class="bookmarkIcon"><i class="fa-regular fa-bookmark"></i></span>
-                    </div>
-                </div>
-            </div>
-            <div class="postComments" id="comment-2">
-                <!--INSERIMENTO COMMENTO-->
-                <div class="commentSubmitBlock">
-                        <input class="commentInsertionBar" type="text" placeholder="commenta">
-                        <button class="commentButton"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-                
-                <!--COMMENTO-->
-                <div class="commentBlock">
-                    <!--Dati utente che commenta-->
-                    <div class="commentInfoBox">
-                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
-                        <span class="commentUsername">Anthony</span>
-                    </div>
-                    
-                    <!--Contenuto del commento-->
-                    <div class="commentDataBox">
-                        <p>Secondo me devi prendere sita delle 18:45</p>
-                    </div>
-                </div>
-
-                <!--COMMENTO-->
-                <div class="commentBlock">
-                    <!--Dati utente che commenta-->
-                    <div class="commentInfoBox">
-                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
-                        <span class="commentUsername">Anthony</span>
-                    </div>
-                    
-                    <!--Contenuto del commento-->
-                    <div class="commentDataBox">
-                        <p>Secondo me devi prendere sita delle 18:45</p>
-                    </div>
-                </div>
-
-                <!--COMMENTO-->
-                <div class="commentBlock">
-                    <!--Dati utente che commenta-->
-                    <div class="commentInfoBox">
-                        <img class="commentUserImage" src="img/profiloAnthony.jpg">
-                        <span class="commentUsername">Anthony</span>
-                    </div>
-                    
-                    <!--Contenuto del commento-->
-                    <div class="commentDataBox">
-                        <p>Secondo me devi prendere sita delle 18:45</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -341,6 +215,7 @@
 
 
 <script>
+    <?php if(isset($_SESSION["username"])): ?>
     document.getElementById("btn_crea_post").addEventListener("click", function() {
         event.preventDefault();
         var form = document.getElementById("form_post");
@@ -389,6 +264,7 @@
            "&category=" + encodeURIComponent(document.getElementById("selected-category").value);
         xhr.send(data);
     });
+    <?php endif; ?>
 
     document.getElementById("selectTopicButton-articoli").addEventListener("click", function() {
         event.preventDefault();
