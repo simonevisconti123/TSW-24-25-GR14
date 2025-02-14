@@ -168,41 +168,52 @@
 
             $topics = $_SESSION["topics"];
 
-            $result = pg_prepare($db,"Check_if_exists"," SELECT * FROM posts WHERE topic_appartenenza=$1");
-            $execution = pg_execute($db, "Check_if_exists", array($topics));
+            $result = pg_prepare($db,"Retrieve_posts"," SELECT * FROM posts WHERE topic_appartenenza=$1");
+            $execution = pg_execute($db, "Retrieve_posts", array($topics));
             
             while ($returned_row = pg_fetch_assoc($execution)) {
-               echo "   <div class='post' id='post-".$returned_row["id"]."'>
-                            <div class='postInfoBlock'>
-                                <span><img class='postUserImage' src='img/profiloAnthony.jpg' id='1'></span>
-                                <span class='postUsername'>".$returned_row["autore"]."</span>
-                            </div>
-                            <div class='postDataBlock'>
-                                <div class='postHeaderBox'>
-                                    <div class='postTitle'>".$returned_row["titolo"]."</div>
-                                    <div class='topicDiAppartenenza'>".$returned_row["topic_appartenenza"]."</div>
-                                </div>
-
-                                <div class='postTagsBox'>
-                                    <span class='postTag'>Unisa</span>
-                                    <span class='postTag'>Avellino-Fisciano</span>
-                                    <span class='postTag'>Aiuto</span>
-                                </div>
-
-                                <div class='postBodyBox'>
-                                    <p>".$returned_row["corpo"]."</p>
-                                </div>
-
-                                <div class='postInteractionBox'>
-                                    <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
-                                    <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                                    <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
-                                </div>
-                            </div>
+                $tags_list = explode(",", $returned_row["tags"]);
+                echo "<div class='post' id='post-" . $returned_row["id"] . "'>
+                        <div class='postInfoBlock'>
+                            <span><img class='postUserImage' src='img/profiloAnthony.jpg'></span>
+                            <span class='postUsername'>" . $returned_row["autore"] . "</span>
                         </div>
-                ";
+                        <div class='postDataBlock'>
+                            <div class='postHeaderBox'>
+                                <div class='postTitle'>" . $returned_row["titolo"] . "</div>
+                                <div class='topicDiAppartenenza'>" . $returned_row["topic_appartenenza"] . "</div>
+                            </div>";
+                
+                // Controllo se ci sono tag validi
+                if (!empty($tags_list) && count(array_filter($tags_list, 'trim')) > 0) {
+                    echo "<div class='postTagsBox'>";
+                    
+                    // Ciclo `foreach` per aggiungere ogni tag
+                    foreach ($tags_list as $parola) {
+                        $parola = trim($parola); // Rimuove eventuali spazi in eccesso
+                        if (!empty($parola)) { // Stampa solo se il tag non è vuoto
+                            echo "<span class='postTag'>" . htmlspecialchars($parola) . "</span> ";
+                        }
+                    }
+                    
+                    echo "</div>";
+                }
+                
+                echo "  <div class='postBodyBox'>
+                            <p>" . $returned_row["corpo"] . "</p>
+                        </div>
+                
+                        <div class='postInteractionBox'>
+                            <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                            <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                            <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
+                        </div>
+                    </div>
+                </div>";
             }
-            ?>
+        ?>
+                
+                
 
         </div>
     </div>
