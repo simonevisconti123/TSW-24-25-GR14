@@ -154,7 +154,7 @@
             <?php endif; ?>
 
             <!--AGGIUNTA DI NUOVI POST E RELATIVE SEZIONI COMMENTO-->
-
+            <!-- creazione post -->
             <?php
             $host = 'localhost';
             $port = '5432';
@@ -172,38 +172,52 @@
             $execution = pg_execute($db, "Check_if_exists", array($topics));
             
             while ($returned_row = pg_fetch_assoc($execution)) {
-               echo "   <div class='post' id='post-".$returned_row["id"]."'>
-                            <div class='postInfoBlock'>
-                                <span><img class='postUserImage' src='img/profiloAnthony.jpg' id='1'></span>
-                                <span class='postUsername'>".$returned_row["autore"]."</span>
+               echo "   
+                <div class='post' id='post-".$returned_row["id"]."'>
+                        <div class='postInfoBlock'>
+                            <span><img class='postUserImage' src='img/profiloAnthony.jpg' id='1'></span>
+                            <span class='postUsername'>".$returned_row["autore"]."</span>
+                        </div>
+                        <div class='postDataBlock'>
+                            <div class='postHeaderBox'>
+                                <div class='postTitle'>".$returned_row["titolo"]."</div>
+                                <div class='topicDiAppartenenza'>".$returned_row["topic_appartenenza"]."</div>
                             </div>
-                            <div class='postDataBlock'>
-                                <div class='postHeaderBox'>
-                                    <div class='postTitle'>".$returned_row["titolo"]."</div>
-                                    <div class='topicDiAppartenenza'>".$returned_row["topic_appartenenza"]."</div>
-                                </div>
 
-                                <div class='postTagsBox'>
-                                    <span class='postTag'>Unisa</span>
-                                    <span class='postTag'>Avellino-Fisciano</span>
-                                    <span class='postTag'>Aiuto</span>
-                                </div>
+                            <div class='postTagsBox'>
+                                <span class='postTag'>Unisa</span>
+                                <span class='postTag'>Avellino-Fisciano</span>
+                                <span class='postTag'>Aiuto</span>
+                            </div>
 
-                                <div class='postBodyBox'>
-                                    <p>".$returned_row["corpo"]."</p>
-                                </div>
+                            <div class='postBodyBox'>
+                                <p>".$returned_row["corpo"]."</p>
+                            </div>
 
-                                <div class='postInteractionBox'>
-                                    <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
-                                    <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                                    <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
-                                </div>
+                            <div class='postInteractionBox'>
+                                <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                                <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                                <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
                             </div>
                         </div>
+                    </div>
                 ";
-            }
-            ?>
 
+                //creazione sezione commenti
+                echo "
+                    <div class='postComments' id='comment-".$returned_row["id"]."'>
+                    <!--SEZIONE CREAZIONE COMMENTO-->
+                        <div class='commentSubmitBlock'>
+                                <input class='commentInsertionBar' type='text' placeholder='commenta'>
+                                <button class='commentButton'><i class='fa-solid fa-paper-plane'></i></button>
+                        </div>
+
+                    <!--SHOW COMMENTI-->
+
+                    </div>
+                ";
+                }
+            ?>
         </div>
     </div>
 

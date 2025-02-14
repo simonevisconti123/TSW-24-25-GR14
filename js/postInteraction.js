@@ -9,7 +9,7 @@ function postInteraction() {
 
     //GESTIONE ICONE HEART
     heartIconList.forEach(function(icon) {
-        let commentFlag=false; //definisce se l'icona è stata selezionata o meno
+        let heartFlag=false; //definisce se l'icona è stata selezionata o meno
 
         //click
         icon.addEventListener("click", function(){
@@ -17,20 +17,16 @@ function postInteraction() {
             let currentPost = icon.closest(".post");
             let currentPostID = currentPost.id;
 
-            /*calcoliamo ora l'id della relativa sezione commenti*/
-            let currentCommentsID = currentPostID.replace("post", "comment");
-            let currentComments = document.getElementById(currentCommentsID);
-
             /*quando viene cliccata controllo che l'icona dei commenti sia regular o solid, per
-            fare in modo che al click cambi da uno stile all'altro e che la sezione commenti appaia o scompaia*/
+            fare in modo che al click cambi da uno stile all'altro*/
             if(icon.classList.contains("fa-regular")){
                 icon.classList.remove("fa-regular");
                 icon.classList.add("fa-solid");
-                commentFlag=true;
+                heartFlag=true;
             }else{
                 icon.classList.remove("fa-solid");
                 icon.classList.add("fa-regular");
-                commentFlag=false;
+                heartFlag=false;
             }
         });
     });
@@ -67,7 +63,7 @@ function postInteraction() {
 
     //GESTIONE ICONE BOOKMARK
     bookmarkIconList.forEach(function(icon) {
-        let commentFlag=false; //definisce se l'icona è stata selezionata o meno
+        let bookmarkFlag=false; //definisce se l'icona è stata selezionata o meno
 
         //click
         icon.addEventListener("click", function(){
@@ -75,20 +71,16 @@ function postInteraction() {
             let currentPost = icon.closest(".post");
             let currentPostID = currentPost.id;
 
-            /*calcoliamo ora l'id della relativa sezione commenti*/
-            let currentCommentsID = currentPostID.replace("post", "comment");
-            let currentComments = document.getElementById(currentCommentsID);
-
             /*quando viene cliccata controllo che l'icona dei commenti sia regular o solid, per
-            fare in modo che al click cambi da uno stile all'altro e che la sezione commenti appaia o scompaia*/
+            fare in modo che al click cambi da uno stile all'altro*/
             if(icon.classList.contains("fa-regular")){
                 icon.classList.remove("fa-regular");
                 icon.classList.add("fa-solid");
-                commentFlag=true;
+                bookmarkFlag=true;
             }else{
                 icon.classList.remove("fa-solid");
                 icon.classList.add("fa-regular");
-                commentFlag=false;
+                bookmarkFlag=false;
             }
         });
     });
