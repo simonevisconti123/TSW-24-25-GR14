@@ -216,15 +216,26 @@
                         <div class='postBodyBox'>
                             <p>" . $returned_row["corpo"] . "</p>
                         </div>
-                
-                        <div class='postInteractionBox'>
-                            <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
-                            <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                            <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
-                        </div>
+                        ";
+
+                        if(isset($_SESSION["username"])){
+                            echo "
+                            <div class='postInteractionBox'>
+                                <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                                <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                                <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
+                            </div>
+                            ";
+                        }else{
+                            echo "
+                            <div class='postInteractionBox'>
+                                <p> Devi essere loggato per interagire con i post </p>
+                            </div>
+                            ";
+                        }
+                        echo "
                     </div>
                 </div>";
-
                 //creazione sezione commenti
                 echo "
                     <div class='postComments' id='comment-".$returned_row["id"]."'>
