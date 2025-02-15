@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="css/settings_style.css">
     <script src="js/utilities.js"></script>
 
-    <!-- Connessione a Font Awesome per utilizzare le icone -->
-    <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Mega:wght@553&display=swap" rel="stylesheet">
