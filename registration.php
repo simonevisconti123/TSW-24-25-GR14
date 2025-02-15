@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["inputUserName"], $_PO
                 $message = "Email già utilizzata";
             }
         } else {
-            $result = pg_prepare($db, "Insertion", "INSERT INTO utenti VALUES ($1, 'url_pro_pic_here', $2, $3, '23,24,25');");
+            $result = pg_prepare($db, "Insertion", "INSERT INTO utenti VALUES ($1, '', $2, $3, '23,24,25');");
             $ret = pg_execute($db, "Insertion", array($user, $email, $hashed_pswd));
 
             if ($ret === false) {
