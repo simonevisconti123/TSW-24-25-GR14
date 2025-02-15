@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
     session_start();
-    if(is_null($_SESSION["topics"])){
+    if(!isset($_SESSION["topics"])){
         $_SESSION["topics"] = "articoli";
     }
 ?>
@@ -172,11 +172,23 @@
             $execution = pg_execute($db, "Retrieve_posts", array($topics));
             
             while ($returned_row = pg_fetch_assoc($execution)) {
+
+                $result_2 = pg_prepare($db,"Retrieve_pro_pic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
+                $execution_2 = pg_execute($db, "Retrieve_pro_pic", array($returned_row["autore"]));
+
+                $fetch_pro_pic = pg_fetch_assoc($execution_2);
+
+                if(!empty($fetch_pro_pic["immagine_profilo"])){
+                    $pro_pic = $fetch_pro_pic["immagine_profilo"];
+                }else{
+                    $pro_pic = "default_pic.jpg";
+                }
+
                 $tags_list = explode(",", $returned_row["tags"]);
                 echo "
                 <div class='post' id='post-" . $returned_row["id"] . "'>
                         <div class='postInfoBlock'>
-                            <span><img class='postUserImage' src='img/profiloAnthony.jpg'></span>
+                            <span><img class='postUserImage' src='php/usr_imgs/".$pro_pic."'></span>
                             <span class='postUsername'>" . $returned_row["autore"] . "</span>
                         </div>
                         <div class='postDataBlock'>
@@ -218,7 +230,8 @@
                     <div class='postComments' id='comment-".$returned_row["id"]."'>
                     <!--SEZIONE CREAZIONE COMMENTO-->
                         <div class='commentSubmitBlock'>
-                                <input class='commentInsertionBar' type='text' placeholder='commenta'>
+                                <input class='commentInsertionBar' type='text' id='comment_bar-".$returned_row["id"]."' placeholder='commenta'>
+                                 <input type='hidden' id='selected_post-' value=".$returned_row["id"].">
                                 <button class='commentButton'><i class='fa-solid fa-paper-plane'></i></button>
                         </div>
 
@@ -365,6 +378,39 @@
         data = "value=transport";
         xhr.send(data);
     });
+
+    let commentList = document.querySelectorAll(".commentButton");
+
+    commentList.forEach(function(btn) {
+
+        btn.addEventListener("click", function() {
+        let currentPost = btn.closest(".postComments");
+        let currentPostID = currentPost.id;
+        let currentCommentsID = currentPostID.replace("comment-", "");
+        event.preventDefault();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/post_comment.php", true); // URL del file PHP
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.responseType = 'json';
+
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+
+                var response = xhr.response;
+                if(response.success){
+                    setTimeout(() => {
+                    window.location.reload();
+                }, 100);
+                }
+            }
+        };
+        val1 = document.getElementById("comment_bar-".concat(currentCommentsID)).value;
+        data = "comment=".concat(val1,"&post_appart=",currentCommentsID);
+        xhr.send(data);
+    });
+});
 
 
 </script>
