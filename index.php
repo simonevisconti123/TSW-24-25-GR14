@@ -109,7 +109,7 @@
                 </div>
             </div>
             
-            <!--DIV CHE GESTISCE L'INSERIMENTO DI NUOVI POST NEL TOPIC-->
+            <!--PULSANTE CHE GESTISCE L'INSERIMENTO DI NUOVI POST NEL TOPIC-->
             <?php if(isset($_SESSION["username"])): ?>
             <div class="addPostButtonDiv">
                 <!--pulsante aggiunta post-->
@@ -153,9 +153,9 @@
             </form>
             <?php endif; ?>
 
-            <!--AGGIUNTA DI NUOVI POST E RELATIVE SEZIONI COMMENTO-->
-            <!-- creazione post -->
+            <!--SHOW DEI POST SALVATI NEL db E RELATIVE SEZIONI COMMENTO-->
             <?php
+            //connessione al db
             $host = 'localhost';
             $port = '5432';
             $db = 'gruppo14';
@@ -164,97 +164,127 @@
             $connection_string = "host=$host dbname=$db user=$username password=$password";
             
             $db = pg_connect($connection_string)
-            or die('Impossibile connetersi al database: ' . pg_last_error());
+            or die('Impossibile connettersi al database: ' . pg_last_error());
 
+            //retrieve di tutti i post salvati nel db relativi al topic selezionato
             $topics = $_SESSION["topics"];
 
-            $result = pg_prepare($db,"Retrieve_posts"," SELECT * FROM posts WHERE topic_appartenenza=$1");
-            $execution = pg_execute($db, "Retrieve_posts", array($topics));
+            $postListQuery = pg_prepare($db,"Retrieve_posts"," SELECT * FROM posts WHERE topic_appartenenza=$1");
+            $postListResult = pg_execute($db, "Retrieve_posts", array($topics));
+
+            $postAuthorProPicQuery = pg_prepare($db,"Retrieve_postAuthorProPic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
+            $commentListQuery = pg_prepare($db,"Retrieve_comments","SELECT * FROM commenti WHERE id_post_appartenenza = $1");
+            $commentAuthorQuery = pg_prepare($db,"Retrieve_user_info","SELECT * FROM utenti WHERE nome_utente = $1");
             
-            while ($returned_row = pg_fetch_assoc($execution)) {
+            //inizio istruzioni da eseguire per tutti i post del topic selezionato
+            while ($returned_row = pg_fetch_assoc($postListResult)) {
 
-                $result_2 = pg_prepare($db,"Retrieve_pro_pic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
-                $execution_2 = pg_execute($db, "Retrieve_pro_pic", array($returned_row["autore"]));
+                //POST
+                    //retrieve dati del post e stampa
+                    $postAuthorProPicResult = pg_execute($db, "Retrieve_postAuthorProPic", array($returned_row["autore"]));
+                    $fetch_postAuthorProPic = pg_fetch_assoc($postAuthorProPicResult);
 
-                $fetch_pro_pic = pg_fetch_assoc($execution_2);
+                    if(!empty($fetch_postAuthorProPic["immagine_profilo"])){
+                        $postAuthorProPic = $fetch_postAuthorProPic["immagine_profilo"];
+                    }else{
+                        $postAuthorProPic = "default_pic.jpg";
+                    }
 
-                if(!empty($fetch_pro_pic["immagine_profilo"])){
-                    $pro_pic = $fetch_pro_pic["immagine_profilo"];
-                }else{
-                    $pro_pic = "default_pic.jpg";
-                }
-
-                $tags_list = explode(",", $returned_row["tags"]);
-                echo "
-                <div class='post' id='post-" . $returned_row["id"] . "'>
-                        <div class='postInfoBlock'>
-                            <span><img class='postUserImage' src='php/usr_imgs/".$pro_pic."'></span>
-                            <span class='postUsername'>" . $returned_row["autore"] . "</span>
-                        </div>
-                        <div class='postDataBlock'>
-                            <div class='postHeaderBox'>
-                                <div class='postTitle'>" . $returned_row["titolo"] . "</div>
-                                <div class='topicDiAppartenenza'>" . $returned_row["topic_appartenenza"] . "</div>
-                            </div>";
-                
-                        // Controllo se ci sono tag validi
-                        if (!empty($tags_list) && count(array_filter($tags_list, 'trim')) > 0) {
-                            echo "<div class='postTagsBox'>";
-                            
-                            // Ciclo `foreach` per aggiungere ogni tag
-                            foreach ($tags_list as $parola) {
-                                $parola = trim($parola); // Rimuove eventuali spazi in eccesso
-                                if (!empty($parola)) { // Stampa solo se il tag non è vuoto
-                                    echo "<span class='postTag'>" . htmlspecialchars($parola) . "</span> ";
+                    $tags_list = explode(",", $returned_row["tags"]);
+                    echo "
+                    <div class='post' id='post-" . $returned_row["id"] . "'>
+                            <div class='postInfoBlock'>
+                                <span><img class='postUserImage' src='php/usr_imgs/".$postAuthorProPic."'></span>
+                                <span class='postUsername'>" . $returned_row["autore"] . "</span>
+                            </div>
+                            <div class='postDataBlock'>
+                                <div class='postHeaderBox'>
+                                    <div class='postTitle'>" . $returned_row["titolo"] . "</div>
+                                    <div class='topicDiAppartenenza'>" . $returned_row["topic_appartenenza"] . "</div>
+                                </div>";
+                    
+                            // Controllo se ci sono tag validi
+                            if (!empty($tags_list) && count(array_filter($tags_list, 'trim')) > 0) {
+                                echo "<div class='postTagsBox'>";
+                                
+                                // Ciclo `foreach` per aggiungere ogni tag
+                                foreach ($tags_list as $parola) {
+                                    $parola = trim($parola); // Rimuove eventuali spazi in eccesso
+                                    if (!empty($parola)) { // Stampa solo se il tag non è vuoto
+                                        echo "<span class='postTag'>" . htmlspecialchars($parola) . "</span> ";
+                                    }
                                 }
+                                
+                                echo "</div>";
                             }
-                            
-                            echo "</div>";
-                        }
 
-                        echo "  
-                        <div class='postBodyBox'>
-                            <p>" . $returned_row["corpo"] . "</p>
+                            echo "  
+                            <div class='postBodyBox'>
+                                <p>" . $returned_row["corpo"] . "</p>
+                            </div>
+                            ";
+
+                            if(isset($_SESSION["username"])){
+                                echo "
+                                <div class='postInteractionBox'>
+                                    <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                                    <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                                    <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
+                                </div>
+                                ";
+                            }else{
+                                echo "
+                                <div class='postInteractionBox'>
+                                    <p> Devi essere loggato per interagire con i post </p>
+                                </div>
+                                ";
+                            }
+                            echo "
                         </div>
-                        ";
+                    </div>";
 
-                        if(isset($_SESSION["username"])){
-                            echo "
-                            <div class='postInteractionBox'>
-                                <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
-                                <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                                <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
-                            </div>
-                            ";
-                        }else{
-                            echo "
-                            <div class='postInteractionBox'>
-                                <p> Devi essere loggato per interagire con i post </p>
-                            </div>
-                            ";
-                        }
-                        echo "
-                    </div>
-                </div>";
-                //creazione sezione commenti
-                echo "
-                    <div class='postComments' id='comment-".$returned_row["id"]."'>
+                //COMMENTI DEL POST
+                echo"
+                <div class='postComments' id='comment-".$returned_row["id"]."'>
                     <!--SEZIONE CREAZIONE COMMENTO-->
                         <div class='commentSubmitBlock'>
                                 <input class='commentInsertionBar' type='text' id='comment_bar-".$returned_row["id"]."' placeholder='commenta'>
-                                 <input type='hidden' id='selected_post-' value=".$returned_row["id"].">
+                                <input type='hidden' id='selected_post-".$returned_row["id"]."' value=".$returned_row["id"].">
                                 <button class='commentButton'><i class='fa-solid fa-paper-plane'></i></button>
                         </div>
-
-                    <!--SHOW COMMENTI-->
-
-                    </div>
                 ";
-            }
-        ?>
-                
-                
+                    //retrieve lista dei commenti relativi al post corrente
+                    $commentListResult = pg_execute($db, "Retrieve_comments", array($returned_row["id"]));
 
+                    //scorro i commenti del post in questione uno alla volta
+                    while ($commentRow = pg_fetch_assoc($commentListResult)) {
+
+                        /*per ognuno dei commenti devo leggere l'autore (username) e fare una query
+                        per ottenere i dati dell'utente che ha scritto il commento*/
+                        $commentAuthorResult = pg_execute($db, "Retrieve_user_info", array($commentRow["autore"]));
+                        $commentAuthorData =  pg_fetch_assoc($commentAuthorResult);
+
+                        //stampo il commento avendo tutti i dati
+                        echo "
+                                <!--COMMENTI RELATIVI AL POST-->
+                                    <div class='commentBlock'>
+                                        <!--Dati utente che commenta-->
+                                        <div class='commentInfoBox'>
+                                            <img class='commentUserImage' src='img/profiloAnthony.jpg'>
+                                            <span class='commentUsername'>".$commentAuthorData["nome_utente"]."</span>
+                                        </div>
+                                        
+                                        <!--Contenuto del commento-->
+                                        <div class='commentDataBox'>
+                                            <p>".$commentRow["corpo"]."</p>
+                                        </div>
+                                    </div>
+                        ";
+                    }
+                
+                echo "</div>";
+            }
+        ?>      
         </div>
     </div>
 
@@ -264,9 +294,8 @@
     </div>
 </body>
 
-
-
-<script>
+<script> //ajax per comunicazione di index.php con gli script php esterni
+    //CREAZIONE DEI POST NEL RELATIVO TOPIC 
     <?php if(isset($_SESSION["username"])): ?>
     document.getElementById("btn_crea_post").addEventListener("click", function() {
         event.preventDefault();
@@ -318,6 +347,7 @@
     });
     <?php endif; ?>
 
+    //SELEZIONE DEL TOPIC CHE SI VUOLE NAVIGARE
     document.getElementById("selectTopicButton-articoli").addEventListener("click", function() {
         event.preventDefault();
 
@@ -390,9 +420,9 @@
         xhr.send(data);
     });
 
-    let commentList = document.querySelectorAll(".commentButton");
-
-    commentList.forEach(function(btn) {
+    //SALVATAGGIO DEI COMMENTI NEL POST SU CUI SONO STATI SCRITTI
+    let commentButtonList = document.querySelectorAll(".commentButton");
+    commentButtonList.forEach(function(btn) {
 
         btn.addEventListener("click", function() {
         let currentPost = btn.closest(".postComments");
