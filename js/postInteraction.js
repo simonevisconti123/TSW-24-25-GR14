@@ -62,7 +62,13 @@ function postInteraction() {
 
     //GESTIONE ICONE BOOKMARK
     bookmarkIconList.forEach(function(icon) {
-        var bookmarkFlag=false; //definisce se l'icona è stata selezionata o meno
+        //controllo se, appena è caricata la pagina, l'icona risulta selezionata o meno
+        let bookmarkFlag;
+        if(icon.classList.contains("fa-regular")){
+            bookmarkFlag=false;
+        }else{
+            bookmarkFlag=true;
+        }
 
         //click
         icon.addEventListener("click", function(){
@@ -94,7 +100,7 @@ function postInteraction() {
                     var response = xhr.response;
                     if(response.success){
                         setTimeout(() => {
-                            window.location.reload();
+                           
                         }, 100);
                     }
                 }
