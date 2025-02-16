@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="css/settings_style.css">
     <script src="js/utilities.js"></script>
 
+    <!-- SCRIPT PER IL RANDOM COLO PICKER DEI TAGS-->
+    <script src="js/randomColorPicker.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Mega:wght@553&display=swap" rel="stylesheet">
