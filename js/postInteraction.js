@@ -1,6 +1,5 @@
 /*funzione che gestisce lo swap delle icone e che
 varia a seconda dell'icona che dobbiamo scambiare*/
-
 function postInteraction() {
     // Seleziona le icone all'interno di un tag span con la classe "heartIcon"
     let heartIconList = document.querySelectorAll(".heartIcon .fa-heart");
@@ -63,7 +62,7 @@ function postInteraction() {
 
     //GESTIONE ICONE BOOKMARK
     bookmarkIconList.forEach(function(icon) {
-        let bookmarkFlag=false; //definisce se l'icona è stata selezionata o meno
+        var bookmarkFlag=false; //definisce se l'icona è stata selezionata o meno
 
         //click
         icon.addEventListener("click", function(){
@@ -82,6 +81,27 @@ function postInteraction() {
                 icon.classList.add("fa-regular");
                 bookmarkFlag=false;
             }
+
+            let exactPostID = currentPostID.replace("post-", "");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "php/bookmark_post.php", true); // URL del file PHP
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.responseType = 'json';
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    var response = xhr.response;
+                    if(response.success){
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 100);
+                    }
+                }
+            };
+
+            let data = "postID=".concat(exactPostID, "&selected=", bookmarkFlag);
+            xhr.send(data);
         });
     });
 }

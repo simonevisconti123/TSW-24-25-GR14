@@ -166,7 +166,6 @@
             $db = pg_connect($connection_string)
             or die('Impossibile connettersi al database: ' . pg_last_error());
 
-            //retrieve di tutti i post salvati nel db relativi al topic selezionato
             $topics = $_SESSION["topics"];
 
             $postListQuery = pg_prepare($db,"Retrieve_posts"," SELECT * FROM posts WHERE topic_appartenenza=$1");
@@ -264,13 +263,19 @@
                         $commentAuthorResult = pg_execute($db, "Retrieve_user_info", array($commentRow["autore"]));
                         $commentAuthorData =  pg_fetch_assoc($commentAuthorResult);
 
+                        if(!empty($commentAuthorData["immagine_profilo"])){
+                            $commentAuthorProPic = $commentAuthorData["immagine_profilo"];
+                        }else{
+                            $commentAuthorProPic = "default_pic.jpg";
+                        }
+
                         //stampo il commento avendo tutti i dati
                         echo "
                                 <!--COMMENTI RELATIVI AL POST-->
                                     <div class='commentBlock'>
                                         <!--Dati utente che commenta-->
                                         <div class='commentInfoBox'>
-                                            <img class='commentUserImage' src='img/profiloAnthony.jpg'>
+                                            <img class='commentUserImage' src='php/usr_imgs/".$commentAuthorProPic."'>
                                             <span class='commentUsername'>".$commentAuthorData["nome_utente"]."</span>
                                         </div>
                                         
@@ -452,7 +457,6 @@
         xhr.send(data);
     });
 });
-
 
 </script>
 
