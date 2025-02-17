@@ -455,7 +455,7 @@
                 if(response.success){
                     setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 300);
                 }
             } else {
                 document.getElementById("topic_output_label").innerHTML = "Errore nella richiesta.";
