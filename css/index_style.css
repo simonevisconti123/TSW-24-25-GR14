@@ -17,9 +17,6 @@ body {
     height: 100vh;
 }
 
-.container-blurred{
-    filter: blur(3px);
-}
     /*upBar*/
     .upBar {
         background-color: #15151A;
@@ -317,16 +314,34 @@ body {
                 cursor: pointer;
             }
 
+
+            /*blur dello sfondo all'apertura del form*/
+            #overlayBlurDelForm-hidden{
+                display: none;
+            }
+
+            #overlayBlurDelForm{
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(5px);
+                z-index: 10;
+            }
+
             /*newPostForm*/
             .newPostForm {
-                color: white;
+                color: rgb(0, 0, 0);
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 width: 40%;
                 transform: translate(-50%, -50%);
                 z-index: 9999;
-                background-color:#292934;
+                background-color:#ffffff;
                 border-radius: 10px;
                 font-family: "Inter", sans-serif;
                 padding: 30px;
@@ -342,21 +357,32 @@ body {
             }
 
                 /*closeButton*/
+                .closeButtonBox{
+                    display: flex;
+                    justify-content: right;
+                }
+
                 .closeButton{
-                    color:#ED1010;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    color: black;
+                    background-color: #e6e6e6;
                     display: inline-flex;
-                    justify-content: flex-end;
-                    align-items: flex-end;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 .closeButton:hover{
                     cursor: pointer;
-                    color: #a50f0f;
+                    color: white;
+                    background-color: #ED1010;
                 }
 
                 /*input e textarea del form*/
                 .newPostForm input,
                 .newPostForm textarea {
+                    background-color: #e6e6e6;
                     border: none;
                     border-radius: 8px;
                     padding: 10px;
@@ -365,16 +391,15 @@ body {
                 .newPostForm input,
                 .newPostForm textarea:focus{
                     border:none;
+                    outline: none;
                 }
 
                 .newPostForm input::placeholder{
                     font-family: "Inter";
-                    color: #aaa;
                 }
 
                 .newPostForm textarea::placeholder{
                     font-family: "Inter";
-                    color: #aaa;
                 }
                 
                 .newPostForm input {
@@ -385,6 +410,47 @@ body {
                     min-height: 100px;
                 }
 
+                /*gestione dei tag*/
+                .tagsBox {
+                    margin-top: 10px;
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+                
+                .tagsBox label {
+                    display: inline-block;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    background-color: #e6e6e6;
+                    color: black;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    transition: all 0.2s ease-in-out;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                
+                .tagsBox label:active {
+                    transform: scale(0.95);
+                    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+                }
+                
+                .tagsBox input[type="checkbox"]:checked + label {
+                    background-color: #5a4ac9; /* Viola più scuro */
+                    color: white;
+                    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                
+                .tagsBox label:hover {
+                    background-color: #d9d9d9;
+                }
+                
+                .tagsBox input[type="checkbox"] {
+                    display: none;
+                }
+
                 /*Titoli delle label*/
                 .newPostForm label{
                     font-style: italic;
@@ -392,17 +458,21 @@ body {
                 
                 /*pulsante post*/
                 .newPostForm .submit-btn {
-                    margin-top: 10px;
-                    background-color:#FFF200;
-                    font-weight: 700;
-                    border: none;
-                    border-radius: 8px;
+                    font-family: "Inter", sans-serif;
+                    font-weight: 600;
+                    font-size: large;
+                    display: block;
+                    width: 100%;
                     padding: 10px;
+                    margin-top: 20px;
+                    background-color: #6a5acd;
+                    color: white;
+                    border: none;
+                    border-radius: 10px;
                     cursor: pointer;
                 }
-        
                 .newPostForm .submit-btn:hover {
-                    background-color: #9F9700;
+                    background-color: #5a4ac9;
                 }
 
             /*post*/

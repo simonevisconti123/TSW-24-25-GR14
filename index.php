@@ -96,7 +96,6 @@
             <div class="topicBanner">
             <div class="content">
             <?php
-                    
                     if($_SESSION["topics"] == "articoli"){
                         echo "<h1>Articoli <i class='fa-solid fa-newspaper'></i></h1>";
                     }else if($_SESSION["topics"] == "esami"){
@@ -104,7 +103,6 @@
                     }else{
                         echo "<h1>Mezzi di trasporto <i class='fa-solid fa-bus'></i></h1>";
                     }
-                    
             ?>
                 </div>
             </div>
@@ -117,8 +115,10 @@
             </div>
 
             <!--FORM DI AGGIUNTA DI NUOVI POST-->
+            <div id="overlayBlurDelForm-hidden"></div>
+
             <form onsubmit="return check_post_creations(this)" class="newPostForm newPostForm-hidden" id="form_post">
-                <span class="closeButton"><i class="fa-solid fa-x"></i></span>
+                <span class="closeButtonBox"><span class="closeButton"><i class="fa-solid fa-x"></i></span></span>
                 <h2>Nuovo Post</h2>
 
                 <label for="title">Titolo</label>
@@ -126,20 +126,125 @@
 
                 <label for="tags">Tags</label>
                 <div class="tagsBox">
-                    <label><input type="checkbox" value="Aiuto">Aiuto</label>
-                    <label><input type="checkbox" value="LM-32">LM-32</label>
-                    <label><input type="checkbox" value="L-8">L-8</label>
-                    <label><input type="checkbox" value="Scritto">Scritto</label>
-                    <label><input type="checkbox" value="Orale">Orale</label>
-                    <label><input type="checkbox" value="Appunti">Appunti</label>
-                    <label><input type="checkbox" value="Orari">Orari</label>
-                    <label><input type="checkbox" value="Informatica">Informatica</label>
-                    <label><input type="checkbox" value="Matematica">Matematica</label>
-                    <label><input type="checkbox" value="Fisica">Fisica</label>
-                    <label><input type="checkbox" value="Pullman">Pullman</label>
-                    <label><input type="checkbox" value="Treno">Treno</label>
-                    <label><input type="checkbox" value="Tratte">Tratte</label>
+                    
+                    <?php if($_SESSION["topics"] == "esami"): ?>
+                        <!-- Esami -->
+                        <input type="checkbox" id="tag-esami-scritto" value="Scritto">
+                        <label for="tag-esami-scritto" class="tag-Esami">Scritto</label>
+
+                        <input type="checkbox" id="tag-esami-orale" value="Orale">
+                        <label for="tag-esami-orale" class="tag-Esami">Orale</label>
+
+                        <input type="checkbox" id="tag-esami-appello" value="Appello">
+                        <label for="tag-esami-appello" class="tag-Esami">Appello</label>
+
+                        <input type="checkbox" id="tag-esami-voto" value="Voto">
+                        <label for="tag-esami-voto" class="tag-Esami">Voto</label>
+
+                        <input type="checkbox" id="tag-esami-materia" value="Materia">
+                        <label for="tag-esami-materia" class="tag-Esami">Materia</label>
+
+                        <input type="checkbox" id="tag-esami-difficoltà" value="Difficoltà">
+                        <label for="tag-esami-difficoltà" class="tag-Esami">Difficoltà</label>
+
+                        <input type="checkbox" id="tag-esami-professore" value="Professore">
+                        <label for="tag-esami-professore" class="tag-Esami">Professore</label>
+
+                        <input type="checkbox" id="tag-esami-quiz" value="Quiz">
+                        <label for="tag-esami-quiz" class="tag-Esami">Quiz</label>
+
+                        <input type="checkbox" id="tag-esami-compiti" value="Compiti">
+                        <label for="tag-esami-compiti" class="tag-Esami">Compiti</label>
+
+                        <input type="checkbox" id="tag-esami-preparazione" value="Preparazione">
+                        <label for="tag-esami-preparazione" class="tag-Esami">Preparazione</label>
+
+                        <input type="checkbox" id="tag-esami-tesi" value="Tesi">
+                        <label for="tag-esami-tesi" class="tag-Esami">Tesi</label>
+
+                        <input type="checkbox" id="tag-esami-materiale" value="Materiale">
+                        <label for="tag-esami-materiale" class="tag-Esami">Materiale</label>
+                    <?php endif; ?>
+                    
+                    <?php if($_SESSION["topics"] == "articoli"): ?>
+                        <!-- Articoli -->
+                        <input type="checkbox" id="tag-articoli-recensione" value="Recensione">
+                        <label for="tag-articoli-recensione" class="tag-Articoli">Recensione</label>
+
+                        <input type="checkbox" id="tag-articoli-opinione" value="Opinione">
+                        <label for="tag-articoli-opinione" class="tag-Articoli">Opinione</label>
+
+                        <input type="checkbox" id="tag-articoli-news" value="News">
+                        <label for="tag-articoli-news" class="tag-Articoli">News</label>
+
+                        <input type="checkbox" id="tag-articoli-scienza" value="Scienza">
+                        <label for="tag-articoli-scienza" class="tag-Articoli">Scienza</label>
+
+                        <input type="checkbox" id="tag-articoli-tecnologia" value="Tecnologia">
+                        <label for="tag-articoli-tecnologia" class="tag-Articoli">Tecnologia</label>
+
+                        <input type="checkbox" id="tag-articoli-educazione" value="Educazione">
+                        <label for="tag-articoli-educazione" class="tag-Articoli">Educazione</label>
+
+                        <input type="checkbox" id="tag-articoli-cultura" value="Cultura">
+                        <label for="tag-articoli-cultura" class="tag-Articoli">Cultura</label>
+
+                        <input type="checkbox" id="tag-articoli-economia" value="Economia">
+                        <label for="tag-articoli-economia" class="tag-Articoli">Economia</label>
+
+                        <input type="checkbox" id="tag-articoli-società" value="Società">
+                        <label for="tag-articoli-società" class="tag-Articoli">Società</label>
+
+                        <input type="checkbox" id="tag-articoli-sport" value="Sport">
+                        <label for="tag-articoli-sport" class="tag-Articoli">Sport</label>
+
+                        <input type="checkbox" id="tag-articoli-salute" value="Salute">
+                        <label for="tag-articoli-salute" class="tag-Articoli">Salute</label>
+
+                        <input type="checkbox" id="tag-articoli-ambiente" value="Ambiente">
+                        <label for="tag-articoli-ambiente" class="tag-Articoli">Ambiente</label>
+                    <?php endif; ?>
+
+                    <?php if($_SESSION["topics"] == "trasporto"): ?>
+                        <!-- Mezzi di Trasporto -->
+                        <input type="checkbox" id="tag-mezzi-bus" value="Bus">
+                        <label for="tag-mezzi-bus" class="tag-MezziDiTrasporto">Bus</label>
+
+                        <input type="checkbox" id="tag-mezzi-metro" value="Metro">
+                        <label for="tag-mezzi-metro" class="tag-MezziDiTrasporto">Metro</label>
+
+                        <input type="checkbox" id="tag-mezzi-treno" value="Treno">
+                        <label for="tag-mezzi-treno" class="tag-MezziDiTrasporto">Treno</label>
+
+                        <input type="checkbox" id="tag-mezzi-tram" value="Tram">
+                        <label for="tag-mezzi-tram" class="tag-MezziDiTrasporto">Tram</label>
+
+                        <input type="checkbox" id="tag-mezzi-taxi" value="Taxi">
+                        <label for="tag-mezzi-taxi" class="tag-MezziDiTrasporto">Taxi</label>
+
+                        <input type="checkbox" id="tag-mezzi-bici" value="Bici">
+                        <label for="tag-mezzi-bici" class="tag-MezziDiTrasporto">Bici</label>
+
+                        <input type="checkbox" id="tag-mezzi-monopattino" value="Monopattino">
+                        <label for="tag-mezzi-monopattino" class="tag-MezziDiTrasporto">Monopattino</label>
+
+                        <input type="checkbox" id="tag-mezzi-auto" value="Auto">
+                        <label for="tag-mezzi-auto" class="tag-MezziDiTrasporto">Auto</label>
+
+                        <input type="checkbox" id="tag-mezzi-carpooling" value="Carpooling">
+                        <label for="tag-mezzi-carpooling" class="tag-MezziDiTrasporto">Carpooling</label>
+
+                        <input type="checkbox" id="tag-mezzi-navetta" value="Navetta">
+                        <label for="tag-mezzi-navetta" class="tag-MezziDiTrasporto">Navetta</label>
+
+                        <input type="checkbox" id="tag-mezzi-viaggio" value="Viaggio">
+                        <label for="tag-mezzi-viaggio" class="tag-MezziDiTrasporto">Viaggio</label>
+
+                        <input type="checkbox" id="tag-mezzi-abbonamento" value="Abbonamento">
+                        <label for="tag-mezzi-abbonamento" class="tag-MezziDiTrasporto">Abbonamento</label>
+                    <?php endif; ?>
                 </div>
+
 
                 <input type="hidden" name="tags" id="hidden-tags">
                 <p id="error-message" style="color: red; display: none;">Puoi selezionare massimo 13 tag!</p>
