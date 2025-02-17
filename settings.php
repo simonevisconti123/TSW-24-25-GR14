@@ -112,215 +112,96 @@
             </div>
 
             <div id="postSalvatiBox">
-                <div class="post" id="post-2">
-                    <div class="postInfoBlock">
-                        <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                        <span class="postUsername">Anthony</span>
-                    </div>
-                    <div class="postDataBlock">
-                        <div class="postHeaderBox">
-                            <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                            <div class="topicDiAppartenenza">Mezzi di trasporto</div>
-                        </div>
 
-                        <div class="postTagsBox">
-                            <span class="postTag">Unisa</span>
-                            <span class="postTag">Avellino-Fisciano</span>
-                            <span class="postTag">Aiuto</span>
-                            <span class="postTag">MyAss</span>
-                        </div>
+                    <?php
+                        $host = 'localhost';
+                        $port = '5432';
+                        $db = 'gruppo14';
+                        $username = 'www';
+                        $password = 'tw2024';
+                        $connection_string = "host=$host dbname=$db user=$username password=$password";
+                                
+                        $db = pg_connect($connection_string)
+                        or die('Impossibile connettersi al database: ' . pg_last_error());
 
-                        <div class="postBodyBox">
-                            <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                            <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                            <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                                ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                                ✅ Dove posso acquistare i biglietti più facilmente?
-                                ✅ Esistono alternative più veloci o convenienti?</p>
+                        $postAuthorProPicQuery = pg_prepare($db,"Retrieve_postAuthorProPic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
 
 
-                            <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                            </p>
+                        $UsrpostListQuery = pg_prepare($db,"Retrieve_posts_from_usr"," SELECT post_salvati FROM utenti WHERE nome_utente=$1");
+                        $UsrpostListResult = pg_execute($db, "Retrieve_posts_from_usr", array($_SESSION["username"]));
+                        $DBpostListQuery = pg_prepare($db,"Retrieve_posts_from_DB"," SELECT * FROM posts");
+                        $DBpostListResult = pg_execute($db, "Retrieve_posts_from_DB", array());
+                        $DBpostListQueryFound = pg_prepare($db,"Retrieve_posts_from_DB_when_match"," SELECT * FROM posts WHERE id = $1");
+                        $returned_row = pg_fetch_assoc($UsrpostListResult);
+                        $arrayIdPostSalvatiDB = [];
+                        while ($row = pg_fetch_assoc($DBpostListResult)) {
+                            $arrayIdPostSalvatiDB[] = $row["id"];
+                        }
+                        $arrayIdPostSalvatiUsr = explode(",", $returned_row["post_salvati"]);
+                        foreach ($arrayIdPostSalvatiUsr as $index => $value) {
+                            if(in_array($value,$arrayIdPostSalvatiDB) == "1"){
+                                $execution_found = pg_execute($db,"Retrieve_posts_from_DB_when_match",array($value));
+                                $returned_row_3 = pg_fetch_assoc($execution_found);
+                                $postAuthorProPicResult = pg_execute($db, "Retrieve_postAuthorProPic", array($returned_row_3["autore"]));
+                                $fetch_postAuthorProPic = pg_fetch_assoc($postAuthorProPicResult);
+                                if(!empty($fetch_postAuthorProPic["immagine_profilo"])){
+                                    $postAuthorProPic = $fetch_postAuthorProPic["immagine_profilo"];
+                                }else{
+                                    $postAuthorProPic = "default_pic.jpg";
+                                }
 
-                            Grazie mille per l’aiuto! 🙌😊
-                        </div>
-                    </div>
-                </div>
+                                $tags_list = explode(",", $returned_row_3["tags"]);
+                                echo "
+                                <div class='post' id='post-" . $returned_row_3["id"] . "'>
+                                        <div class='postInfoBlock'>
+                                            <span><img class='postUserImage' src='php/usr_imgs/".$postAuthorProPic."'></span>
+                                            <span class='postUsername'>" . $returned_row_3["autore"] . "</span>
+                                        </div>
+                                        <div class='postDataBlock'>
+                                            <div class='postHeaderBox'>
+                                                <div class='postTitle'>" . $returned_row_3["titolo"] . "</div>
+                                                <div class='topicDiAppartenenza'>" . $returned_row_3["topic_appartenenza"] . "</div>
+                                            </div>";
+                                
+                                        // Controllo se ci sono tag validi
+                                        if (!empty($tags_list) && count(array_filter($tags_list, 'trim')) > 0) {
+                                            echo "<div class='postTagsBox'>";
+                                            
+                                            // Ciclo `foreach` per aggiungere ogni tag
+                                            foreach ($tags_list as $parola) {
+                                                $parola = trim($parola); // Rimuove eventuali spazi in eccesso
+                                                if (!empty($parola)) { // Stampa solo se il tag non è vuoto
+                                                    echo "<span class='postTag'>" . htmlspecialchars($parola) . "</span> ";
+                                                }
+                                            }
+                                            
+                                            echo "</div>";
+                                        }
+            
+                                        echo "  
+                                        <div class='postBodyBox'>
+                                            <p>" . $returned_row_3["corpo"] . "</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                        ";
+                            }
+                        }
 
-                <div class="post" id="post-2">
-                    <div class="postInfoBlock">
-                        <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                        <span class="postUsername">Anthony</span>
-                    </div>
-                    <div class="postDataBlock">
-                        <div class="postHeaderBox">
-                            <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                            <div class="topicDiAppartenenza">Mezzi di trasporto</div>
-                        </div>
-
-                        <div class="postTagsBox">
-                            <span class="postTag">Unisa</span>
-                            <span class="postTag">Avellino-Fisciano</span>
-                            <span class="postTag">Aiuto</span>
-                            <span class="postTag">MyAss</span>
-                        </div>
-
-                        <div class="postBodyBox">
-                            <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                            <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                            <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                                ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                                ✅ Dove posso acquistare i biglietti più facilmente?
-                                ✅ Esistono alternative più veloci o convenienti?</p>
-
-
-                            <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                            </p>
-
-                            Grazie mille per l’aiuto! 🙌😊
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post" id="post-2">
-                    <div class="postInfoBlock">
-                        <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                        <span class="postUsername">Anthony</span>
-                    </div>
-                    <div class="postDataBlock">
-                        <div class="postHeaderBox">
-                            <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                            <div class="topicDiAppartenenza">Mezzi di trasporto</div>
-                        </div>
-
-                        <div class="postTagsBox">
-                            <span class="postTag">Unisa</span>
-                            <span class="postTag">Avellino-Fisciano</span>
-                            <span class="postTag">Aiuto</span>
-                            <span class="postTag">MyAss</span>
-                        </div>
-
-                        <div class="postBodyBox">
-                            <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                            <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                            <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                                ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                                ✅ Dove posso acquistare i biglietti più facilmente?
-                                ✅ Esistono alternative più veloci o convenienti?</p>
-
-
-                            <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                            </p>
-
-                            Grazie mille per l’aiuto! 🙌😊
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post" id="post-2">
-                    <div class="postInfoBlock">
-                        <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                        <span class="postUsername">Anthony</span>
-                    </div>
-                    <div class="postDataBlock">
-                        <div class="postHeaderBox">
-                            <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                            <div class="topicDiAppartenenza">Mezzi di trasporto</div>
-                        </div>
-
-                        <div class="postTagsBox">
-                            <span class="postTag">Unisa</span>
-                            <span class="postTag">Avellino-Fisciano</span>
-                            <span class="postTag">Aiuto</span>
-                            <span class="postTag">MyAss</span>
-                        </div>
-
-                        <div class="postBodyBox">
-                            <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                            <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                            <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                                ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                                ✅ Dove posso acquistare i biglietti più facilmente?
-                                ✅ Esistono alternative più veloci o convenienti?</p>
+                        /*$postAuthorProPicQuery = pg_prepare($db,"Retrieve_postAuthorProPic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
+                        while ($returned_row = pg_fetch_assoc($postListResult)) {
+                            $postAuthorProPicResult = pg_execute($db, "Retrieve_postAuthorProPic", array($returned_row["autore"]));
+                            $fetch_postAuthorProPic = pg_fetch_assoc($postAuthorProPicResult);
+                            if(!empty($fetch_postAuthorProPic["immagine_profilo"])){
+                                $postAuthorProPic = $fetch_postAuthorProPic["immagine_profilo"];
+                            }else{
+                                $postAuthorProPic = "default_pic.jpg";
+                                }
+                        }*/
 
 
-                            <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                            </p>
 
-                            Grazie mille per l’aiuto! 🙌😊
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post" id="post-2">
-                    <div class="postInfoBlock">
-                        <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                        <span class="postUsername">Anthony</span>
-                    </div>
-                    <div class="postDataBlock">
-                        <div class="postHeaderBox">
-                            <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                            <div class="topicDiAppartenenza">Mezzi di trasporto</div>
-                        </div>
-
-                        <div class="postTagsBox">
-                            <span class="postTag">Unisa</span>
-                            <span class="postTag">Avellino-Fisciano</span>
-                            <span class="postTag">Aiuto</span>
-                            <span class="postTag">MyAss</span>
-                        </div>
-
-                        <div class="postBodyBox">
-                            <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                            <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                            <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                                ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                                ✅ Dove posso acquistare i biglietti più facilmente?
-                                ✅ Esistono alternative più veloci o convenienti?</p>
-
-
-                            <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                            </p>
-
-                            Grazie mille per l’aiuto! 🙌😊
-                        </div>
-                    </div>
-                </div>
-
-                <div class="post" id="post-2">
-                    <div class="postInfoBlock">
-                        <span><img class="postUserImage" src="img/profiloAnthony.jpg" id="1"></span>
-                        <span class="postUsername">Anthony</span>
-                    </div>
-                    <div class="postDataBlock">
-                        <div class="postHeaderBox">
-                            <div class="postTitle">AIUTO CON GLI SPOSTAMENTI</div>
-                            <div class="topicDiAppartenenza">Mezzi di trasporto</div>
-                        </div>
-
-                        <div class="postTagsBox">
-                            <span class="postTag">Unisa</span>
-                            <span class="postTag">Avellino-Fisciano</span>
-                            <span class="postTag">Aiuto</span>
-                            <span class="postTag">MyAss</span>
-                        </div>
-
-                        <div class="postBodyBox">
-                            <p>🚍 Aiuto per spostamenti Avellino - Fisciano 🚍</p>
-                            <p>Ciao a tutti! Sono uno studente e ho bisogno di aiuto per capire il modo migliore per spostarmi da Avellino al campus di Fisciano (UNISA).</p>
-                            <p> So che ci sono autobus AIR Campania, ma vorrei qualche consiglio da chi fa già questa tratta:
-                                ✅ Qual è l’orario migliore per evitare traffico e ritardi?
-                                ✅ Dove posso acquistare i biglietti più facilmente?
-                                ✅ Esistono alternative più veloci o convenienti?</p>
-
-
-                            <p>Se qualcuno fa lo stesso percorso e ha voglia di condividere esperienze o magari organizzare un carpooling, fatemi sapere! 🚗💨
-                            </p>
-
-                            Grazie mille per l’aiuto! 🙌😊
-                        </div>
-                    </div>
-                </div>
+                    ?>
             </div>
         </div>
     </div>

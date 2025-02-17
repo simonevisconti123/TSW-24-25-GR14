@@ -32,7 +32,7 @@ function check_input_registration(modulo) {
     var regex_email = /^(?=.{1,255}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     var regex_pswd = /^(?=.{8,255}$)(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,255}$/;
     if (!regex_username.test(modulo.inputUserName.value)) {
-        document.getElementById("label_output").innerHTML = "Il nome può contenere solo lettere e numeri e non può essere più lungo di 255 caratteri";
+        document.getElementById("label_output").innerHTML = "Il nome può contenere solo lettere e numeri, non può essere più lungo di 255 caratteri e deve essere privo di spazi";
         return false;
     }
 
