@@ -167,15 +167,23 @@
             or die('Impossibile connettersi al database: ' . pg_last_error());
 
             $topics = $_SESSION["topics"];
-
+            
+            //faccio il retrieve della lista dei post presenti per il topic selezionato
             $postListQuery = pg_prepare($db,"Retrieve_posts"," SELECT * FROM posts WHERE topic_appartenenza=$1");
             $postListResult = pg_execute($db, "Retrieve_posts", array($topics));
+
+            //faccio il retrieve dei dati dell'utente che sta navigando il sito necessario per le opzioni personalizzate
+            $currentUserQuery = pg_prepare($db, "Retrieve_currentUserData", "SELECT * FROM utenti WHERE nome_utente=$1");
+            if(isset($_SESSION["username"])){
+                $currentUserResult = pg_execute($db, "Retrieve_currentUserData", array($_SESSION["username"]));
+                $currentUserData = pg_fetch_assoc($currentUserResult);
+            }
 
             $postAuthorProPicQuery = pg_prepare($db,"Retrieve_postAuthorProPic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
             $commentListQuery = pg_prepare($db,"Retrieve_comments","SELECT * FROM commenti WHERE id_post_appartenenza = $1");
             $commentAuthorQuery = pg_prepare($db,"Retrieve_user_info","SELECT * FROM utenti WHERE nome_utente = $1");
             
-            //inizio istruzioni da eseguire per tutti i post del topic selezionato
+            //inizio wgile con le istruzioni da eseguire per tutti i post del topic selezionato
             while ($returned_row = pg_fetch_assoc($postListResult)) {
 
                 //POST
@@ -223,14 +231,32 @@
                             </div>
                             ";
 
+                            //gestione delle icone quando loggato
                             if(isset($_SESSION["username"])){
                                 echo "
                                 <div class='postInteractionBox'>
                                     <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
                                     <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                                    <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
-                                </div>
                                 ";
+
+                                //controllo che l'id del post corrente sia presente tra i post salvati dell'utente
+                                    /*prendo gli id dei post salvati dal db, e controllo che l'id del post corrente
+                                    sia presente tra quelli salvati*/
+                                    $arrayIdPostSalvati = explode(",", $currentUserData["post_salvati"]);
+                                    $flag = in_array($returned_row["id"], $arrayIdPostSalvati);
+
+                                    if($flag==true){ 
+                                        echo "
+                                        <span class='bookmarkIcon'><i class='fa-solid fa-bookmark'></i></span>
+                                        </div>
+                                        ";
+                                    }else if($flag==false){
+                                        echo "
+                                        <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
+                                        </div>
+                                        ";
+                                    }
+                            //gestione delle icone quando NON loggato
                             }else{
                                 echo "
                                 <div class='postInteractionBox'>
