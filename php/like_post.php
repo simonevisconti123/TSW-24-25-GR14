@@ -51,8 +51,17 @@ $aggiornaLikeNumberQueryInvio = pg_prepare($db, "update_numero_like_del_post", "
 $postLikedAggiornataQueryInvio = pg_prepare($db, "update_lista_post_liked", "UPDATE utenti SET post_liked = $1 WHERE nome_utente = $2;");
 $execution_1 = pg_execute($db, "update_lista_post_liked", array($stringaPostLikedAggiornata,$user));
 
+//FACCIO IL RETRIEVE DEL NUMERO DI LIKE AGGIORNATO
+$postLikeNumberQuery = pg_prepare($db,"Retrieve_numero_di_like_del_post","SELECT like_number FROM posts WHERE id = $1");
+$postLikeNumberResult = pg_execute($db,"Retrieve_numero_di_like_del_post", array($post_id));
+$postLikeNumber = pg_fetch_assoc($postLikeNumberResult);
 
-echo json_encode(["success" => true]);
+$response = array(
+    "success" => true,
+    "numLikeAggiornato" => $postLikeNumber["like_number"]
+);
+echo json_encode($response);
+
 exit;
 
 ?>

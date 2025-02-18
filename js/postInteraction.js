@@ -45,9 +45,7 @@ function postInteraction() {
                 if (xhr.status == 200) {
                     var response = xhr.response;
                     if(response.success){
-                        setTimeout(() => {
-                           
-                        }, 100);
+                            currentPost.querySelector('.likeNumber').textContent = response.numLikeAggiornato; //aggiorno senza refresh il numero di like mostrati a video in index.php
                     }
                 }
             };

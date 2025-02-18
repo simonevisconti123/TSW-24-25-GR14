@@ -286,8 +286,11 @@
             $postAuthorProPicQuery = pg_prepare($db,"Retrieve_postAuthorProPic"," SELECT immagine_profilo FROM utenti WHERE nome_utente=$1");
             $commentListQuery = pg_prepare($db,"Retrieve_comments","SELECT * FROM commenti WHERE id_post_appartenenza = $1");
             $commentAuthorQuery = pg_prepare($db,"Retrieve_user_info","SELECT * FROM utenti WHERE nome_utente = $1");
+
+            //preparo la query per ottenere il numero di like del post
+            $postLikeNumberQuery = pg_prepare($db,"Retrieve_numero_di_like_del_post","SELECT like_number FROM posts WHERE id = $1");
             
-            //inizio wgile con le istruzioni da eseguire per tutti i post del topic selezionato
+            //inizio while con le istruzioni da eseguire per tutti i post del topic selezionato
             while ($returned_row = pg_fetch_assoc($postListResult)) {
 
                 //POST
@@ -346,13 +349,24 @@
                                     $arrayIdPostLiked = explode(",", $currentUserData["post_liked"]);
                                     $flagLiked = in_array($returned_row["id"], $arrayIdPostLiked);
 
+                                    //retrieve del numero di like del post corrente
+                                    $postLikeNumberResult = pg_execute($db,"Retrieve_numero_di_like_del_post", array($returned_row["id"]));
+                                    $postLikeNumber = pg_fetch_assoc($postLikeNumberResult);
+                                    
+
                                     if($flagLiked==true){ 
                                         echo "
-                                        <span class='heartIcon'><i class='fa-solid fa-heart'></i></span>
+                                        <span class='heartIcon'>
+                                            <i class='fa-solid fa-heart'></i>
+                                            <p class='likeNumber'>".$postLikeNumber["like_number"]."</p>
+                                        </span>
                                         ";
                                     }else if($flagLiked==false){
                                         echo "
-                                        <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                                        <span class='heartIcon'>
+                                            <i class='fa-regular fa-heart'></i>
+                                            <p class='likeNumber'>".$postLikeNumber["like_number"]."</p>
+                                        </span>
                                         ";
                                     }
                                     

@@ -574,15 +574,28 @@ body {
                         padding-top: 10px;
                         padding-left: 10px;
                         padding-right: 10px;
+                        align-items: center;
                     }
                     
+                        .heartIcon {
+                            display: flex;
+                            align-items: center; /* Allinea verticalmente */
+                        }
+                
                         .heartIcon .fa-heart{
                             color:#292934;
-                            padding-right: 9px;
-                        } 
+                            padding-right: 2px;
+                        }
 
                         .heartIcon .fa-heart:hover{
                             filter: brightness(2.8);
+                            cursor: pointer;
+                        }
+
+                        .likeNumber{
+                            font-family: "Inter", sans-serif;
+                            font-weight: 400;
+                            padding-right: 9px;
                         }
 
                         .commentIcon .fa-comment{
@@ -592,6 +605,7 @@ body {
 
                         .commentIcon .fa-comment:hover{
                             filter: brightness(2.8);
+                            cursor: pointer;
                         }
 
                         .bookmarkIcon .fa-bookmark{
@@ -600,6 +614,7 @@ body {
 
                         .bookmarkIcon .fa-bookmark:hover{
                             filter: brightness(2.8);
+                            cursor: pointer;
                         }
 
             /*postComments*/
