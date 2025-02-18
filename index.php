@@ -247,7 +247,6 @@
 
 
                 <input type="hidden" name="tags" id="hidden-tags">
-                <p id="error-message" style="color: red; display: none;">Puoi selezionare massimo 13 tag!</p>
 
 
                 <label for="content">Oggetto</label>
@@ -338,24 +337,41 @@
 
                             //gestione delle icone quando loggato
                             if(isset($_SESSION["username"])){
-                                echo "
-                                <div class='postInteractionBox'>
-                                    <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
-                                    <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
-                                ";
+                                //HEART ICON
+                                    echo"
+                                    <div class='postInteractionBox'>
+                                    ";
+                                    /*controllo che il post corrente sia presente tra i post_liked dell'utente che
+                                    sta navigando la pagina e stampo l'icona regular o solid*/
+                                    $arrayIdPostLiked = explode(",", $currentUserData["post_liked"]);
+                                    $flagLiked = in_array($returned_row["id"], $arrayIdPostLiked);
 
-                                //controllo che l'id del post corrente sia presente tra i post salvati dell'utente
+                                    if($flagLiked==true){ 
+                                        echo "
+                                        <span class='heartIcon'><i class='fa-solid fa-heart'></i></span>
+                                        ";
+                                    }else if($flagLiked==false){
+                                        echo "
+                                        <span class='heartIcon'><i class='fa-regular fa-heart'></i></span>
+                                        ";
+                                    }
+                                    
+                                //COMMENT ICON
+                                    echo "
+                                        <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                                    ";
+                                //BOOKMARK ICON
                                     /*prendo gli id dei post salvati dal db, e controllo che l'id del post corrente
-                                    sia presente tra quelli salvati*/
+                                    sia presente tra quelli salvati e stampo l'icona regular o solid*/
                                     $arrayIdPostSalvati = explode(",", $currentUserData["post_salvati"]);
-                                    $flag = in_array($returned_row["id"], $arrayIdPostSalvati);
+                                    $flagSaved = in_array($returned_row["id"], $arrayIdPostSalvati);
 
-                                    if($flag==true){ 
+                                    if($flagSaved==true){ 
                                         echo "
                                         <span class='bookmarkIcon'><i class='fa-solid fa-bookmark'></i></span>
                                         </div>
                                         ";
-                                    }else if($flag==false){
+                                    }else if($flagSaved==false){
                                         echo "
                                         <span class='bookmarkIcon'><i class='fa-regular fa-bookmark'></i></span>
                                         </div>
