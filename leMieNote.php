@@ -77,7 +77,7 @@
             while ($returned_row = pg_fetch_assoc($execution_1)) {
                 $ext = strtolower(pathinfo($returned_row["nome_file"], PATHINFO_EXTENSION));
                 $iconClass = isset($fileIcons[$ext]) ? $fileIcons[$ext] : "file";    
-                echo "<div class='grid-item'><span class='fileName'>".$returned_row["nome_file"]."</span><i class='fa-solid fa-file-$iconClass iconaFile'></i></div>" ;
+                echo "<div class='grid-item'><span class='fileName' onclick='scaricaFile(\"".addslashes($returned_row["nome_file"])."\")'>".$returned_row["nome_file"]."</span><i class='fa-solid fa-file-$iconClass iconaFile'></i></div>" ;
             }
 
             ?>
@@ -152,6 +152,13 @@
         overlay.style.display = "none";
         dropZone.style.display = "none";
     });
+</script>
+
+<!--SCRIPT PER IL RICHIAMO DEL FILE DOWNLOAD.PHP-->
+<script>
+    function scaricaFile(fileName) {
+        window.location.href = "/php/download.php?file=" + encodeURIComponent(fileName);
+    }
 </script>
 
 </html>
