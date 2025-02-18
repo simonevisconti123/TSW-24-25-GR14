@@ -8,7 +8,13 @@ function postInteraction() {
 
     //GESTIONE ICONE HEART
     heartIconList.forEach(function(icon) {
-        let heartFlag=false; //definisce se l'icona è stata selezionata o meno
+        //controllo se, appena è caricata la pagina, l'icona risulta selezionata o meno
+        let likeFlag;
+        if(icon.classList.contains("fa-regular")){
+            likeFlag=false;
+        }else{
+            likeFlag=true;
+        }
 
         //click
         icon.addEventListener("click", function(){
@@ -16,17 +22,38 @@ function postInteraction() {
             let currentPost = icon.closest(".post");
             let currentPostID = currentPost.id;
 
-            /*quando viene cliccata controllo che l'icona dei commenti sia regular o solid, per
+            /*quando viene cliccata controllo che l'icona sia regular o solid, per
             fare in modo che al click cambi da uno stile all'altro*/
             if(icon.classList.contains("fa-regular")){
                 icon.classList.remove("fa-regular");
                 icon.classList.add("fa-solid");
-                heartFlag=true;
+                likeFlag=true;
             }else{
                 icon.classList.remove("fa-solid");
                 icon.classList.add("fa-regular");
-                heartFlag=false;
+                likeFlag=false;
             }
+
+            let exactPostID = currentPostID.replace("post-", "");
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "php/like_post.php", true); // URL del file PHP
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            xhr.responseType = 'json';
+
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    var response = xhr.response;
+                    if(response.success){
+                        setTimeout(() => {
+                           
+                        }, 100);
+                    }
+                }
+            };
+
+            let data = "postID=".concat(exactPostID, "&selected=", likeFlag);
+            xhr.send(data);
         });
     });
 
@@ -76,7 +103,7 @@ function postInteraction() {
             let currentPost = icon.closest(".post");
             let currentPostID = currentPost.id;
 
-            /*quando viene cliccata controllo che l'icona dei commenti sia regular o solid, per
+            /*quando viene cliccata controllo che l'icona sia regular o solid, per
             fare in modo che al click cambi da uno stile all'altro*/
             if(icon.classList.contains("fa-regular")){
                 icon.classList.remove("fa-regular");
