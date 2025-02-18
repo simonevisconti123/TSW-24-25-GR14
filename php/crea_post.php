@@ -18,7 +18,7 @@
 
     $id = rand(0, 65535);
 
-    $result = pg_prepare($db, "Insertion", "INSERT INTO posts VALUES ($1,$2,$3,$4,$5,$6);");
+    $result = pg_prepare($db, "Insertion", "INSERT INTO posts VALUES ($1,$2,$3,$4,$5,$6,0);");
     $ret = pg_execute($db, "Insertion", array($id,$username,$title,$body,$category,$tags));
     
     echo json_encode(["success" => true, "message" => "POST CREATO CORRETTAMENTE"]);
