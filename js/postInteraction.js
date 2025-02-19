@@ -3,7 +3,7 @@ varia a seconda dell'icona che dobbiamo scambiare*/
 function postInteraction() {
     // Seleziona le icone all'interno di un tag span con la classe "heartIcon"
     let heartIconList = document.querySelectorAll(".heartIcon .fa-heart");
-    let commentIconList = document.querySelectorAll(".commentIcon .fa-comment");
+    let commentIconList = document.querySelectorAll(".commentIcon .iconaCommenti");
     let bookmarkIconList = document.querySelectorAll(".bookmarkIcon .fa-bookmark");
 
     //GESTIONE ICONE HEART
@@ -73,12 +73,18 @@ function postInteraction() {
             fare in modo che al click cambi da uno stile all'altro e che la sezione commenti appaia o scompaia*/
             if(icon.classList.contains("fa-regular")){
                 icon.classList.remove("fa-regular");
+                icon.classList.remove("fa-comment");
                 icon.classList.add("fa-solid");
+                icon.classList.add("fa-comment-dots");
+
                 commentFlag=true;
                 currentComments.classList.remove("hidden");
             }else{
                 icon.classList.remove("fa-solid");
+                icon.classList.remove("fa-comment-dots");
                 icon.classList.add("fa-regular");
+                icon.classList.add("fa-comment");
+
                 commentFlag=false;
                 currentComments.classList.add("hidden");
             }

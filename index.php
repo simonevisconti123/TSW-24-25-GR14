@@ -372,7 +372,7 @@
                                     
                                 //COMMENT ICON
                                     echo "
-                                        <span class='commentIcon'><i class='fa-regular fa-comment'></i></span>
+                                        <span class='commentIcon'><i class='fa-regular fa-comment iconaCommenti'></i></span>
                                     ";
                                 //BOOKMARK ICON
                                     /*prendo gli id dei post salvati dal db, e controllo che l'id del post corrente
