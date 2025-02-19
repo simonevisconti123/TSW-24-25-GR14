@@ -405,7 +405,7 @@
 
                 //COMMENTI DEL POST
                 echo"
-                <div class='postComments' id='comment-".$returned_row["id"]."'>
+                <div class='postComments hidden' id='comment-".$returned_row["id"]."'>
                     <!--SEZIONE CREAZIONE COMMENTO-->
                         <div class='commentSubmitBlock'>
                                 <input class='commentInsertionBar' type='text' id='comment_bar-".$returned_row["id"]."' placeholder='commenta'>

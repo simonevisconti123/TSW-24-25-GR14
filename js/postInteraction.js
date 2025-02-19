@@ -75,12 +75,12 @@ function postInteraction() {
                 icon.classList.remove("fa-regular");
                 icon.classList.add("fa-solid");
                 commentFlag=true;
-                currentComments.setAttribute("style", "display: block;");
+                currentComments.classList.remove("hidden");
             }else{
                 icon.classList.remove("fa-solid");
                 icon.classList.add("fa-regular");
                 commentFlag=false;
-                currentComments.setAttribute("style", "display: none;");
+                currentComments.classList.add("hidden");
             }
         });
     });
