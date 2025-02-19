@@ -660,7 +660,7 @@ body {
                 opacity: 0;
                 transform: translateY(30px);
                 max-height: 0px;
-                transition: opacity 0.1s , transform 0.2s ease, max-height 0.1s ease 0.2s; /* Ritardo max-height per chiusura fluida */
+                transition: opacity 0.1s , transform 0.2s ease, max-height 0.1s ease 0.2s;
             }
 
             .postComments{
