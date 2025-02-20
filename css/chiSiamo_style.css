@@ -62,8 +62,11 @@ body {
           cursor: pointer;
           margin-bottom: 10px;
           white-space: nowrap;  /* Impedisce il testo di andare a capo */
-              overflow: hidden;     /* Nasconde il testo che esce dal box */
-              text-overflow: ellipsis;  /* Aggiunge "..." se il testo è troppo lungo */
+          overflow: hidden;     /* Nasconde il testo che esce dal box */
+          text-overflow: ellipsis;  /* Aggiunge "..." se il testo è troppo lungo */
+          font-family: "Inter";
+          font-style: italic;
+          font-weight: 900;
         }
 
         .home-button:hover {
