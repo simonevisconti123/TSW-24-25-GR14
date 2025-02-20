@@ -16,17 +16,13 @@ body {
 }
 
 .signupBox {
-    background-color: #15151A; /* Colore rosso */
+    background-color: #15151A;
     color: white;
-    padding: 20px 30px; /* Aggiunto padding orizzontale uniforme */
+    padding: 20px 30px; 
     border-radius: 8px;
     text-align: center;
     width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.form{
-    position: sticky;
 }
 
 h1 {
@@ -55,7 +51,11 @@ button {
     border-radius: 10px;
     padding: 10px 15px;
     font-size: 16px;
+    width: 48%;
     cursor: pointer;
+    font-style: italic;
+    font-weight: 900;
+    font-family: "Inter";
 }
 
 .signupCancelButton {
