@@ -155,12 +155,15 @@
         }
 
         .contact-form label {
+            font-family: "Inter", sans-serif;
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
 
         .contact-form input, .contact-form textarea {
+            
+            font-family: "Inter", sans-serif;
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -175,7 +178,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-family: "Inter";
+            font-family: "Inter", sans-serif;
             font-style: italic;
             font-weight: 900;
         }
