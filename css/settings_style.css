@@ -100,8 +100,16 @@ body {
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
-        background-color: #ffffff;
         margin-left: 17%;
+        background: linear-gradient(
+            to bottom right,
+            #ffcce7 0%,
+            #cd77ff62 20%,
+            #cce3ff 40%,
+            #ccffd3 60%,
+            #fff3cc 80%,
+            #ffe5cc 100%
+        );
     }
 
         .contenutiBlock h1 {
@@ -301,7 +309,15 @@ body {
             width: 100%;
             /*padding-bottom: 20px;*/
             overflow-y: auto; /* Permette lo scroll */
-            background-color: white;
+            background: linear-gradient(
+                to bottom right,
+                #ffcce7 0%,
+                #cd77ff62 20%,
+                #cce3ff 40%,
+                #ccffd3 60%,
+                #fff3cc 80%,
+                #ffe5cc 100%
+            );
             /*padding-top: 20px;*/
 
             /*post*/

@@ -65,6 +65,15 @@ body {
         align-items: center;
         position: relative;
         overflow-y: auto; /* Permette lo scroll */
+        background: linear-gradient(
+            to bottom right,
+            #ffcce7 0%,
+            #cd77ff62 20%,
+            #cce3ff 40%,
+            #ccffd3 60%,
+            #fff3cc 80%,
+            #ffe5cc 100%
+        );
     }
 
         .upbar{
@@ -199,9 +208,9 @@ body {
         
             .grid-item {
                 min-height: 150px; /* Altezza minima */
-                background-color: #ffffff;
                 display: flex;
                 align-items: center;
+                background-color: transparent;
                 justify-content: center;
                 flex-direction: column;
                 border-radius: 10px;

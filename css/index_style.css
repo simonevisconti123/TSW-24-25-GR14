@@ -166,6 +166,9 @@ body {
                 width: 100%;
                 padding: 10px;
                 border-radius: 10px;
+                white-space: nowrap;  /* Impedisce il testo di andare a capo */
+                overflow: hidden;     /* Nasconde il testo che esce dal box */
+                text-overflow: ellipsis;  /* Aggiunge "..." se il testo è troppo lungo */
             }
 
             .topicsBox ul {
@@ -214,6 +217,9 @@ body {
                 width: 100%;
                 padding: 10px;
                 border-radius: 10px;
+                white-space: nowrap;  /* Impedisce il testo di andare a capo */
+                overflow: hidden;     /* Nasconde il testo che esce dal box */
+                text-overflow: ellipsis;  /* Aggiunge "..." se il testo è troppo lungo */
             }
 
             .settingsBox ul {
@@ -479,7 +485,7 @@ body {
 
             /*post*/
             .post{
-                z-index: 61;
+                z-index: 9;
                 margin-top: 20px;
                 width: 60%;
                 max-width: 550px;
