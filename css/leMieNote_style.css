@@ -96,14 +96,18 @@ body {
                 font-size: 17px;
                 color: #ffffff;
                 border: none;
+                outline: none;
             }
 
             .inputSearchBar::placeholder {
                 font-family: "Inter";
                 color: #aaa;
                 opacity: 1;
-                transition: opacity 0.15s ease-in-out;
                 font-style: italic;
+            }
+
+            .inputSearchBar:focus::placeholder{
+                opacity: 0;
             }
 
             .searchIcon{

@@ -346,13 +346,14 @@ body {
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                width: 40%;
+                width: 50%;
                 transform: translate(-50%, -50%);
                 z-index: 9999;
                 background-color:#ffffff;
                 border-radius: 10px;
                 font-family: "Inter", sans-serif;
                 padding: 30px;
+                padding-top: 5px;
                 box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
                 display: flex;
                 flex-direction: column;
@@ -366,6 +367,7 @@ body {
 
                 /*closeButton*/
                 .closeButtonBox{
+                    padding-top: 15px;
                     display: flex;
                     justify-content: right;
                 }
@@ -387,9 +389,18 @@ body {
                     background-color: #ED1010;
                 }
 
+                /*Titoli delle label*/
+                .newPostForm label{
+                    font-size: large;
+                    font-style: italic;
+                    text-decoration: underline;
+                }
+
                 /*input e textarea del form*/
                 .newPostForm input,
                 .newPostForm textarea {
+                    max-height: 25vh;
+                    resize: vertical;
                     background-color: #e6e6e6;
                     border: none;
                     border-radius: 8px;
@@ -420,7 +431,6 @@ body {
 
                 /*gestione dei tag*/
                 .tagsBox {
-                    margin-top: 10px;
                     display: flex;
                     flex-wrap: wrap;
                 }
@@ -438,6 +448,7 @@ body {
                     transition: all 0.2s ease-in-out;
                     font-weight: bold;
                     text-align: center;
+                    text-decoration: none;
                 }
                 
                 .tagsBox label:active {
@@ -457,11 +468,6 @@ body {
                 
                 .tagsBox input[type="checkbox"] {
                     display: none;
-                }
-
-                /*Titoli delle label*/
-                .newPostForm label{
-                    font-style: italic;
                 }
                 
                 /*pulsante post*/
@@ -653,7 +659,13 @@ body {
                         }
 
                         .bookmarkIcon .fa-solid.fa-bookmark {
-                            animation: pop-in 0.3s ease-in-out;
+                            animation: scaleBounce 0.35s ease-out;
+                        }
+                          
+                        @keyframes scaleBounce {
+                            0% { transform: scale(1); }
+                            50% { transform: scale(1.2) rotate(5deg); }
+                            100% { transform: scale(1) rotate(0deg); }
                         }
 
             /*postComments*/
