@@ -83,6 +83,7 @@ body {
     }
 
     .searchIcon:hover{
+        cursor: pointer;
         background-color: #aaa;
     }
 
