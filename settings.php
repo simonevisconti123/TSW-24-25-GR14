@@ -25,6 +25,9 @@
     <div class="container">
         <div class="leftBlock">
             <div class="top-section">
+                <div class="mySHubjectBox">
+                    <h1>Settings</h1>
+                </div>
                 <div class="ilMioAccountBox">
                     <h2>Il mio account</h2>
                     <ul>
