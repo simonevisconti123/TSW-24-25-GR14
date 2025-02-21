@@ -128,6 +128,18 @@ function check_post_creations(modulo){
     return true;
 }
 
+
+function check_comment_creations(comment) {
+    var regex_comments = /^\S.*$/;
+    
+    if (!regex_comments.test(comment)) {
+        alert("Il commento non può essere vuoto");
+        return false;
+    }
+
+    return true;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     function showSection(sectionId) {
         document.querySelectorAll(".contenutiBlock > div").forEach(div => {

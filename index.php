@@ -408,10 +408,10 @@
                 <div class='postComments hidden' id='comment-".$returned_row["id"]."'>
                     <!--SEZIONE CREAZIONE COMMENTO-->
                         <div class='commentSubmitBlock'>
-                                <input class='commentInsertionBar' type='text' id='comment_bar-".$returned_row["id"]."' placeholder='commenta'>
+                                <input class='commentInsertionBar' name='comment_bar' type='text' id='comment_bar-".$returned_row["id"]."' placeholder='commenta'>
                                 <input type='hidden' id='selected_post-".$returned_row["id"]."' value=".$returned_row["id"].">
-                                <button class='commentButton'><i class='fa-solid fa-paper-plane'></i></button>
-                        </div>
+                                <button class='commentButton'><i class='fa-solid fa-paper-plane'></i></button>  
+                    </div>
                 ";
                     //retrieve lista dei commenti relativi al post corrente
                     $commentListResult = pg_execute($db, "Retrieve_comments", array($returned_row["id"]));
@@ -591,11 +591,12 @@
     commentButtonList.forEach(function(btn) {
 
         btn.addEventListener("click", function() {
+
+        var form = document.getElementsByClassName('commentInsertionBar');
         let currentPost = btn.closest(".postComments");
         let currentPostID = currentPost.id;
         let currentCommentsID = currentPostID.replace("comment-", "");
         event.preventDefault();
-
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "php/post_comment.php", true); // URL del file PHP
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -615,7 +616,11 @@
         };
         val1 = document.getElementById("comment_bar-".concat(currentCommentsID)).value;
         data = "comment=".concat(val1,"&post_appart=",currentCommentsID);
+        if (!check_comment_creations(val1)) {
+            return;
+        }else{
         xhr.send(data);
+        }
     });
 });
 
