@@ -589,6 +589,13 @@ body {
                         padding-right: 10px;
                         align-items: center;
                     }
+
+                        /*notLoggedInteraction*/
+                        .postInteractionBox.notLogged{
+                            font-family: "Inter", sans-serif;
+                            justify-content: center;
+                            font-size: small;
+                        }
                     
                         /*like*/
                         .heartIcon {
@@ -721,6 +728,7 @@ body {
                 }
 
                 .commentButton:hover {
+                    cursor: pointer;
                     background-color: rgba(0, 0, 0, 0.1);
                 }
 

@@ -118,7 +118,7 @@
             <div id="overlayBlurDelForm-hidden"></div>
 
             <form onsubmit="return check_post_creations(this)" class="newPostForm newPostForm-hidden" id="form_post">
-                <span class="closeButtonBox"><span class="closeButton"><i class="fa-solid fa-x"></i></span></span>
+                <span class="closeButtonBox"><span class="closeButton"><i class="fa-solid fa-xmark"></i></span></span>
                 <h2>Nuovo Post</h2>
 
                 <label for="title">Titolo</label>
@@ -394,8 +394,8 @@
                             //gestione delle icone quando NON loggato
                             }else{
                                 echo "
-                                <div class='postInteractionBox'>
-                                    <p> Devi essere loggato per interagire con i post </p>
+                                <div class='postInteractionBox notLogged'>
+                                    <p class='warningNotLogged'> <i class='fa-solid fa-triangle-exclamation'></i> Devi essere loggato per poter interagire con i post</p>
                                 </div>
                                 ";
                             }
