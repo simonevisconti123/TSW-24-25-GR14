@@ -186,6 +186,11 @@
         .contact-form button:hover {
             background: #9F9700;
         }
+        
+        .boxContattami {
+            width: 80%; /* Imposta una larghezza più corta */
+            margin: 0 auto; /* Centra il box */
+        }
 
         hr {
             border: none;
