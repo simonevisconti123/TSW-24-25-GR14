@@ -27,6 +27,15 @@ if ($returned_row) { // Verifica se la query ha restituito un risultato
     $result_2 = pg_prepare($db,"update_username"," UPDATE utenti SET nome_utente=$1 WHERE nome_utente=$2;");
     $execution_2 = pg_execute($db, "update_username", array($new_username,$user));
 
+    $updatePostAuthorQuery = pg_prepare($db,"update_username_nei_post"," UPDATE posts SET autore=$1 WHERE autore=$2;");
+    $updatePostAuthorResult = pg_execute($db, "update_username_nei_post", array($new_username,$user));
+
+    $updateCommentAuthorQuery = pg_prepare($db,"update_username_nei_commenti"," UPDATE commenti SET autore=$1 WHERE autore=$2;");
+    $updateCommentAuthorResult = pg_execute($db, "update_username_nei_commenti", array($new_username,$user));
+
+    $updateFileOwnerQuery = pg_prepare($db,"update_username_nei_file_salvati"," UPDATE file_utenti SET nome_utente=$1 WHERE nome_utente=$2;");
+    $updateFileOwnerResult = pg_execute($db, "update_username_nei_file_salvati", array($new_username,$user));
+
     if ($execution_2 && pg_affected_rows($execution_2) > 0) { // Verifica se la query ha restituito un risultato
         $response = array("message" => "Username aggiornato con successo",
                            "success" => true
@@ -40,8 +49,5 @@ if ($returned_row) { // Verifica se la query ha restituito un risultato
         exit;
     }
 }
-
-
-
 
 ?>

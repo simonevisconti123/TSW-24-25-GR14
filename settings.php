@@ -246,7 +246,6 @@
         };
         
         // Invio dei dati con POST
-        
         var val1 = document.getElementById("new_mail_conf").value;
         var data = "new_mail_conf=".concat(val1);
         xhr.send(data);
