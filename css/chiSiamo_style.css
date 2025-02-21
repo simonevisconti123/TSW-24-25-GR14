@@ -16,10 +16,31 @@ body {
       color: white;
       display: flex;
       flex-direction: column;
+      box-sizing: border-box;
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
     }
+
+      .topSection{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+        .mySHubjectBox {
+          width: 90%;
+          background-color: #D60606;
+          color: white;
+          padding: 10px;
+          border-radius: 25px;
+          text-align: center;
+          padding-bottom: 8px;
+          margin-bottom: 17px;
+          margin-top: 10px;
+        }
 
         .namesBox {
           width: 80%;
