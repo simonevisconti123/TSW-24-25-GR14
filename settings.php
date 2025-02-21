@@ -42,7 +42,7 @@
                     </ul>
                 </div>
             </div>
-            <button class="cancelButton" onclick=returnToHome()>Cancel</button>
+            <button class="cancelButton" onclick=returnToHome()>Home</button>
         </div>
         <div class="contenutiBlock">
             <div id="iMieiDatiBox">
