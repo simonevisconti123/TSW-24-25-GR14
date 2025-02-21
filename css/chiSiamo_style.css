@@ -49,23 +49,18 @@ body {
                 }
 
             .home-button {
-              width: 80%;
-              max-width: 200px;
-              background-color: #FFF200;
-              color: black;
-              font-size: 16px;
-              padding: 10px;
-              text-align: center;
+              background-color: #FFF200; 
+              color: #000000;
               border: none;
-              border-radius: 10px;
+              border-radius: 20px;
+              padding: 10px 20px;
+              font-size: 16px;
               cursor: pointer;
-              margin-bottom: 10px;
-              white-space: nowrap;  /* Impedisce il testo di andare a capo /
-              overflow: hidden;     / Nasconde il testo che esce dal box /
-              text-overflow: ellipsis;  / Aggiunge "..." se il testo è troppo lungo */
+              align-self:center;
               font-family: "Inter";
               font-style: italic;
               font-weight: 900;
+              margin-bottom: 10px;
             }
 
         .home-button:hover {
@@ -75,16 +70,16 @@ body {
     .centerBlock {
       flex-grow: 1;
       padding: 0;
-      background-color: whi
+      background-color: white;
       background: linear-gradient(
-        to bottom right,
-        #ffcce7 0%,
-        #cd77ff62 20%,
-        #cce3ff 40%,
-        #ccffd3 60%,
-        #fff3cc 80%,
-        #ffe5cc 100%
-    );
+          to bottom right,
+          #ffcce7 0%,
+          #cd77ff62 20%,
+          #cce3ff 40%,
+          #ccffd3 60%,
+          #fff3cc 80%,
+          #ffe5cc 100%
+      );
     }
 
         iframe {
