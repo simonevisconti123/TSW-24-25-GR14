@@ -236,7 +236,7 @@
                 if(response.success){
                     setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 800);
                 }
             } else {
                 document.getElementById("label_message_mail").innerHTML = "Errore nella richiesta.";
@@ -275,6 +275,11 @@
                 // La risposta è automaticamente un oggetto JSON grazie a responseType
                 var response = xhr.response;
                 document.getElementById("label_message_pswd").innerHTML = response.message;
+                if(response.success){
+                    setTimeout(() => {
+                    window.location.reload();
+                    }, 800);
+                }
             } else {
                 document.getElementById("label_message_pswd").innerHTML = "Errore nella richiesta.";
             }
@@ -316,7 +321,7 @@
                 if(response.success){
                     setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 800);
                 }
             } else {
                 document.getElementById("label_message_username").innerHTML = "Errore nella richiesta.";
@@ -363,7 +368,7 @@
                 if(response.success){
                     setTimeout(() => {
                     window.location.reload();
-                }, 1500);
+                }, 800);
                 }
             } else {
                 document.getElementById("label_message_propic").innerHTML = "Errore nella richiesta.";

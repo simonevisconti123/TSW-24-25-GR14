@@ -31,7 +31,9 @@ if($execution_1 && $returned_row["password_utente"] == $new_hashed_pswd){
     $execution_2 = pg_execute($db, "update_pswd", array($new_hashed_pswd,$user));
 
 if ($execution_2 && pg_affected_rows($execution_2) > 0) { // Verifica se la query ha restituito un risultato
-    $response = array("message" => "Password modificata con successo");
+    $response = array("message" => "Password modificata con successo",
+                      "success" => true
+                    );
     echo json_encode($response);
     exit;
 }else{
