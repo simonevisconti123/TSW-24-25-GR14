@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.querySelector(".inputSearchBar"); // Seleziona la barra di ricerca
-    const searchButton = document.querySelector(".upBar .searchIcon"); //Seleziono il pulsante per la ricerca
     const gridItems = document.querySelectorAll(".grid-item"); // Seleziona tutti gli elementi della griglia
 
     //TASTO INVIO

@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    //questo event listener invece esegue la sua funzione solo quando viene premuta l'icona di ricerca
     searchButton.addEventListener("click", function (event){
             //qui prendo il contenuto della barra di ricerca (value), lo porto in minuscolo e toglo eventuali spazi all'inizio e alla fine della stringa restituita
             const searchTerm = searchInput.value.toLowerCase().trim();

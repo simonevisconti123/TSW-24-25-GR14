@@ -30,7 +30,7 @@
     <!-- Connessione a Font Awesome per utilizzare le icone -->
     <script src="https://kit.fontawesome.com/f4d166ff19.js" crossorigin="anonymous"></script>
 
-    <!-- script pazzo in culo che fa comparire solo i post che contengono la sottostringa cercata nel proprio testo o nei tag -->
+    <!-- script che fa comparire solo i post che contengono la sottostringa cercata nel proprio testo o nei tag -->
      <script src="js/indexSearchBar.js" defer></script>
      <script src="js/utilities.js" defer></script>
 </head>
